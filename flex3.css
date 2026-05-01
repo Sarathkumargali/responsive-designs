@@ -1,27 +1,51 @@
-body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
 }
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 300px;
-    border: 2px solid black;
-    flex-wrap: wrap;
-    gap: 20px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  border: 2px solid black;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.box1 { background-color: aqua;
-flex-grow: 1;
-order:3 ;}
-.box2 { background-color: rgb(228, 182, 88);
-flex-grow: 2;
-order: 1;}
-.box3 { background-color: rgb(150, 172, 245);
-flex-grow: 1;
-order: 2;}
-.box4 { background-color: rgb(109, 210, 105);
-flex-grow: 1;
-order: 4;}
+.box1 {
+  background-color: aqua;
+  flex-grow: 1;
+  order: 3;
+  align-self: flex-start;
+}
+.box2 {
+  background-color: rgb(228, 182, 88);
+  flex-grow: 2;
+  order: 1;
+  align-self: center;
+}
+.box3 {
+  background-color: rgb(150, 172, 245);
+  flex-grow: 1;
+  order: 2;
+  align-self: flex-end;
+}
+.box4 {
+  background-color: rgb(109, 210, 105);
+  flex-grow: 1;
+  order: 4;
+  align-self: stretch;
+}
+.box {
+  padding: 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  min-width: 120px;
+  color: black;
+}
+.box:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
