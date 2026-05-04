@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+
+    
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Row height */
+    grid-auto-rows: 100px;
+
+    /* Gap between boxes */
+    gap: 10px;
+
+    padding: 20px;
+}
+
+.box {
+    background-color: lightblue;
+    border: 2px solid black;
+    font-size: 24px;
+
+    /* Center content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box1 {
+    grid-column: span 2; /* takes 2 columns */
+}
+
+.box4 {
+    grid-row: span 2; /* takes 2 rows */
+}
