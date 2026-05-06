@@ -1,37 +1,113 @@
-/* Make grid responsive */
-.grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+/* Reset basic spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Individual styling for practice */
-.box2 {
-    background-color: lightcoral;
-}
-
-.box3 {
-    grid-column: span 3; /* full row */
-    background-color: lightgreen;
-}
-
-.box5 {
-    grid-column: 2 / 4; /* start from column 2 to 4 */
-}
-
-.box6 {
-    grid-row: 2 / 4; /* span manually using line numbers */
-}
-
-/* Center entire grid vertically */
+/* Body styling */
 body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-/* Hover effect for interaction */
+/* Title spacing */
+h1 {
+    margin: 20px 0;
+}
+
+/* Main Grid Container */
+.grid-container {
+    display: grid;
+
+    /* Layout using areas */
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas:
+        "header header header"
+        "sidebar content extra"
+        "footer footer footer";
+
+    gap: 10px;
+    padding: 20px;
+
+    flex: 1; /* fill remaining space */
+}
+
+/* Common box styling */
+.box {
+    background-color: lightblue;
+    border: 2px solid black;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
 .box:hover {
     background-color: orange;
     transform: scale(1.05);
-    transition: 0.3s;
+}
+
+/* ===== Grid Area Sections ===== */
+
+.header {
+    grid-area: header;
+    background-color: lightpink;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: lightyellow;
+}
+
+.content {
+    grid-area: content;
+    background-color: lightgreen;
+}
+
+.extra {
+    grid-area: extra;
+    background-color: lightcoral;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: lightgray;
+}
+
+/* ===== Optional: Style numbered boxes (1–9) ===== */
+
+.box1 { background-color: #a8dadc; }
+.box2 { background-color: #f4a261; }
+.box3 { background-color: #90be6d; }
+.box4 { background-color: #e76f51; }
+.box5 { background-color: #bdb2ff; }
+.box6 { background-color: #ffd166; }
+.box7 { background-color: #06d6a0; }
+.box8 { background-color: #ef476f; }
+.box9 { background-color: #118ab2; }
+
+/* ===== Responsive Design ===== */
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "content"
+            "extra"
+            "footer";
+    }
 }
