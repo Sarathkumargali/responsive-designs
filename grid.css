@@ -1,30 +1,84 @@
-/* Reset basic spacing */
+/* =========================
+   RESET DEFAULT STYLES
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* =========================
+   BODY STYLING
+========================= */
+
 body {
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     text-align: center;
 
-    height: 100vh;
+    min-height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
 
-/* Title spacing */
-h1 {
-    margin: 20px 0;
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background-color: black;
+    color: white;
+
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
 }
 
-/* Main Grid Container */
+/* =========================
+   HEADING
+========================= */
+
+h1 {
+    margin: 20px 0;
+    color: #333;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.button {
+    padding: 12px 20px;
+    margin: 10px auto;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: blue;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+}
+
+/* =========================
+   GRID CONTAINER
+========================= */
+
 .grid-container {
     display: grid;
 
-    /* Layout using areas */
     grid-template-columns: 200px 1fr 1fr;
     grid-template-rows: auto 1fr auto;
 
@@ -33,33 +87,51 @@ h1 {
         "sidebar content extra"
         "footer footer footer";
 
-    gap: 10px;
+    gap: 15px;
+
     padding: 20px;
 
-    flex: 1; /* fill remaining space */
+    flex: 1;
 }
 
-/* Common box styling */
+/* =========================
+   COMMON BOX STYLING
+========================= */
+
 .box {
     background-color: lightblue;
+
     border: 2px solid black;
+    border-radius: 12px;
+
     font-size: 20px;
+    font-weight: bold;
+
+    min-height: 100px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
     transition: 0.3s;
+
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    animation: fadeIn 1s ease;
 }
 
-/* Hover effect */
+/* =========================
+   HOVER EFFECT
+========================= */
+
 .box:hover {
     background-color: orange;
     transform: scale(1.05);
 }
 
-/* ===== Grid Area Sections ===== */
+/* =========================
+   GRID AREA SECTIONS
+========================= */
 
 .header {
     grid-area: header;
@@ -86,28 +158,112 @@ h1 {
     background-color: lightgray;
 }
 
-/* ===== Optional: Style numbered boxes (1–9) ===== */
+/* =========================
+   NUMBER BOX COLORS
+========================= */
 
-.box1 { background-color: #a8dadc; }
-.box2 { background-color: #f4a261; }
-.box3 { background-color: #90be6d; }
-.box4 { background-color: #e76f51; }
-.box5 { background-color: #bdb2ff; }
-.box6 { background-color: #ffd166; }
-.box7 { background-color: #06d6a0; }
-.box8 { background-color: #ef476f; }
-.box9 { background-color: #118ab2; }
+.box1 {
+    background-color: #a8dadc;
+}
 
-/* ===== Responsive Design ===== */
+.box2 {
+    background-color: #f4a261;
+}
+
+.box3 {
+    background-color: #90be6d;
+}
+
+.box4 {
+    background-color: #e76f51;
+}
+
+.box5 {
+    background-color: #bdb2ff;
+}
+
+.box6 {
+    background-color: #ffd166;
+}
+
+.box7 {
+    background-color: #06d6a0;
+}
+
+.box8 {
+    background-color: #ef476f;
+}
+
+.box9 {
+    background-color: #118ab2;
+    color: white;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
 @media (max-width: 768px) {
+
     .grid-container {
+
         grid-template-columns: 1fr;
+
         grid-template-areas:
             "header"
             "sidebar"
             "content"
             "extra"
             "footer";
+    }
+
+    .box {
+        font-size: 18px;
+    }
+
+    .navbar {
+        font-size: 20px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .button {
+        width: 80%;
+    }
+
+    .box {
+        min-height: 80px;
+        font-size: 16px;
+    }
+
+    .grid-container {
+        padding: 10px;
+        gap: 10px;
     }
 }
