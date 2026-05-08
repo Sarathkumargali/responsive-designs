@@ -1,6 +1,4 @@
-/* =========================
-   RESET DEFAULT STYLES
-========================= */
+/* ================= RESET ================= */
 
 * {
     margin: 0;
@@ -8,60 +6,44 @@
     box-sizing: border-box;
 }
 
-/* =========================
-   BODY STYLING
-========================= */
+/* ================= BODY ================= */
 
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    text-align: center;
-
     min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAVBAR ================= */
 
 .navbar {
-    background-color: black;
+    background-color: #111;
+
     color: white;
 
-    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+}
+
+.logo {
     font-size: 24px;
     font-weight: bold;
-
-    letter-spacing: 1px;
 }
 
-/* =========================
-   HEADING
-========================= */
-
-h1 {
-    margin: 20px 0;
-    color: #333;
-}
-
-/* =========================
-   BUTTON
-========================= */
+/* ================= BUTTON ================= */
 
 .button {
-    padding: 12px 20px;
-    margin: 10px auto;
+    padding: 10px 18px;
 
     border: none;
     border-radius: 8px;
 
-    background-color: blue;
+    background-color: royalblue;
     color: white;
 
-    font-size: 16px;
     cursor: pointer;
 
     transition: 0.3s;
@@ -69,201 +51,108 @@ h1 {
 
 .button:hover {
     background-color: darkblue;
-    transform: scale(1.05);
 }
 
-/* =========================
-   GRID CONTAINER
-========================= */
+/* ================= HEADER ================= */
+
+.header-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.header-section h1 {
+    margin-bottom: 10px;
+}
+
+/* ================= GRID ================= */
 
 .grid-container {
     display: grid;
 
-    grid-template-columns: 200px 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-    grid-template-areas:
-        "header header header"
-        "sidebar content extra"
-        "footer footer footer";
-
-    gap: 15px;
+    gap: 20px;
 
     padding: 20px;
-
-    flex: 1;
 }
 
-/* =========================
-   COMMON BOX STYLING
-========================= */
+/* ================= BOX ================= */
 
 .box {
-    background-color: lightblue;
+    min-height: 120px;
 
-    border: 2px solid black;
+    background-color: white;
+
     border-radius: 12px;
-
-    font-size: 20px;
-    font-weight: bold;
-
-    min-height: 100px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    font-size: 22px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
     transition: 0.3s;
-
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-
-    animation: fadeIn 1s ease;
 }
-
-/* =========================
-   HOVER EFFECT
-========================= */
 
 .box:hover {
-    background-color: orange;
-    transform: scale(1.05);
+    transform: translateY(-5px);
 }
 
-/* =========================
-   GRID AREA SECTIONS
-========================= */
+/* ================= CUSTOM COLORS ================= */
 
-.header {
-    grid-area: header;
-    background-color: lightpink;
-}
-
-.sidebar {
-    grid-area: sidebar;
-    background-color: lightyellow;
-}
-
-.content {
-    grid-area: content;
-    background-color: lightgreen;
-}
-
-.extra {
-    grid-area: extra;
-    background-color: lightcoral;
-}
-
-.footer {
-    grid-area: footer;
-    background-color: lightgray;
-}
-
-/* =========================
-   NUMBER BOX COLORS
-========================= */
-
-.box1 {
-    background-color: #a8dadc;
-}
-
-.box2 {
-    background-color: #f4a261;
-}
-
-.box3 {
-    background-color: #90be6d;
-}
-
-.box4 {
-    background-color: #e76f51;
-}
-
-.box5 {
-    background-color: #bdb2ff;
-}
-
-.box6 {
-    background-color: #ffd166;
-}
-
-.box7 {
-    background-color: #06d6a0;
-}
-
-.box8 {
-    background-color: #ef476f;
-}
-
+.box1 { background-color: #a8dadc; }
+.box2 { background-color: #f4a261; }
+.box3 { background-color: #90be6d; }
+.box4 { background-color: #e76f51; }
+.box5 { background-color: #bdb2ff; }
+.box6 { background-color: #ffd166; }
+.box7 { background-color: #06d6a0; }
+.box8 { background-color: #ef476f; }
 .box9 {
     background-color: #118ab2;
     color: white;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ================= SPECIAL SECTIONS ================= */
 
-@keyframes fadeIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.sidebar {
+    background-color: lightyellow;
 }
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
+.content {
+    background-color: lightgreen;
+}
+
+.extra {
+    background-color: lightcoral;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background-color: #111;
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
 
-    .grid-container {
-
-        grid-template-columns: 1fr;
-
-        grid-template-areas:
-            "header"
-            "sidebar"
-            "content"
-            "extra"
-            "footer";
-    }
-
-    .box {
-        font-size: 18px;
-    }
-
     .navbar {
-        font-size: 20px;
-    }
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media (max-width: 500px) {
-
-    h1 {
-        font-size: 24px;
-    }
-
-    .button {
-        width: 80%;
-    }
-
-    .box {
-        min-height: 80px;
-        font-size: 16px;
-    }
-
-    .grid-container {
-        padding: 10px;
+        flex-direction: column;
         gap: 10px;
     }
+
+    .header-section h1 {
+        font-size: 28px;
+    }
+
 }
