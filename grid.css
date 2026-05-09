@@ -156,3 +156,105 @@ body {
     }
 
 }
+/* ================= DASHBOARD CARD ================= */
+
+.dashboard-card {
+    background-color: white;
+
+    flex-direction: column;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.dashboard-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dashboard-card p {
+    font-size: 24px;
+    color: royalblue;
+}
+
+/* ================= SEARCH SECTION ================= */
+
+.search-section {
+    grid-column: span 2;
+
+    display: flex;
+    gap: 10px;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.search-input {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: royalblue;
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    background-color: darkblue;
+}
+
+/* ================= PROFILE CARD ================= */
+
+.profile-card {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    margin-bottom: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .search-section {
+        grid-column: span 1;
+
+        flex-direction: column;
+    }
+
+}
