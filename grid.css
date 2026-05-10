@@ -258,3 +258,160 @@ body {
     }
 
 }
+/* ================= SIDEBAR MENU ================= */
+
+.sidebar-menu {
+    background-color: #111;
+
+    color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+}
+
+.sidebar-menu h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu a {
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover {
+    color: #00b4d8;
+}
+
+/* ================= STATS SECTION ================= */
+
+.stats-container {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+
+    grid-column: span 2;
+}
+
+.stat-box {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stat-box h3 {
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 24px;
+
+    color: royalblue;
+
+    font-weight: bold;
+}
+
+/* ================= PROGRESS SECTION ================= */
+
+.progress-section {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.progress-card {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+
+    background-color: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+
+    border-radius: 10px;
+}
+
+/* Progress Colors */
+
+.html-progress {
+    width: 90%;
+    background-color: orange;
+}
+
+.css-progress {
+    width: 80%;
+    background-color: royalblue;
+}
+
+.js-progress {
+    width: 50%;
+    background-color: gold;
+}
+
+/* ================= NOTIFICATION PANEL ================= */
+
+.notification-panel {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.notification-panel h2 {
+    margin-bottom: 20px;
+}
+
+.notification {
+    background-color: #f1f1f1;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .stats-container {
+        grid-column: span 1;
+    }
+
+}
