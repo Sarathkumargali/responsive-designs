@@ -2,13 +2,19 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard Project</title>
 
     <!-- CSS FILE -->
     <link rel="stylesheet" href="grid.css">
 
-    <title>Grid Project</title>
 </head>
 
 <body>
@@ -18,7 +24,7 @@
     <nav class="navbar">
 
         <div class="logo">
-            My Grid Website
+            My Dashboard
         </div>
 
         <button id="menu-btn" class="button">
@@ -30,198 +36,208 @@
     <!-- ================= HEADER ================= -->
 
     <header class="header-section">
-        <h1>CSS Grid Practice Project</h1>
-        <p>Responsive layout using HTML, CSS and JavaScript</p>
+
+        <h1>Dashboard Project</h1>
+
+        <p>
+            Responsive Dashboard using HTML, CSS and JavaScript
+        </p>
+
     </header>
 
     <!-- ================= MAIN GRID ================= -->
 
     <main class="grid-container">
 
-        <div class="box box1">1</div>
-        <div class="box box2">2</div>
-        <div class="box box3">3</div>
-        <div class="box box4">4</div>
-        <div class="box box5">5</div>
-        <div class="box box6">6</div>
-        <div class="box box7">7</div>
-        <div class="box box8">8</div>
-        <div class="box box9">9</div>
+        <!-- ================= SIDEBAR ================= -->
 
-        <!-- Layout Sections -->
+        <aside class="sidebar-menu">
 
-        <section class="box sidebar">
-            Sidebar
+            <h2>Dashboard</h2>
+
+            <ul>
+
+                <li><a href="#">🏠 Home</a></li>
+
+                <li><a href="#">📊 Analytics</a></li>
+
+                <li><a href="#">📁 Projects</a></li>
+
+                <li><a href="#">💬 Messages</a></li>
+
+                <li><a href="#">⚙ Settings</a></li>
+
+            </ul>
+
+        </aside>
+
+        <!-- ================= STATS SECTION ================= -->
+
+        <section class="stats-container">
+
+            <div class="stat-box">
+
+                <h3>Total Users</h3>
+
+                <p>12,450</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h3>Total Sales</h3>
+
+                <p>$24,000</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h3>Projects</h3>
+
+                <p>32 Active</p>
+
+            </div>
+
         </section>
 
-        <section class="box content">
-            Main Content
+        <!-- ================= SEARCH SECTION ================= -->
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                placeholder="Search here..."
+                class="search-input"
+            >
+
+            <button class="search-btn">
+                Search
+            </button>
+
         </section>
 
-        <section class="box extra">
-            Extra Content
+        <!-- ================= TECHNOLOGY BOXES ================= -->
+
+        <div class="box box1">HTML</div>
+
+        <div class="box box2">CSS</div>
+
+        <div class="box box3">JavaScript</div>
+
+        <div class="box box4">React</div>
+
+        <div class="box box5">Node.js</div>
+
+        <div class="box box6">MongoDB</div>
+
+        <!-- ================= PROGRESS SECTION ================= -->
+
+        <section class="progress-section">
+
+            <h2>Project Progress</h2>
+
+            <div class="progress-card">
+
+                <p>HTML</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress html-progress"></div>
+
+                </div>
+
+            </div>
+
+            <div class="progress-card">
+
+                <p>CSS</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress css-progress"></div>
+
+                </div>
+
+            </div>
+
+            <div class="progress-card">
+
+                <p>JavaScript</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress js-progress"></div>
+
+                </div>
+
+            </div>
+
         </section>
-        <!-- ================= DASHBOARD CARD ================= -->
 
-<section class="box dashboard-card">
-    <div>
-        <h2>Total Users</h2>
-        <p>1,250</p>
-    </div>
-</section>
+        <!-- ================= PROFILE CARD ================= -->
 
-<section class="box dashboard-card">
-    <div>
-        <h2>Revenue</h2>
-        <p>$8,400</p>
-    </div>
-</section>
+        <section class="profile-card">
 
-<section class="box dashboard-card">
-    <div>
-        <h2>Projects</h2>
-        <p>32 Active</p>
-    </div>
-</section>
+            <img
+                src="https://via.placeholder.com/120"
+                alt="Profile Image"
+                class="profile-image"
+            >
 
-<!-- ================= SEARCH SECTION ================= -->
+            <h3>Adharsh</h3>
 
-<section class="search-section">
+            <p>Frontend Developer</p>
 
-    <input
-        type="text"
-        placeholder="Search here..."
-        class="search-input"
-    >
+            <button class="button">
+                View Profile
+            </button>
 
-    <button class="search-btn">
-        Search
-    </button>
+        </section>
 
-</section>
+        <!-- ================= NOTIFICATION PANEL ================= -->
 
-<!-- ================= PROFILE SECTION ================= -->
+        <section class="notification-panel">
 
-<section class="profile-card">
+            <h2>Notifications</h2>
 
-    <img
-        src="https://via.placeholder.com/100"
-        alt="Profile"
-        class="profile-image"
-    >
+            <div class="notification">
+                ✅ New user registered
+            </div>
 
-    <h3>Adharsh</h3>
+            <div class="notification">
+                🚀 Project deployed successfully
+            </div>
 
-    <p>Frontend Developer</p>
+            <div class="notification">
+                🔔 New message received
+            </div>
 
-</section>
-<!-- ================= SIDEBAR MENU ================= -->
+        </section>
 
-<aside class="sidebar-menu">
+        <!-- ================= EXTRA CONTENT ================= -->
 
-    <h2>Dashboard</h2>
+        <section class="extra-content">
 
-    <ul>
+            <h2>Latest Updates</h2>
 
-        <li><a href="#">Home</a></li>
+            <p>
+                This dashboard is fully responsive and ready
+                for future JavaScript integration.
+            </p>
 
-        <li><a href="#">Analytics</a></li>
-
-        <li><a href="#">Projects</a></li>
-
-        <li><a href="#">Messages</a></li>
-
-        <li><a href="#">Settings</a></li>
-
-    </ul>
-
-</aside>
-
-<!-- ================= STATS SECTION ================= -->
-
-<section class="stats-container">
-
-    <div class="stat-box">
-        <h3>Visitors</h3>
-        <p>12,450</p>
-    </div>
-
-    <div class="stat-box">
-        <h3>Sales</h3>
-        <p>$24,000</p>
-    </div>
-
-    <div class="stat-box">
-        <h3>Orders</h3>
-        <p>1,320</p>
-    </div>
-
-</section>
-
-<!-- ================= PROGRESS SECTION ================= -->
-
-<section class="progress-section">
-
-    <h2>Project Progress</h2>
-
-    <div class="progress-card">
-
-        <p>HTML</p>
-
-        <div class="progress-bar">
-            <div class="progress html-progress"></div>
-        </div>
-
-    </div>
-
-    <div class="progress-card">
-
-        <p>CSS</p>
-
-        <div class="progress-bar">
-            <div class="progress css-progress"></div>
-        </div>
-
-    </div>
-
-    <div class="progress-card">
-
-        <p>JavaScript</p>
-
-        <div class="progress-bar">
-            <div class="progress js-progress"></div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= NOTIFICATION PANEL ================= -->
-
-<section class="notification-panel">
-
-    <h2>Notifications</h2>
-
-    <div class="notification">
-        New user registered
-    </div>
-
-    <div class="notification">
-        Project updated successfully
-    </div>
-
-    <div class="notification">
-        Server running smoothly
-    </div>
-
-</section>
+        </section>
 
     </main>
 
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
-        <p>© 2026 My Grid Website</p>
+
+        <p>
+            © 2026 My Dashboard Project
+        </p>
+
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
