@@ -492,3 +492,83 @@ body {
         width: 100%;
     }
 }
+/* =========================
+   NAV RIGHT SECTION
+========================= */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Dashboard Cards */
+
+.dark-mode .stat-box,
+.dark-mode .progress-section,
+.dark-mode .profile-card,
+.dark-mode .notification-panel,
+.dark-mode .extra-content,
+.dark-mode .search-section {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Sidebar */
+
+.dark-mode .sidebar-menu {
+    background-color: black;
+}
+
+/* Search Input */
+
+.dark-mode .search-input {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* Notifications */
+
+.dark-mode .notification {
+    background-color: #2a2a2a;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
