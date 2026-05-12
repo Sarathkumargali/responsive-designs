@@ -1,29 +1,260 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS Grid Practice</title>
-    <link rel="stylesheet" href="grid.css" />
-  </head>
-  <body>
-    <h1>CSS Grid Practice</h1>
 
-    <div class="grid-container">
-      <div class="box box1">1</div>
-      <div class="box box2">2</div>
-      <div class="box box3">3</div>
-      <div class="box box4">4</div>
-      <div class="box box5">5</div>
-      <div class="box box6">6</div>
-      <div class="box box7">7</div>
-      <div class="box box8">8</div>
-      <div class="box box9">9</div>
-      <div class="box header">Header</div>
-      <div class="box sidebar">Sidebar</div>
-      <div class="box content">Main Content</div>
-      <div class="box extra">Extra</div>
-      <div class="box footer">Footer</div>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard Project</title>
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="grid.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            My Dashboard
+        </div>
+
+        <button id="menu-btn" class="button">
+            Menu
+        </button>
+        <div class="nav-right">
+
+    <div id="clock" class="clock">
+        00:00:00
     </div>
-  </body>
+
+    <button id="dark-mode-btn" class="button">
+        Dark Mode
+    </button>
+
+</div>
+
+    </nav>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header-section">
+
+        <h1>Dashboard Project</h1>
+
+        <p>
+            Responsive Dashboard using HTML, CSS and JavaScript
+        </p>
+
+    </header>
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <main class="grid-container">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar-menu">
+
+            <h2>Dashboard</h2>
+
+            <ul>
+
+                <li><a href="#">🏠 Home</a></li>
+
+                <li><a href="#">📊 Analytics</a></li>
+
+                <li><a href="#">📁 Projects</a></li>
+
+                <li><a href="#">💬 Messages</a></li>
+
+                <li><a href="#">⚙ Settings</a></li>
+
+            </ul>
+
+        </aside>
+
+        <!-- ================= STATS SECTION ================= -->
+
+        <section class="stats-container">
+
+            <div class="stat-box">
+
+                <h3>Total Users</h3>
+
+                <p>12,450</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h3>Total Sales</h3>
+
+                <p>$24,000</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h3>Projects</h3>
+
+                <p>32 Active</p>
+
+            </div>
+
+        </section>
+
+        <!-- ================= SEARCH SECTION ================= -->
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                placeholder="Search here..."
+                class="search-input"
+            >
+
+            <button class="search-btn">
+                Search
+            </button>
+
+        </section>
+
+        <!-- ================= TECHNOLOGY BOXES ================= -->
+
+        <div class="box box1">HTML</div>
+
+        <div class="box box2">CSS</div>
+
+        <div class="box box3">JavaScript</div>
+
+        <div class="box box4">React</div>
+
+        <div class="box box5">Node.js</div>
+
+        <div class="box box6">MongoDB</div>
+
+        <!-- ================= PROGRESS SECTION ================= -->
+
+        <section class="progress-section">
+
+            <h2>Project Progress</h2>
+
+            <div class="progress-card">
+
+                <p>HTML</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress html-progress"></div>
+
+                </div>
+
+            </div>
+
+            <div class="progress-card">
+
+                <p>CSS</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress css-progress"></div>
+
+                </div>
+
+            </div>
+
+            <div class="progress-card">
+
+                <p>JavaScript</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress js-progress"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= PROFILE CARD ================= -->
+
+        <section class="profile-card">
+
+            <img
+                src="https://via.placeholder.com/120"
+                alt="Profile Image"
+                class="profile-image"
+            >
+
+            <h3>Adharsh</h3>
+
+            <p>Frontend Developer</p>
+
+            <button class="button">
+                View Profile
+            </button>
+
+        </section>
+
+        <!-- ================= NOTIFICATION PANEL ================= -->
+
+        <section class="notification-panel">
+
+            <h2>Notifications</h2>
+
+            <div class="notification">
+                ✅ New user registered
+            </div>
+
+            <div class="notification">
+                🚀 Project deployed successfully
+            </div>
+
+            <div class="notification">
+                🔔 New message received
+            </div>
+
+        </section>
+
+        <!-- ================= EXTRA CONTENT ================= -->
+
+        <section class="extra-content">
+
+            <h2>Latest Updates</h2>
+
+            <p>
+                This dashboard is fully responsive and ready
+                for future JavaScript integration.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 My Dashboard Project
+        </p>
+
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="pro.js"></script>
+
+</body>
+
 </html>

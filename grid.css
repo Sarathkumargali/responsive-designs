@@ -1,113 +1,574 @@
-/* Reset basic spacing */
+/* =========================
+   RESET DEFAULT STYLES
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* =========================
+   BODY STYLING
+========================= */
+
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background-color: #111;
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header-section {
     text-align: center;
 
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    padding: 40px 20px;
 }
 
-/* Title spacing */
-h1 {
-    margin: 20px 0;
+.header-section h1 {
+    font-size: 36px;
+
+    margin-bottom: 10px;
 }
 
-/* Main Grid Container */
+.header-section p {
+    color: #666;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.button {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: royalblue;
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: darkblue;
+
+    transform: scale(1.05);
+}
+
+/* =========================
+   MAIN GRID
+========================= */
+
 .grid-container {
     display: grid;
 
-    /* Layout using areas */
-    grid-template-columns: 200px 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 250px 1fr 1fr;
 
-    grid-template-areas:
-        "header header header"
-        "sidebar content extra"
-        "footer footer footer";
+    gap: 20px;
 
-    gap: 10px;
     padding: 20px;
-
-    flex: 1; /* fill remaining space */
 }
 
-/* Common box styling */
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar-menu {
+    background-color: #111;
+
+    color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    min-height: 100%;
+}
+
+.sidebar-menu h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover {
+    color: #00b4d8;
+}
+
+/* =========================
+   STATS SECTION
+========================= */
+
+.stats-container {
+    grid-column: span 2;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+}
+
+.stat-box {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-box h3 {
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 24px;
+
+    color: royalblue;
+
+    font-weight: bold;
+}
+
+/* =========================
+   SEARCH SECTION
+========================= */
+
+.search-section {
+    grid-column: span 2;
+
+    display: flex;
+
+    gap: 10px;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.search-input {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: royalblue;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    background-color: darkblue;
+}
+
+/* =========================
+   TECHNOLOGY BOXES
+========================= */
+
 .box {
-    background-color: lightblue;
-    border: 2px solid black;
-    font-size: 20px;
+    min-height: 120px;
+
+    border-radius: 12px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+
+    color: white;
+
     transition: 0.3s;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Hover effect */
 .box:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================
+   BOX COLORS
+========================= */
+
+.box1 {
+    background-color: #e34c26;
+}
+
+.box2 {
+    background-color: #264de4;
+}
+
+.box3 {
+    background-color: #f0db4f;
+    color: black;
+}
+
+.box4 {
+    background-color: #61dbfb;
+    color: black;
+}
+
+.box5 {
+    background-color: #68a063;
+}
+
+.box6 {
+    background-color: #4db33d;
+}
+
+/* =========================
+   PROGRESS SECTION
+========================= */
+
+.progress-section {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.progress-section h2 {
+    margin-bottom: 20px;
+}
+
+.progress-card {
+    margin: 20px 0;
+}
+
+.progress-card p {
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 12px;
+
+    background-color: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+}
+
+/* Progress Width */
+
+.html-progress {
+    width: 90%;
     background-color: orange;
-    transform: scale(1.05);
 }
 
-/* ===== Grid Area Sections ===== */
-
-.header {
-    grid-area: header;
-    background-color: lightpink;
+.css-progress {
+    width: 80%;
+    background-color: royalblue;
 }
 
-.sidebar {
-    grid-area: sidebar;
-    background-color: lightyellow;
+.js-progress {
+    width: 50%;
+    background-color: gold;
 }
 
-.content {
-    grid-area: content;
-    background-color: lightgreen;
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profile-card {
+    background-color: white;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.extra {
-    grid-area: extra;
-    background-color: lightcoral;
+.profile-image {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    margin-bottom: 15px;
 }
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+.notification-panel {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.notification-panel h2 {
+    margin-bottom: 15px;
+}
+
+.notification {
+    background-color: #f1f1f1;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border-radius: 8px;
+}
+
+/* =========================
+   EXTRA CONTENT
+========================= */
+
+.extra-content {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    grid-column: span 2;
+}
+
+.extra-content h2 {
+    margin-bottom: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
-    grid-area: footer;
-    background-color: lightgray;
+    background-color: #111;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 20px;
 }
 
-/* ===== Optional: Style numbered boxes (1–9) ===== */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
-.box1 { background-color: #a8dadc; }
-.box2 { background-color: #f4a261; }
-.box3 { background-color: #90be6d; }
-.box4 { background-color: #e76f51; }
-.box5 { background-color: #bdb2ff; }
-.box6 { background-color: #ffd166; }
-.box7 { background-color: #06d6a0; }
-.box8 { background-color: #ef476f; }
-.box9 { background-color: #118ab2; }
+@media (max-width: 900px) {
 
-/* ===== Responsive Design ===== */
-
-@media (max-width: 768px) {
     .grid-container {
         grid-template-columns: 1fr;
-        grid-template-areas:
-            "header"
-            "sidebar"
-            "content"
-            "extra"
-            "footer";
+    }
+
+    .stats-container,
+    .search-section,
+    .extra-content {
+        grid-column: span 1;
+    }
+
+    .search-section {
+        flex-direction: column;
+    }
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .header-section h1 {
+        font-size: 28px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .header-section h1 {
+        font-size: 24px;
+    }
+
+    .box {
+        font-size: 18px;
+    }
+
+    .profile-image {
+        width: 90px;
+        height: 90px;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
+/* =========================
+   NAV RIGHT SECTION
+========================= */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Dashboard Cards */
+
+.dark-mode .stat-box,
+.dark-mode .progress-section,
+.dark-mode .profile-card,
+.dark-mode .notification-panel,
+.dark-mode .extra-content,
+.dark-mode .search-section {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Sidebar */
+
+.dark-mode .sidebar-menu {
+    background-color: black;
+}
+
+/* Search Input */
+
+.dark-mode .search-input {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* Notifications */
+
+.dark-mode .notification {
+    background-color: #2a2a2a;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
