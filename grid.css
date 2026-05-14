@@ -572,3 +572,308 @@ body {
         transform: translateY(0);
     }
 }
+/* =========================
+   WEATHER SECTION
+========================= */
+
+.weather-section,
+.notes-section,
+.theme-section,
+.chart-section {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.weather-card {
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+#weather-temp {
+    font-size: 40px;
+
+    font-weight: bold;
+
+    margin: 10px 0;
+}
+
+/* =========================
+   NOTES SECTION
+========================= */
+
+#notes-area {
+    width: 100%;
+
+    height: 150px;
+
+    margin: 15px 0;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    resize: none;
+
+    font-size: 16px;
+}
+
+#save-note-btn {
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: royalblue;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+/* =========================
+   THEME BUTTONS
+========================= */
+
+.theme-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.theme-btn {
+    flex: 1;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.blue-theme {
+    background-color: royalblue;
+}
+
+.green-theme {
+    background-color: green;
+}
+
+.purple-theme {
+    background-color: purple;
+}
+
+/* =========================
+   CHART SECTION
+========================= */
+
+.chart-container {
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: flex-end;
+
+    height: 200px;
+
+    margin-top: 20px;
+}
+
+.bar {
+    width: 40px;
+
+    background-color: royalblue;
+
+    border-radius: 8px 8px 0 0;
+
+    transition: 0.3s;
+}
+
+.bar:hover {
+    transform: scaleY(1.1);
+}
+
+/* Bar Heights */
+
+.bar1 {
+    height: 60%;
+}
+
+.bar2 {
+    height: 80%;
+}
+
+.bar3 {
+    height: 40%;
+}
+
+.bar4 {
+    height: 90%;
+}
+
+.bar5 {
+    height: 70%;
+}
+
+/* =========================
+   THEME COLORS
+========================= */
+
+.green-mode .navbar,
+.green-mode .footer {
+    background-color: green;
+}
+
+.purple-mode .navbar,
+.purple-mode .footer {
+    background-color: purple;
+}
+
+/* =========================
+   DARK MODE SUPPORT
+========================= */
+
+.dark-mode .weather-section,
+.dark-mode .notes-section,
+.dark-mode .theme-section,
+.dark-mode .chart-section {
+    background-color: #1e1e1e;
+
+    color: white;
+}
+
+.dark-mode #notes-area {
+    background-color: #2a2a2a;
+
+    color: white;
+
+    border: 1px solid #444;
+}
+/* =========================
+   AUTH SECTION
+========================= */
+
+.auth-section {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 20px;
+
+    padding: 20px;
+}
+
+/* Auth Card */
+
+.auth-card {
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.auth-card h2 {
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+
+.auth-card input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+/* Buttons */
+
+.auth-card button,
+#logout-btn {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: royalblue;
+
+    color: white;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition: 0.3s;
+}
+
+.auth-card button:hover,
+#logout-btn:hover {
+    background-color: darkblue;
+}
+
+/* =========================
+   USER INFO
+========================= */
+
+.user-info {
+    background-color: white;
+
+    padding: 20px;
+
+    margin: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#welcome-user {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode .auth-card,
+.dark-mode .user-info {
+    background-color: #1e1e1e;
+
+    color: white;
+}
+
+.dark-mode .auth-card input {
+    background-color: #2a2a2a;
+
+    color: white;
+
+    border: 1px solid #444;
+}
