@@ -303,3 +303,242 @@ if (
     );
 
 }
+/* =========================
+   CALCULATOR
+========================= */
+
+const calcDisplay =
+document.getElementById("calc-display");
+
+const calcButtons =
+document.querySelectorAll(".calc-btn");
+
+const calcEquals =
+document.getElementById("calc-equals");
+
+const calcClear =
+document.getElementById("calc-clear");
+
+/* Add Numbers */
+
+calcButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        calcDisplay.value +=
+        button.textContent;
+
+    });
+
+});
+
+/* Calculate */
+
+if (calcEquals) {
+
+    calcEquals.addEventListener("click", () => {
+
+        try {
+
+            calcDisplay.value =
+            eval(calcDisplay.value);
+
+        } catch {
+
+            calcDisplay.value = "Error";
+
+        }
+
+    });
+
+}
+
+/* Clear */
+
+if (calcClear) {
+
+    calcClear.addEventListener("click", () => {
+
+        calcDisplay.value = "";
+
+    });
+
+}
+
+/* =========================
+   STOPWATCH
+========================= */
+
+let stopwatchInterval;
+
+let seconds = 0;
+
+const stopwatchDisplay =
+document.getElementById(
+    "stopwatch-display"
+);
+
+function updateStopwatch() {
+
+    let hrs =
+    Math.floor(seconds / 3600);
+
+    let mins =
+    Math.floor((seconds % 3600) / 60);
+
+    let secs =
+    seconds % 60;
+
+    hrs = String(hrs).padStart(2, "0");
+    mins = String(mins).padStart(2, "0");
+    secs = String(secs).padStart(2, "0");
+
+    stopwatchDisplay.textContent =
+        `${hrs}:${mins}:${secs}`;
+}
+
+/* Start */
+
+document.getElementById(
+    "start-stopwatch"
+).addEventListener("click", () => {
+
+    clearInterval(stopwatchInterval);
+
+    stopwatchInterval =
+    setInterval(() => {
+
+        seconds++;
+
+        updateStopwatch();
+
+    }, 1000);
+
+});
+
+/* Stop */
+
+document.getElementById(
+    "stop-stopwatch"
+).addEventListener("click", () => {
+
+    clearInterval(stopwatchInterval);
+
+});
+
+/* Reset */
+
+document.getElementById(
+    "reset-stopwatch"
+).addEventListener("click", () => {
+
+    clearInterval(stopwatchInterval);
+
+    seconds = 0;
+
+    updateStopwatch();
+
+});
+
+/* =========================
+   QUOTE GENERATOR
+========================= */
+
+const quotes = [
+
+    "Success starts with consistency.",
+
+    "Push yourself every day.",
+
+    "Dream big and work hard.",
+
+    "Code. Learn. Build.",
+
+    "Your future is built today."
+
+];
+
+const quoteText =
+document.getElementById("quote-text");
+
+document.getElementById(
+    "new-quote-btn"
+).addEventListener("click", () => {
+
+    const randomIndex =
+    Math.floor(Math.random() * quotes.length);
+
+    quoteText.textContent =
+    quotes[randomIndex];
+
+});
+
+/* =========================
+   RANDOM BACKGROUND
+========================= */
+
+const backgrounds = [
+
+    "#f4f4f4",
+
+    "#dfe9f3",
+
+    "#fceabb",
+
+    "#d4fc79",
+
+    "#c2e9fb"
+
+];
+
+document.getElementById(
+    "change-bg-btn"
+).addEventListener("click", () => {
+
+    const randomBg =
+    backgrounds[
+        Math.floor(
+            Math.random() *
+            backgrounds.length
+        )
+    ];
+
+    document.body.style.background =
+    randomBg;
+
+});
+
+/* =========================
+   KEYBOARD SHORTCUTS
+========================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        /* Press D for Dark Mode */
+
+        if (
+            event.key === "d"
+        ) {
+
+            document.body.classList.toggle(
+                "dark-mode"
+            );
+
+        }
+
+        /* Press B for Background */
+
+        if (
+            event.key === "b"
+        ) {
+
+            document.getElementById(
+                "change-bg-btn"
+            ).click();
+
+        }
+
+    }
+);
