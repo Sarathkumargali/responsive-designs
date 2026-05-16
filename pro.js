@@ -542,3 +542,97 @@ document.addEventListener(
 
     }
 );
+/* =========================
+   ACTIVITY ANIMATION
+========================= */
+
+const activityItems =
+document.querySelectorAll(
+    ".activity-item"
+);
+
+activityItems.forEach((item, index) => {
+
+    item.style.opacity = "0";
+
+    setTimeout(() => {
+
+        item.style.transition =
+            "0.5s";
+
+        item.style.opacity = "1";
+
+    }, index * 300);
+
+});
+
+/* =========================
+   ANALYTICS COUNTER
+========================= */
+
+const analyticsNumbers =
+document.querySelectorAll(
+    ".analytics-card p"
+);
+
+analyticsNumbers.forEach((number) => {
+
+    let start = 0;
+
+    const target =
+    parseInt(
+        number.textContent.replace(
+            /[^0-9]/g,
+            ""
+        )
+    );
+
+    const updateCounter = () => {
+
+        start += Math.ceil(target / 50);
+
+        if (start < target) {
+
+            number.textContent = start;
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        } else {
+
+            number.textContent =
+                target;
+
+        }
+
+    };
+
+    updateCounter();
+
+});
+
+/* =========================
+   TABLE ROW HOVER
+========================= */
+
+const tableRows =
+document.querySelectorAll("tbody tr");
+
+tableRows.forEach((row) => {
+
+    row.addEventListener("mouseenter", () => {
+
+        row.style.backgroundColor =
+            "#f1f1f1";
+
+    });
+
+    row.addEventListener("mouseleave", () => {
+
+        row.style.backgroundColor =
+            "";
+
+    });
+
+});
