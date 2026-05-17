@@ -1,102 +1,89 @@
 /* =========================
-   NOTES SAVE
+   CLOCK
 ========================= */
 
-const notesArea =
-document.getElementById("notes-area");
+function updateClock() {
 
-const saveNoteBtn =
-document.getElementById("save-note-btn");
+    const now = new Date();
 
-/* Load Notes */
+    let hours =
+    String(now.getHours()).padStart(2, "0");
 
-window.addEventListener("DOMContentLoaded", () => {
+    let minutes =
+    String(now.getMinutes()).padStart(2, "0");
 
-    const savedNotes =
-    localStorage.getItem("notes");
+    let seconds =
+    String(now.getSeconds()).padStart(2, "0");
 
-    if (savedNotes) {
+    document.getElementById("clock").textContent =
+        `${hours}:${minutes}:${seconds}`;
+}
 
-        notesArea.value = savedNotes;
+setInterval(updateClock, 1000);
 
-    }
-});
+updateClock();
 
-/* Save Notes */
+/* =========================
+   DARK MODE
+========================= */
 
-saveNoteBtn.addEventListener("click", () => {
+const darkModeBtn =
+document.getElementById("dark-mode-btn");
 
-    localStorage.setItem(
-        "notes",
-        notesArea.value
-    );
+darkModeBtn.addEventListener("click", () => {
 
-    alert("Notes Saved!");
+    document.body.classList.toggle("dark-mode");
 
 });
 
 /* =========================
-   THEME SWITCHER
+   PAGE NAVIGATION
 ========================= */
 
-const blueTheme =
-document.querySelector(".blue-theme");
+const navLinks =
+document.querySelectorAll(".nav-link");
 
-const greenTheme =
-document.querySelector(".green-theme");
+const pages =
+document.querySelectorAll(".dashboard-page");
 
-const purpleTheme =
-document.querySelector(".purple-theme");
+navLinks.forEach((link) => {
 
-blueTheme.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
 
-    document.body.classList.remove(
-        "green-mode",
-        "purple-mode"
-    );
+        e.preventDefault();
+
+        /* Remove Active Link */
+
+        navLinks.forEach((nav) => {
+
+            nav.classList.remove("active");
+
+        });
+
+        /* Add Active Link */
+
+        link.classList.add("active");
+
+        /* Hide Pages */
+
+        pages.forEach((page) => {
+
+            page.classList.remove("active-page");
+
+        });
+
+        /* Show Selected Page */
+
+        const pageId =
+        link.getAttribute("data-page");
+
+        document.getElementById(pageId)
+        .classList.add("active-page");
+
+    });
 
 });
 
-greenTheme.addEventListener("click", () => {
-
-    document.body.classList.remove(
-        "purple-mode"
-    );
-
-    document.body.classList.add(
-        "green-mode"
-    );
-
-});
-
-purpleTheme.addEventListener("click", () => {
-
-    document.body.classList.remove(
-        "green-mode"
-    );
-
-    document.body.classList.add(
-        "purple-mode"
-    );
-
-});
-
-/* =========================
-   FAKE WEATHER UPDATE
-========================= */
-
-const weatherTemp =
-document.getElementById("weather-temp");
-
-setInterval(() => {
-
-    const randomTemp =
-    Math.floor(Math.random() * 10) + 28;
-
-    weatherTemp.textContent =
-        `${randomTemp}°C`;
-
-}, 5000);
 /* =========================
    LOGIN SYSTEM
 ========================= */
@@ -113,151 +100,92 @@ document.getElementById("logout-btn");
 const welcomeUser =
 document.getElementById("welcome-user");
 
-/* =========================
-   REGISTER USER
-========================= */
+/* Register */
 
-if (registerBtn) {
+registerBtn.addEventListener("click", () => {
 
-    registerBtn.addEventListener("click", () => {
+    const name =
+    document.getElementById("register-name").value;
 
-        const name =
-        document.getElementById(
-            "register-name"
-        ).value;
+    const email =
+    document.getElementById("register-email").value;
 
-        const email =
-        document.getElementById(
-            "register-email"
-        ).value;
+    const password =
+    document.getElementById("register-password").value;
 
-        const password =
-        document.getElementById(
-            "register-password"
-        ).value;
+    if (name === "" ||
+        email === "" ||
+        password === "") {
 
-        if (
-            name === "" ||
-            email === "" ||
-            password === ""
-        ) {
+        alert("Please fill all fields");
 
-            alert("Please fill all fields");
+        return;
+    }
 
-            return;
-        }
+    const user = {
 
-        const user = {
-            name,
-            email,
-            password
-        };
+        name,
+        email,
+        password
 
-        localStorage.setItem(
-            "user",
-            JSON.stringify(user)
-        );
+    };
 
-        alert("Registration Successful!");
+    localStorage.setItem(
+        "dashboardUser",
+        JSON.stringify(user)
+    );
 
-    });
+    alert("Registration Successful");
 
-}
+});
 
-/* =========================
-   LOGIN USER
-========================= */
+/* Login */
 
-if (loginBtn) {
+loginBtn.addEventListener("click", () => {
 
-    loginBtn.addEventListener("click", () => {
+    const email =
+    document.getElementById("login-email").value;
 
-        const email =
-        document.getElementById(
-            "login-email"
-        ).value;
+    const password =
+    document.getElementById("login-password").value;
 
-        const password =
-        document.getElementById(
-            "login-password"
-        ).value;
+    const storedUser =
+    JSON.parse(
+        localStorage.getItem("dashboardUser")
+    );
 
-        const storedUser =
-        JSON.parse(
-            localStorage.getItem("user")
-        );
-
-        if (
-            storedUser &&
-            email === storedUser.email &&
-            password === storedUser.password
-        ) {
-
-            sessionStorage.setItem(
-                "loggedIn",
-                "true"
-            );
-
-            sessionStorage.setItem(
-                "username",
-                storedUser.name
-            );
-
-            updateWelcomeUser();
-
-            alert("Login Successful!");
-
-        } else {
-
-            alert("Invalid Email or Password");
-
-        }
-
-    });
-
-}
-
-/* =========================
-   UPDATE USER INFO
-========================= */
-
-function updateWelcomeUser() {
-
-    const username =
-    sessionStorage.getItem("username");
-
-    if (username && welcomeUser) {
+    if (
+        storedUser &&
+        email === storedUser.email &&
+        password === storedUser.password
+    ) {
 
         welcomeUser.textContent =
-            `Welcome ${username}`;
+        `Welcome ${storedUser.name}`;
+
+        alert("Login Successful");
+
+    } else {
+
+        alert("Invalid Email or Password");
 
     }
 
-}
+});
 
-updateWelcomeUser();
+/* Logout */
 
-/* =========================
-   LOGOUT
-========================= */
+logoutBtn.addEventListener("click", () => {
 
-if (logoutBtn) {
+    welcomeUser.textContent =
+    "Welcome Guest";
 
-    logoutBtn.addEventListener("click", () => {
+    alert("Logged Out");
 
-        sessionStorage.clear();
-
-        welcomeUser.textContent =
-            "Welcome Guest";
-
-        alert("Logged Out!");
-
-    });
-
-}
+});
 
 /* =========================
-   SHOW/HIDE PASSWORD
+   SHOW PASSWORD
 ========================= */
 
 const togglePasswordBtn =
@@ -265,105 +193,73 @@ document.getElementById(
     "toggle-password-btn"
 );
 
-const loginPassword =
-document.getElementById(
-    "login-password"
-);
+togglePasswordBtn.addEventListener(
+    "click",
+    () => {
 
-if (
-    togglePasswordBtn &&
-    loginPassword
-) {
+        const passwordInput =
+        document.getElementById(
+            "login-password"
+        );
 
-    togglePasswordBtn.addEventListener(
-        "click",
-        () => {
+        if (
+            passwordInput.type === "password"
+        ) {
 
-            if (
-                loginPassword.type ===
-                "password"
-            ) {
+            passwordInput.type = "text";
 
-                loginPassword.type = "text";
+            togglePasswordBtn.textContent =
+            "Hide Password";
 
-                togglePasswordBtn.textContent =
-                    "Hide Password";
+        } else {
 
-            } else {
+            passwordInput.type = "password";
 
-                loginPassword.type =
-                    "password";
-
-                togglePasswordBtn.textContent =
-                    "Show Password";
-
-            }
+            togglePasswordBtn.textContent =
+            "Show Password";
 
         }
-    );
 
-}
+    }
+);
+
 /* =========================
-   CALCULATOR
+   NOTES APP
 ========================= */
 
-const calcDisplay =
-document.getElementById("calc-display");
+const notesArea =
+document.getElementById("notes-area");
 
-const calcButtons =
-document.querySelectorAll(".calc-btn");
+const saveNoteBtn =
+document.getElementById("save-note-btn");
 
-const calcEquals =
-document.getElementById("calc-equals");
+/* Load Notes */
 
-const calcClear =
-document.getElementById("calc-clear");
+window.addEventListener("load", () => {
 
-/* Add Numbers */
+    const savedNotes =
+    localStorage.getItem("dashboardNotes");
 
-calcButtons.forEach((button) => {
+    if (savedNotes) {
 
-    button.addEventListener("click", () => {
+        notesArea.value = savedNotes;
 
-        calcDisplay.value +=
-        button.textContent;
-
-    });
+    }
 
 });
 
-/* Calculate */
+/* Save Notes */
 
-if (calcEquals) {
+saveNoteBtn.addEventListener("click", () => {
 
-    calcEquals.addEventListener("click", () => {
+    localStorage.setItem(
+        "dashboardNotes",
+        notesArea.value
+    );
 
-        try {
+    alert("Notes Saved");
 
-            calcDisplay.value =
-            eval(calcDisplay.value);
-
-        } catch {
-
-            calcDisplay.value = "Error";
-
-        }
-
-    });
-
-}
-
-/* Clear */
-
-if (calcClear) {
-
-    calcClear.addEventListener("click", () => {
-
-        calcDisplay.value = "";
-
-    });
-
-}
+});
 
 /* =========================
    STOPWATCH
@@ -373,6 +269,10 @@ let stopwatchInterval;
 
 let seconds = 0;
 
+let minutes = 0;
+
+let hours = 0;
+
 const stopwatchDisplay =
 document.getElementById(
     "stopwatch-display"
@@ -380,21 +280,26 @@ document.getElementById(
 
 function updateStopwatch() {
 
-    let hrs =
-    Math.floor(seconds / 3600);
+    seconds++;
 
-    let mins =
-    Math.floor((seconds % 3600) / 60);
+    if (seconds === 60) {
 
-    let secs =
-    seconds % 60;
+        seconds = 0;
 
-    hrs = String(hrs).padStart(2, "0");
-    mins = String(mins).padStart(2, "0");
-    secs = String(secs).padStart(2, "0");
+        minutes++;
+
+    }
+
+    if (minutes === 60) {
+
+        minutes = 0;
+
+        hours++;
+
+    }
 
     stopwatchDisplay.textContent =
-        `${hrs}:${mins}:${secs}`;
+    `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 /* Start */
@@ -406,13 +311,7 @@ document.getElementById(
     clearInterval(stopwatchInterval);
 
     stopwatchInterval =
-    setInterval(() => {
-
-        seconds++;
-
-        updateStopwatch();
-
-    }, 1000);
+    setInterval(updateStopwatch, 1000);
 
 });
 
@@ -435,203 +334,129 @@ document.getElementById(
     clearInterval(stopwatchInterval);
 
     seconds = 0;
+    minutes = 0;
+    hours = 0;
 
-    updateStopwatch();
+    stopwatchDisplay.textContent =
+    "00:00:00";
 
 });
 
 /* =========================
-   QUOTE GENERATOR
+   QUOTES
 ========================= */
 
 const quotes = [
 
     "Success starts with consistency.",
 
-    "Push yourself every day.",
+    "Never stop learning.",
 
     "Dream big and work hard.",
 
-    "Code. Learn. Build.",
+    "Your future depends on today.",
 
-    "Your future is built today."
+    "Code. Learn. Build."
 
 ];
 
 const quoteText =
 document.getElementById("quote-text");
 
-document.getElementById(
-    "new-quote-btn"
-).addEventListener("click", () => {
+const newQuoteBtn =
+document.getElementById("new-quote-btn");
 
-    const randomIndex =
-    Math.floor(Math.random() * quotes.length);
+if (newQuoteBtn) {
 
-    quoteText.textContent =
-    quotes[randomIndex];
+    newQuoteBtn.addEventListener(
+        "click",
+        () => {
 
-});
+            const randomIndex =
+            Math.floor(
+                Math.random() * quotes.length
+            );
+
+            quoteText.textContent =
+            quotes[randomIndex];
+
+        }
+    );
+
+}
 
 /* =========================
-   RANDOM BACKGROUND
+   BACKGROUND CHANGER
 ========================= */
+
+const bgButton =
+document.getElementById("change-bg-btn");
 
 const backgrounds = [
 
     "#f4f4f4",
 
-    "#dfe9f3",
+    "#dbeafe",
 
-    "#fceabb",
+    "#dcfce7",
 
-    "#d4fc79",
+    "#fae8ff",
 
-    "#c2e9fb"
+    "#ffe4e6"
 
 ];
 
-document.getElementById(
-    "change-bg-btn"
-).addEventListener("click", () => {
+if (bgButton) {
 
-    const randomBg =
-    backgrounds[
-        Math.floor(
-            Math.random() *
-            backgrounds.length
-        )
-    ];
+    bgButton.addEventListener(
+        "click",
+        () => {
 
-    document.body.style.background =
-    randomBg;
+            const randomColor =
+            backgrounds[
+                Math.floor(
+                    Math.random() *
+                    backgrounds.length
+                )
+            ];
 
-});
-
-/* =========================
-   KEYBOARD SHORTCUTS
-========================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        /* Press D for Dark Mode */
-
-        if (
-            event.key === "d"
-        ) {
-
-            document.body.classList.toggle(
-                "dark-mode"
-            );
+            document.body.style.backgroundColor =
+            randomColor;
 
         }
-
-        /* Press B for Background */
-
-        if (
-            event.key === "b"
-        ) {
-
-            document.getElementById(
-                "change-bg-btn"
-            ).click();
-
-        }
-
-    }
-);
-/* =========================
-   ACTIVITY ANIMATION
-========================= */
-
-const activityItems =
-document.querySelectorAll(
-    ".activity-item"
-);
-
-activityItems.forEach((item, index) => {
-
-    item.style.opacity = "0";
-
-    setTimeout(() => {
-
-        item.style.transition =
-            "0.5s";
-
-        item.style.opacity = "1";
-
-    }, index * 300);
-
-});
-
-/* =========================
-   ANALYTICS COUNTER
-========================= */
-
-const analyticsNumbers =
-document.querySelectorAll(
-    ".analytics-card p"
-);
-
-analyticsNumbers.forEach((number) => {
-
-    let start = 0;
-
-    const target =
-    parseInt(
-        number.textContent.replace(
-            /[^0-9]/g,
-            ""
-        )
     );
 
-    const updateCounter = () => {
+}
 
-        start += Math.ceil(target / 50);
+/* =========================
+   SEARCH FUNCTION
+========================= */
 
-        if (start < target) {
+const searchInput =
+document.querySelector(".search-input");
 
-            number.textContent = start;
+const boxes =
+document.querySelectorAll(".box");
 
-            requestAnimationFrame(
-                updateCounter
-            );
+searchInput.addEventListener("keyup", () => {
+
+    const searchValue =
+    searchInput.value.toLowerCase();
+
+    boxes.forEach((box) => {
+
+        const text =
+        box.textContent.toLowerCase();
+
+        if (text.includes(searchValue)) {
+
+            box.style.display = "flex";
 
         } else {
 
-            number.textContent =
-                target;
+            box.style.display = "none";
 
         }
-
-    };
-
-    updateCounter();
-
-});
-
-/* =========================
-   TABLE ROW HOVER
-========================= */
-
-const tableRows =
-document.querySelectorAll("tbody tr");
-
-tableRows.forEach((row) => {
-
-    row.addEventListener("mouseenter", () => {
-
-        row.style.backgroundColor =
-            "#f1f1f1";
-
-    });
-
-    row.addEventListener("mouseleave", () => {
-
-        row.style.backgroundColor =
-            "";
 
     });
 
