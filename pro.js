@@ -461,3 +461,57 @@ searchInput.addEventListener("keyup", () => {
     });
 
 });
+/* =========================
+   CALCULATOR FUNCTION
+========================= */
+
+const calcDisplay =
+document.getElementById("calc-display");
+
+const calcButtons =
+document.querySelectorAll(".calc-btn");
+
+const calcEquals =
+document.getElementById("calc-equals");
+
+const calcClear =
+document.getElementById("calc-clear");
+
+/* BUTTON CLICK */
+
+calcButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        calcDisplay.value +=
+        button.textContent;
+
+    });
+
+});
+
+/* EQUAL BUTTON */
+
+calcEquals.addEventListener("click", () => {
+
+    try {
+
+        calcDisplay.value =
+        eval(calcDisplay.value);
+
+    } catch {
+
+        calcDisplay.value =
+        "Error";
+
+    }
+
+});
+
+/* CLEAR BUTTON */
+
+calcClear.addEventListener("click", () => {
+
+    calcDisplay.value = "";
+
+});
