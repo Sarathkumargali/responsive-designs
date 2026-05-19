@@ -4,514 +4,284 @@
 
 function updateClock() {
 
-    const now = new Date();
+  const now = new Date();
 
-    let hours =
-    String(now.getHours()).padStart(2, "0");
+  let hours = String(now.getHours()).padStart(2, "0");
 
-    let minutes =
-    String(now.getMinutes()).padStart(2, "0");
+  let minutes = String(now.getMinutes()).padStart(2, "0");
 
-    let seconds =
-    String(now.getSeconds()).padStart(2, "0");
+  let seconds = String(now.getSeconds()).padStart(2, "0");
 
-    document.getElementById("clock").textContent =
-        `${hours}:${minutes}:${seconds}`;
+  document.getElementById("clock").textContent =
+    `${hours}:${minutes}:${seconds}`;
 }
 
 setInterval(updateClock, 1000);
 
 updateClock();
 
+
 /* =========================
    DARK MODE
 ========================= */
 
-const darkModeBtn =
-document.getElementById("dark-mode-btn");
+const darkModeBtn = document.getElementById("dark-mode-btn");
 
-darkModeBtn.addEventListener("click", () => {
+if (darkModeBtn) {
+
+  darkModeBtn.addEventListener("click", () => {
 
     document.body.classList.toggle("dark-mode");
 
-});
+  });
+
+}
+
 
 /* =========================
    PAGE NAVIGATION
 ========================= */
 
-const navLinks =
-document.querySelectorAll(".nav-link");
+document.addEventListener("DOMContentLoaded", () => {
 
-const pages =
-document.querySelectorAll(".dashboard-page");
+  const navLinks = document.querySelectorAll(".nav-link");
 
-navLinks.forEach((link) => {
+  const pages = document.querySelectorAll(".dashboard-page");
+
+  navLinks.forEach((link) => {
 
     link.addEventListener("click", (e) => {
 
-        e.preventDefault();
+      e.preventDefault();
 
-        /* Remove Active Link */
+      navLinks.forEach((nav) => {
+        nav.classList.remove("active");
+      });
 
-        navLinks.forEach((nav) => {
+      link.classList.add("active");
 
-            nav.classList.remove("active");
+      pages.forEach((page) => {
+        page.classList.remove("active-page");
+      });
 
-        });
+      const pageId = link.getAttribute("data-page");
 
-        /* Add Active Link */
+      const selectedPage = document.getElementById(pageId);
 
-        link.classList.add("active");
-
-        /* Hide Pages */
-
-        pages.forEach((page) => {
-
-            page.classList.remove("active-page");
-
-        });
-
-        /* Show Selected Page */
-
-        const pageId =
-        link.getAttribute("data-page");
-
-        document.getElementById(pageId)
-        .classList.add("active-page");
+      if (selectedPage) {
+        selectedPage.classList.add("active-page");
+      }
 
     });
 
-});
-
-/* =========================
-   LOGIN SYSTEM
-========================= */
-
-const loginBtn =
-document.getElementById("login-btn");
-
-const registerBtn =
-document.getElementById("register-btn");
-
-const logoutBtn =
-document.getElementById("logout-btn");
-
-const welcomeUser =
-document.getElementById("welcome-user");
-
-/* Register */
-
-registerBtn.addEventListener("click", () => {
-
-    const name =
-    document.getElementById("register-name").value;
-
-    const email =
-    document.getElementById("register-email").value;
-
-    const password =
-    document.getElementById("register-password").value;
-
-    if (name === "" ||
-        email === "" ||
-        password === "") {
-
-        alert("Please fill all fields");
-
-        return;
-    }
-
-    const user = {
-
-        name,
-        email,
-        password
-
-    };
-
-    localStorage.setItem(
-        "dashboardUser",
-        JSON.stringify(user)
-    );
-
-    alert("Registration Successful");
+  });
 
 });
 
-/* Login */
-
-loginBtn.addEventListener("click", () => {
-
-    const email =
-    document.getElementById("login-email").value;
-
-    const password =
-    document.getElementById("login-password").value;
-
-    const storedUser =
-    JSON.parse(
-        localStorage.getItem("dashboardUser")
-    );
-
-    if (
-        storedUser &&
-        email === storedUser.email &&
-        password === storedUser.password
-    ) {
-
-        welcomeUser.textContent =
-        `Welcome ${storedUser.name}`;
-
-        alert("Login Successful");
-
-    } else {
-
-        alert("Invalid Email or Password");
-
-    }
-
-});
-
-/* Logout */
-
-logoutBtn.addEventListener("click", () => {
-
-    welcomeUser.textContent =
-    "Welcome Guest";
-
-    alert("Logged Out");
-
-});
-
-/* =========================
-   SHOW PASSWORD
-========================= */
-
-const togglePasswordBtn =
-document.getElementById(
-    "toggle-password-btn"
-);
-
-togglePasswordBtn.addEventListener(
-    "click",
-    () => {
-
-        const passwordInput =
-        document.getElementById(
-            "login-password"
-        );
-
-        if (
-            passwordInput.type === "password"
-        ) {
-
-            passwordInput.type = "text";
-
-            togglePasswordBtn.textContent =
-            "Hide Password";
-
-        } else {
-
-            passwordInput.type = "password";
-
-            togglePasswordBtn.textContent =
-            "Show Password";
-
-        }
-
-    }
-);
-
-/* =========================
-   NOTES APP
-========================= */
-
-const notesArea =
-document.getElementById("notes-area");
-
-const saveNoteBtn =
-document.getElementById("save-note-btn");
-
-/* Load Notes */
-
-window.addEventListener("load", () => {
-
-    const savedNotes =
-    localStorage.getItem("dashboardNotes");
-
-    if (savedNotes) {
-
-        notesArea.value = savedNotes;
-
-    }
-
-});
-
-/* Save Notes */
-
-saveNoteBtn.addEventListener("click", () => {
-
-    localStorage.setItem(
-        "dashboardNotes",
-        notesArea.value
-    );
-
-    alert("Notes Saved");
-
-});
-
-/* =========================
-   STOPWATCH
-========================= */
-
-let stopwatchInterval;
-
-let seconds = 0;
-
-let minutes = 0;
-
-let hours = 0;
-
-const stopwatchDisplay =
-document.getElementById(
-    "stopwatch-display"
-);
-
-function updateStopwatch() {
-
-    seconds++;
-
-    if (seconds === 60) {
-
-        seconds = 0;
-
-        minutes++;
-
-    }
-
-    if (minutes === 60) {
-
-        minutes = 0;
-
-        hours++;
-
-    }
-
-    stopwatchDisplay.textContent =
-    `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-}
-
-/* Start */
-
-document.getElementById(
-    "start-stopwatch"
-).addEventListener("click", () => {
-
-    clearInterval(stopwatchInterval);
-
-    stopwatchInterval =
-    setInterval(updateStopwatch, 1000);
-
-});
-
-/* Stop */
-
-document.getElementById(
-    "stop-stopwatch"
-).addEventListener("click", () => {
-
-    clearInterval(stopwatchInterval);
-
-});
-
-/* Reset */
-
-document.getElementById(
-    "reset-stopwatch"
-).addEventListener("click", () => {
-
-    clearInterval(stopwatchInterval);
-
-    seconds = 0;
-    minutes = 0;
-    hours = 0;
-
-    stopwatchDisplay.textContent =
-    "00:00:00";
-
-});
 
 /* =========================
    QUOTES
 ========================= */
 
 const quotes = [
-
-    "Success starts with consistency.",
-
-    "Never stop learning.",
-
-    "Dream big and work hard.",
-
-    "Your future depends on today.",
-
-    "Code. Learn. Build."
-
+  "Stay Positive 🚀",
+  "Never Give Up 🔥",
+  "Dream Big ✨",
+  "Code Every Day 💻",
+  "Success is Coming 🌟",
+  "Keep Learning 📚"
 ];
 
-const quoteText =
-document.getElementById("quote-text");
+let currentQuote = 0;
 
-const newQuoteBtn =
-document.getElementById("new-quote-btn");
+const quoteBox = document.getElementById("quote-box");
 
-if (newQuoteBtn) {
+if (quoteBox) {
 
-    newQuoteBtn.addEventListener(
-        "click",
-        () => {
+  quoteBox.addEventListener("click", () => {
 
-            const randomIndex =
-            Math.floor(
-                Math.random() * quotes.length
-            );
+    currentQuote++;
 
-            quoteText.textContent =
-            quotes[randomIndex];
+    if (currentQuote >= quotes.length) {
+      currentQuote = 0;
+    }
 
-        }
-    );
+    quoteBox.textContent = quotes[currentQuote];
+
+  });
 
 }
 
+
 /* =========================
-   BACKGROUND CHANGER
+   STOPWATCH
 ========================= */
 
-const bgButton =
-document.getElementById("change-bg-btn");
+let stopwatchInterval = null;
 
-const backgrounds = [
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
 
-    "#f4f4f4",
+const stopwatchDisplay = document.getElementById("stopwatch-display");
 
-    "#dbeafe",
+function updateStopwatch() {
 
-    "#dcfce7",
+  seconds++;
 
-    "#fae8ff",
+  if (seconds >= 60) {
+    seconds = 0;
+    minutes++;
+  }
 
-    "#ffe4e6"
+  if (minutes >= 60) {
+    minutes = 0;
+    hours++;
+  }
 
-];
+  stopwatchDisplay.textContent =
+    `${String(hours).padStart(2, "0")}:` +
+    `${String(minutes).padStart(2, "0")}:` +
+    `${String(seconds).padStart(2, "0")}`;
+}
 
-if (bgButton) {
 
-    bgButton.addEventListener(
-        "click",
-        () => {
+/* START */
 
-            const randomColor =
-            backgrounds[
-                Math.floor(
-                    Math.random() *
-                    backgrounds.length
-                )
-            ];
+const startStopwatch = document.getElementById("start-stopwatch");
 
-            document.body.style.backgroundColor =
-            randomColor;
+if (startStopwatch) {
 
-        }
-    );
+  startStopwatch.addEventListener("click", () => {
+
+    if (stopwatchInterval !== null) return;
+
+    stopwatchInterval = setInterval(updateStopwatch, 1000);
+
+  });
 
 }
 
+
+/* STOP */
+
+const stopStopwatch = document.getElementById("stop-stopwatch");
+
+if (stopStopwatch) {
+
+  stopStopwatch.addEventListener("click", () => {
+
+    clearInterval(stopwatchInterval);
+
+    stopwatchInterval = null;
+
+  });
+
+}
+
+
+/* RESET */
+
+const resetStopwatch = document.getElementById("reset-stopwatch");
+
+if (resetStopwatch) {
+
+  resetStopwatch.addEventListener("click", () => {
+
+    clearInterval(stopwatchInterval);
+
+    stopwatchInterval = null;
+
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+
+    stopwatchDisplay.textContent = "00:00:00";
+
+  });
+
+}
+
+
 /* =========================
-   SEARCH FUNCTION
+   NOTES APP
 ========================= */
 
-const searchInput =
-document.querySelector(".search-input");
+const notesArea = document.getElementById("notes-area");
 
-const boxes =
-document.querySelectorAll(".box");
+const saveNoteBtn = document.getElementById("save-note-btn");
 
-searchInput.addEventListener("keyup", () => {
+window.addEventListener("load", () => {
 
-    const searchValue =
-    searchInput.value.toLowerCase();
+  const savedNotes = localStorage.getItem("dashboardNotes");
 
-    boxes.forEach((box) => {
+  if (savedNotes && notesArea) {
 
-        const text =
-        box.textContent.toLowerCase();
+    notesArea.value = savedNotes;
 
-        if (text.includes(searchValue)) {
-
-            box.style.display = "flex";
-
-        } else {
-
-            box.style.display = "none";
-
-        }
-
-    });
+  }
 
 });
+
+if (saveNoteBtn && notesArea) {
+
+  saveNoteBtn.addEventListener("click", () => {
+
+    localStorage.setItem("dashboardNotes", notesArea.value);
+
+    alert("Notes Saved");
+
+  });
+
+}
+
+
 /* =========================
-   CALCULATOR FUNCTION
+   CALCULATOR
 ========================= */
 
-const calcDisplay =
-document.getElementById("calc-display");
+const calcDisplay = document.getElementById("calc-display");
 
-const calcButtons =
-document.querySelectorAll(".calc-btn");
+const calcButtons = document.querySelectorAll(".calc-btn");
 
-const calcEquals =
-document.getElementById("calc-equals");
+const calcEquals = document.getElementById("calc-equals");
 
-const calcClear =
-document.getElementById("calc-clear");
-
-/* BUTTON CLICK */
+const calcClear = document.getElementById("calc-clear");
 
 calcButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+  button.addEventListener("click", () => {
 
-        calcDisplay.value +=
-        button.textContent;
+    calcDisplay.value += button.textContent;
 
-    });
+  });
 
 });
 
-/* EQUAL BUTTON */
+if (calcEquals) {
 
-calcEquals.addEventListener("click", () => {
+  calcEquals.addEventListener("click", () => {
 
     try {
 
-        calcDisplay.value =
-        eval(calcDisplay.value);
+      calcDisplay.value = eval(calcDisplay.value);
 
     } catch {
 
-        calcDisplay.value =
-        "Error";
+      calcDisplay.value = "Error";
 
     }
 
-});
+  });
 
-/* CLEAR BUTTON */
+}
 
-calcClear.addEventListener("click", () => {
+if (calcClear) {
+
+  calcClear.addEventListener("click", () => {
 
     calcDisplay.value = "";
 
-});
+  });
+
+}
