@@ -1320,3 +1320,142 @@ table tr:hover {
   }
 
 }
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+
+  padding: 50px;
+  margin: 30px 0;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(59,130,246,0.15),
+      rgba(139,92,246,0.15)
+    );
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+.hero-left {
+
+  flex: 1;
+
+}
+
+.hero-left h1 {
+
+  font-size: 52px;
+  margin-bottom: 20px;
+
+  color: #1e293b;
+
+}
+
+.hero-left p {
+
+  font-size: 18px;
+  margin-bottom: 25px;
+
+  color: #475569;
+
+}
+
+.hero-btn {
+
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+  );
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.4s;
+
+}
+
+.hero-btn:hover {
+
+  transform: scale(1.05);
+
+}
+
+.hero-right img {
+
+  width: 320px;
+
+  animation: float 4s ease-in-out infinite;
+
+}
+
+@keyframes float {
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+}
+
+body.dark-mode .hero-section {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30,41,59,0.9),
+      rgba(15,23,42,0.9)
+    );
+
+}
+
+body.dark-mode .hero-left h1,
+body.dark-mode .hero-left p {
+
+  color: white;
+
+}
+
+@media (max-width:768px) {
+
+  .hero-section {
+
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .hero-left h1 {
+
+    font-size: 38px;
+
+  }
+
+  .hero-right img {
+
+    width: 220px;
+
+  }
+
+}
