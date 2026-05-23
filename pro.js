@@ -482,21 +482,21 @@ const calcClear =
 
 /* BUTTON CLICK */
 
-calcButtons.forEach((button) => {
-
-  button.addEventListener("click", () => {
-
-    calcDisplay.value +=
-      button.textContent;
-
+if (calcDisplay && calcButtons.length > 0) {
+  calcButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (calcDisplay.value === "Error") {
+        calcDisplay.value = "";
+      }
+      calcDisplay.value += button.textContent;
+    });
   });
-
-});
+}
 
 
 /* EQUAL */
 
-if (calcEquals) {
+if (calcEquals && calcDisplay) {
 
   calcEquals.addEventListener("click", () => {
 
@@ -518,7 +518,7 @@ if (calcEquals) {
 
 /* CLEAR */
 
-if (calcClear) {
+if (calcClear && calcDisplay) {
 
   calcClear.addEventListener("click", () => {
 
