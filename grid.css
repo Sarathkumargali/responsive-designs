@@ -1459,3 +1459,77 @@ body.dark-mode .hero-left p {
   }
 
 }
+/* =========================
+   ACTIVITY SECTION
+========================= */
+
+.activity-section {
+
+  margin-top: 30px;
+
+  padding: 25px;
+
+  border-radius: 20px;
+
+  background:
+    rgba(255,255,255,0.18);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.08);
+
+}
+
+.activity-section h2 {
+
+  margin-bottom: 20px;
+
+  color: #1e293b;
+
+}
+
+.activity-card {
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 14px;
+
+  margin-bottom: 14px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,0.3);
+
+  transition: 0.4s;
+
+}
+
+.activity-card:hover {
+
+  transform: translateX(10px);
+
+}
+
+.activity-card span {
+
+  font-size: 24px;
+
+}
+
+body.dark-mode .activity-section {
+
+  background:
+    rgba(30,41,59,0.9);
+
+}
+
+body.dark-mode .activity-section h2,
+body.dark-mode .activity-card {
+
+  color: white;
+
+}
