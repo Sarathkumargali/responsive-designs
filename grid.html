@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -412,3 +413,419 @@
     <script src="pro.js"></script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard Project</title>
+
+    <link rel="stylesheet" href="grid.css" />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+      <div class="logo">My Dashboard</div>
+
+      <button id="menu-btn" class="button">Menu</button>
+
+      <div class="nav-right">
+        <div id="clock" class="clock">00:00:00</div>
+
+        <button id="dark-mode-btn" class="button">Dark Mode</button>
+      </div>
+    </nav>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header-section">
+      <h1>Dashboard Project</h1>
+
+      <p>Responsive Dashboard using HTML, CSS and JavaScript</p>
+    </header>
+    <section class="hero-section">
+      <div class="hero-left">
+        <h1>Modern Admin Dashboard</h1>
+
+        <p>Professional dashboard project using HTML, CSS and JavaScript</p>
+
+        <button class="hero-btn">Explore Dashboard</button>
+      </div>
+
+      <div class="hero-right">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+          alt="Dashboard"
+        />
+      </div>
+    </section>
+
+    <!-- ================= AUTH SECTION ================= -->
+
+    <section class="auth-section">
+      <!-- LOGIN -->
+
+      <div class="auth-card" id="login-card">
+        <h2>Login</h2>
+
+        <input type="email" id="login-email" placeholder="Enter Email" />
+
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Enter Password"
+        />
+
+        <button id="toggle-password-btn">Show Password</button>
+
+        <button id="login-btn">Login</button>
+      </div>
+
+      <!-- REGISTER -->
+
+      <div class="auth-card" id="register-card">
+        <h2>Register</h2>
+
+        <input type="text" id="register-name" placeholder="Enter Name" />
+
+        <input type="email" id="register-email" placeholder="Enter Email" />
+
+        <input
+          type="password"
+          id="register-password"
+          placeholder="Enter Password"
+        />
+
+        <button id="register-btn">Register</button>
+      </div>
+    </section>
+
+    <!-- ================= USER INFO ================= -->
+
+    <section class="user-info">
+      <h3 id="welcome-user">Welcome Guest</h3>
+
+      <button id="logout-btn">Logout</button>
+    </section>
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <main class="grid-container">
+      <!-- ================= SIDEBAR ================= -->
+
+      <aside class="sidebar-menu">
+        <h2>Dashboard</h2>
+
+        <ul>
+          <li>
+            <a href="#" class="nav-link active" data-page="home-page">
+              🏠 Home
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="analytics-page">
+              📊 Analytics
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="tasks-page"> ✅ Tasks </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="notes-page"> 📝 Notes </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="settings-page">
+              ⚙ Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- ================= HOME PAGE ================= -->
+
+      <div id="home-page" class="dashboard-page active-page">
+        <!-- STATS -->
+
+        <section class="stats-container">
+          <div class="stat-box">
+            <h3>Total Users</h3>
+
+            <p>12,450</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>Total Sales</h3>
+
+            <p>$24,000</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>Projects</h3>
+
+            <p>32 Active</p>
+          </div>
+        </section>
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+          <input
+            type="text"
+            placeholder="Search here..."
+            class="search-input"
+          />
+
+          <button class="search-btn">Search</button>
+        </section>
+
+        <!-- TECHNOLOGY BOXES -->
+
+        <div class="boxes-container">
+          <div class="box box1">HTML</div>
+
+          <div class="box box2">CSS</div>
+
+          <div class="box box3">JavaScript</div>
+
+          <div class="box box4">React</div>
+
+          <div class="box box5">Node.js</div>
+
+          <div class="box box6">MongoDB</div>
+        </div>
+
+        <!-- PROGRESS -->
+
+        <section class="progress-section">
+          <h2>Project Progress</h2>
+
+          <div class="progress-card">
+            <p>HTML</p>
+
+            <div class="progress-bar">
+              <div class="progress html-progress"></div>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <p>CSS</p>
+
+            <div class="progress-bar">
+              <div class="progress css-progress"></div>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <p>JavaScript</p>
+
+            <div class="progress-bar">
+              <div class="progress js-progress"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE -->
+
+        <section class="profile-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile Image"
+            class="profile-image"
+          />
+          <h3>SARATHKUMARGALI</h3>
+
+          <p>Frontend Developer</p>
+
+          <button class="button">View Profile</button>
+        </section>
+
+        <!-- NOTIFICATIONS -->
+
+        <section class="notification-panel">
+          <h2>Notifications</h2>
+
+          <div class="notification">✅ New user registered</div>
+
+          <div class="notification">🚀 Project deployed successfully</div>
+
+          <div class="notification">🔔 New message received</div>
+        </section>
+        <section class="activity-section">
+          <h2>Recent Activity</h2>
+
+          <div class="activity-card">
+            <span>🟢</span>
+            <p>User Adharsh logged in</p>
+          </div>
+
+          <div class="activity-card">
+            <span>📁</span>
+            <p>New project uploaded</p>
+          </div>
+
+          <div class="activity-card">
+            <span>🚀</span>
+            <p>Dashboard updated successfully</p>
+          </div>
+
+          <div class="activity-card">
+            <span>📊</span>
+            <p>Analytics report generated</p>
+          </div>
+        </section>
+
+        <!-- EXTRA CONTENT -->
+
+        <section class="extra-content">
+          <h2>Latest Updates</h2>
+
+          <p>
+            This dashboard is fully responsive and ready for future JavaScript
+            integration.
+          </p>
+        </section>
+      </div>
+
+      <!-- ================= ANALYTICS PAGE ================= -->
+
+      <div id="analytics-page" class="dashboard-page">
+        <section class="analytics-section">
+          <div class="analytics-card">
+            <h3>Total Revenue</h3>
+
+            <p>$45,000</p>
+
+            <span>+12% this month</span>
+          </div>
+
+          <div class="analytics-card">
+            <h3>New Users</h3>
+
+            <p>1,245</p>
+
+            <span>+8% this week</span>
+          </div>
+
+          <div class="analytics-card">
+            <h3>Orders</h3>
+
+            <p>320</p>
+
+            <span>+15% today</span>
+          </div>
+
+          <div class="analytics-card">
+            <h3>Performance</h3>
+
+            <p>89%</p>
+
+            <span>Excellent</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= TASKS PAGE ================= -->
+
+      <div id="tasks-page" class="dashboard-page">
+        <section class="calculator-section">
+          <h2>Calculator</h2>
+
+          <input type="text" id="calc-display" readonly />
+
+          <div class="calc-buttons">
+            <button class="calc-btn">7</button>
+            <button class="calc-btn">8</button>
+            <button class="calc-btn">9</button>
+            <button class="calc-btn">/</button>
+
+            <button class="calc-btn">4</button>
+            <button class="calc-btn">5</button>
+            <button class="calc-btn">6</button>
+            <button class="calc-btn">*</button>
+
+            <button class="calc-btn">1</button>
+            <button class="calc-btn">2</button>
+            <button class="calc-btn">3</button>
+            <button class="calc-btn">-</button>
+
+            <button class="calc-btn">0</button>
+            <button class="calc-btn">.</button>
+            <button id="calc-equals">=</button>
+            <button class="calc-btn">+</button>
+          </div>
+
+          <button id="calc-clear">Clear</button>
+        </section>
+
+        <section class="stopwatch-section">
+          <h2>Stopwatch</h2>
+
+          <div id="stopwatch-display">00:00:00</div>
+
+          <div class="stopwatch-buttons">
+            <button id="start-stopwatch">Start</button>
+            <button id="stop-stopwatch">Stop</button>
+            <button id="reset-stopwatch">Reset</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= NOTES PAGE ================= -->
+
+      <div id="notes-page" class="dashboard-page">
+        <section class="notes-section">
+          <h2>Quick Notes</h2>
+
+          <textarea
+            id="notes-area"
+            placeholder="Write notes here..."
+          ></textarea>
+
+          <button id="save-note-btn">Save Notes</button>
+        </section>
+      </div>
+
+      <!-- ================= SETTINGS PAGE ================= -->
+
+      <div id="settings-page" class="dashboard-page">
+        <section class="theme-section">
+          <h2>Theme Colors</h2>
+
+          <div class="theme-buttons">
+            <button class="theme-btn blue-theme">Blue</button>
+
+            <button class="theme-btn green-theme">Green</button>
+
+            <button class="theme-btn purple-theme">Purple</button>
+          </div>
+        </section>
+
+        <section class="background-section">
+          <h2>Background Generator</h2>
+
+          <button id="change-bg-btn">Change Background</button>
+        </section>
+      </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+      <p>© 2026 My Dashboard Project</p>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="pro.js"></script>
+  </body>
+</html>
+>>>>>>> 2674863 (changing Dashboard)
