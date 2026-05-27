@@ -726,3 +726,19 @@ body.dark-mode .user-info {
   margin-bottom: 18px;
   color: #6b7280;
 }
+.quick-actions {
+  margin-top: 30px;
+}
+
+.actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.actions-container button {
+  flex: 1;
+  min-width: 180px;
+  padding: 16px;
+  border-radius: 14px;
+}
