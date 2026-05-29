@@ -36,16 +36,58 @@ updateClock();
 
 const darkModeBtn = document.getElementById("dark-mode-btn");
 
-if (darkModeBtn) {
-
-  darkModeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-  });
-
+function applyTheme(primary, secondary) {
+  document.documentElement.style.setProperty("--primary", primary);
+  document.documentElement.style.setProperty("--secondary", secondary);
+  document.documentElement.style.setProperty(
+    "--gradient",
+    `linear-gradient(135deg, ${primary}, ${secondary})`
+  );
 }
 
+function saveTheme(primary, secondary) {
+  localStorage.setItem(
+    "dashboardTheme",
+    JSON.stringify({ primary, secondary })
+  );
+}
+
+const storedTheme = JSON.parse(localStorage.getItem("dashboardTheme"));
+if (storedTheme) {
+  applyTheme(storedTheme.primary, storedTheme.secondary);
+}
+
+if (darkModeBtn) {
+  const storedDark = localStorage.getItem("dashboardDarkMode") === "true";
+  if (storedDark) {
+    document.body.classList.add("dark-mode");
+    darkModeBtn.textContent = "Light Mode";
+  }
+
+  darkModeBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark-mode");
+    localStorage.setItem("dashboardDarkMode", isDark);
+    darkModeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
+  });
+}
+
+const menuBtn = document.getElementById("menu-btn");
+const sidebarMenu = document.querySelector(".sidebar-menu");
+
+if (menuBtn && sidebarMenu) {
+  menuBtn.addEventListener("click", () => {
+    sidebarMenu.classList.toggle("sidebar-open");
+  });
+}
+
+const heroButton = document.querySelector(".hero-btn");
+const homePage = document.getElementById("home-page");
+
+if (heroButton && homePage) {
+  heroButton.addEventListener("click", () => {
+    homePage.scrollIntoView({ behavior: "smooth" });
+  });
+}
 
 /* =========================
    PAGE NAVIGATION
@@ -92,6 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (selectedPage) {
 
         selectedPage.classList.add("active-page");
+
+      }
+
+      if (sidebarMenu && sidebarMenu.classList.contains("sidebar-open")) {
+
+        sidebarMenu.classList.remove("sidebar-open");
 
       }
 
@@ -421,6 +469,34 @@ if (bgButton) {
 
   });
 
+}
+
+const themeButtons = document.querySelectorAll(".theme-btn");
+
+function applyTheme(primary, secondary) {
+  document.documentElement.style.setProperty("--primary", primary);
+  document.documentElement.style.setProperty("--secondary", secondary);
+  document.documentElement.style.setProperty(
+    "--gradient",
+    `linear-gradient(135deg, ${primary}, ${secondary})`
+  );
+}
+
+if (themeButtons.length > 0) {
+  themeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.classList.contains("blue-theme")) {
+        applyTheme("#2563eb", "#7c3aed");
+        saveTheme("#2563eb", "#7c3aed");
+      } else if (button.classList.contains("green-theme")) {
+        applyTheme("#10b981", "#14b8a6");
+        saveTheme("#10b981", "#14b8a6");
+      } else if (button.classList.contains("purple-theme")) {
+        applyTheme("#8b5cf6", "#c084fc");
+        saveTheme("#8b5cf6", "#c084fc");
+      }
+    });
+  });
 }
 
 

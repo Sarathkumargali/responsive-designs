@@ -14,9 +14,9 @@
     <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar">
-      <div class="logo">My Dashboard</div>
+      <div class="logo">sarathkumar Analytics</div>
 
-      <button type="button" id="menu-btn" class="button">Menu</button>
+      <button type="button" id="menu-btn" class="button menu-btn">Menu</button>
 
       <div class="nav-right">
         <div id="clock" class="clock">00:00:00</div>
@@ -28,17 +28,36 @@
     <!-- ================= HEADER ================= -->
 
     <header class="header-section">
-      <h1>Dashboard Project</h1>
+      <h1>Enterprise Operations Dashboard</h1>
 
-      <p>Responsive Dashboard using HTML, CSS and JavaScript</p>
+      <p>A polished analytics experience built for modern business teams.</p>
     </header>
     <section class="hero-section">
       <div class="hero-left">
-        <h1>Modern Admin Dashboard</h1>
+        <span class="eyebrow">Operational Intelligence</span>
+        <h1>Real-Time Performance at a Glance</h1>
 
-        <p>Professional dashboard project using HTML, CSS and JavaScript</p>
+        <p>Monitor core metrics, team capacity, and customer activity across a single responsive dashboard.</p>
 
-        <button type="button" class="hero-btn">Explore Dashboard</button>
+        <div class="hero-cta">
+          <button type="button" class="hero-btn">Review Today</button>
+          <button type="button" class="button secondary-btn">Export Report</button>
+        </div>
+
+        <div class="hero-kpis">
+          <div class="kpi-card">
+            <span>Revenue</span>
+            <strong>$98.4k</strong>
+          </div>
+          <div class="kpi-card">
+            <span>Projects</span>
+            <strong>18 Active</strong>
+          </div>
+          <div class="kpi-card">
+            <span>Team Utilization</span>
+            <strong>84%</strong>
+          </div>
+        </div>
       </div>
 
       <div class="hero-right">
@@ -55,9 +74,9 @@
       <!-- LOGIN -->
 
       <div class="auth-card" id="login-card">
-        <h2>Login</h2>
+        <h2>Team Login</h2>
 
-        <input type="email" id="login-email" placeholder="Enter Email" />
+        <input type="email" id="login-email" placeholder="Enter corporate email" />
 
         <input
           type="password"
@@ -73,9 +92,9 @@
       <!-- REGISTER -->
 
       <div class="auth-card" id="register-card">
-        <h2>Register</h2>
+        <h2>Account Setup</h2>
 
-        <input type="text" id="register-name" placeholder="Enter Name" />
+        <input type="text" id="register-name" placeholder="Full Name" />
 
         <input type="email" id="register-email" placeholder="Enter Email" />
 
@@ -92,7 +111,7 @@
     <!-- ================= USER INFO ================= -->
 
     <section class="user-info">
-      <h3 id="welcome-user">Welcome Guest</h3>
+      <h3 id="welcome-user">Welcome, Adharsh</h3>
 
       <button type="button" id="logout-btn">Logout</button>
     </section>
@@ -103,34 +122,27 @@
       <!-- ================= SIDEBAR ================= -->
 
       <aside class="sidebar-menu">
-        <h2>Dashboard</h2>
-        <h2>Welcome</h2>
+        <h2>Control Panel</h2>
 
         <ul>
           <li>
-            <a href="#" class="nav-link active" data-page="home-page">
-              🏠 Home
-            </a>
+            <a href="#" class="nav-link active" data-page="home-page">Home</a>
           </li>
 
           <li>
-            <a href="#" class="nav-link" data-page="analytics-page">
-              📊 Analytics
-            </a>
+            <a href="#" class="nav-link" data-page="analytics-page">Analytics</a>
           </li>
 
           <li>
-            <a href="#" class="nav-link" data-page="tasks-page"> ✅ Tasks </a>
+            <a href="#" class="nav-link" data-page="tasks-page">Tasks</a>
           </li>
 
           <li>
-            <a href="#" class="nav-link" data-page="notes-page"> 📝 Notes </a>
+            <a href="#" class="nav-link" data-page="notes-page">Notes</a>
           </li>
 
           <li>
-            <a href="#" class="nav-link" data-page="settings-page">
-              ⚙ Settings
-            </a>
+            <a href="#" class="nav-link" data-page="settings-page">Settings</a>
           </li>
         </ul>
       </aside>
@@ -142,21 +154,21 @@
 
         <section class="stats-container">
           <div class="stat-box">
-            <h3>Total Users</h3>
+            <h3>Monthly Revenue</h3>
 
-            <p>12,450</p>
+            <p>$124,500</p>
           </div>
 
           <div class="stat-box">
-            <h3>Total Sales</h3>
+            <h3>Customer Growth</h3>
 
-            <p>$24,000</p>
+            <p>+18%</p>
           </div>
 
           <div class="stat-box">
-            <h3>Projects</h3>
+            <h3>Delivery Rate</h3>
 
-            <p>32 Active</p>
+            <p>92%</p>
           </div>
         </section>
 
@@ -175,38 +187,38 @@
         <!-- TECHNOLOGY BOXES -->
 
         <div class="boxes-container">
-          <div class="box box1">HTML</div>
+          <div class="box box1">Operations</div>
 
-          <div class="box box2">CSS</div>
+          <div class="box box2">Sales</div>
 
-          <div class="box box3">JavaScript</div>
+          <div class="box box3">Support</div>
 
-          <div class="box box4">React</div>
+          <div class="box box4">Engineering</div>
 
-          <div class="box box5">Node.js</div>
+          <div class="box box5">Growth</div>
 
-          <div class="box box6">MongoDB</div>
+          <div class="box box6">Strategy</div>
         </div>
         <section class="projects-section">
-          <h2>Recent Projects</h2>
+          <h2>Strategic Initiatives</h2>
 
           <div class="projects-container">
             <div class="project-card">
-              <h3>E-Commerce Website</h3>
-              <p>Responsive shopping website using HTML CSS JS</p>
-              <button type="button">View Project</button>
+              <h3>Revenue Dashboard</h3>
+              <p>End-to-end analytics for customer acquisition and retention.</p>
+              <button type="button">View Details</button>
             </div>
 
             <div class="project-card">
-              <h3>Portfolio Website</h3>
-              <p>Modern portfolio with animations and dark mode</p>
-              <button type="button">View Project</button>
+              <h3>Launch Campaign</h3>
+              <p>Cross-functional campaign tracking with real-time performance data.</p>
+              <button type="button">View Details</button>
             </div>
 
             <div class="project-card">
-              <h3>Weather App</h3>
-              <p>Live weather app using API integration</p>
-              <button type="button">View Project</button>
+              <h3>Product Roadmap</h3>
+              <p>Delivery milestones and team velocity for upcoming releases.</p>
+              <button type="button">View Details</button>
             </div>
           </div>
         </section>
@@ -253,7 +265,7 @@
         </section>
         <section class="welcome-banner">
   <div class="welcome-text">
-    <h2>Welcome Back, Adharsh 👋</h2>
+    <h2>Welcome Back, sarathkumar 👋</h2>
 
     <p>
       Track your projects, analytics and activities in one modern dashboard.
@@ -278,11 +290,11 @@
             alt="Profile Image"
             class="profile-image"
           />
-          <h3>SARATHKUMARGALI</h3>
+          <h3>sarathkumar</h3>
 
-          <p>Frontend Developer</p>
+          <p>Product Operations Lead</p>
 
-          <button type="button" class="button">View Profile</button>
+          <button type="button" class="button">View Summary</button>
         </section>
 
         <!-- NOTIFICATIONS -->
@@ -297,26 +309,26 @@
           <div class="notification">🔔 New message received</div>
         </section>
         <section class="activity-section">
-          <h2>Recent Activity</h2>
+          <h2>Operational Activity</h2>
 
           <div class="activity-card">
             <span>🟢</span>
-            <p>User Adharsh logged in</p>
+            <p>Sales pipeline review completed</p>
           </div>
 
           <div class="activity-card">
             <span>📁</span>
-            <p>New project uploaded</p>
+            <p>Q3 roadmap milestone achieved</p>
           </div>
 
           <div class="activity-card">
             <span>🚀</span>
-            <p>Dashboard updated successfully</p>
+            <p>New campaign launched successfully</p>
           </div>
 
           <div class="activity-card">
             <span>📊</span>
-            <p>Analytics report generated</p>
+            <p>Weekly performance report generated</p>
           </div>
         </section>
         <section class="team-section">
@@ -342,7 +354,7 @@
         alt="Team Member"
       />
 
-      <h3>Adharsh</h3>
+      <h3>sarathkumar</h3>
 
       <p>Frontend Developer</p>
     </div>
@@ -499,7 +511,7 @@
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
-      <p>© 2026 My Dashboard Project</p>
+      <p>© 2026 sarathkumar Analytics</p>
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
