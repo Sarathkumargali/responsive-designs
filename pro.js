@@ -193,7 +193,7 @@ if (registerBtn) {
 
     localStorage.setItem("dashboardUser", JSON.stringify(user));
 
-    alert("Registration Successful");
+    showToast("Registration successful. You can now log in.");
 
   });
 
@@ -218,18 +218,13 @@ if (loginBtn) {
       password === storedUser.password
     ) {
 
-      if (welcomeUser) {
-
-        welcomeUser.textContent =
-          `Welcome ${storedUser.name}`;
-
-      }
-
-      alert("Login Successful");
+      localStorage.setItem("dashboardLoggedIn", "true");
+      updateAuthState();
+      showToast("Login successful. Welcome back!");
 
     } else {
 
-      alert("Invalid Email or Password");
+      showToast("Invalid email or password.");
 
     }
 
@@ -244,13 +239,9 @@ if (logoutBtn) {
 
   logoutBtn.addEventListener("click", () => {
 
-    if (welcomeUser) {
-
-      welcomeUser.textContent = "Welcome Guest";
-
-    }
-
-    alert("Logged Out");
+    localStorage.removeItem("dashboardLoggedIn");
+    updateAuthState();
+    showToast("Logged out successfully.");
 
   });
 
@@ -464,23 +455,13 @@ if (bgButton) {
         Math.floor(Math.random() * backgrounds.length)
       ];
 
-    document.body.style.backgroundColor =
-      randomColor;
-
+    document.body.style.background = randomColor;
+    saveBackgroundColor(randomColor);
   });
 
 }
 
 const themeButtons = document.querySelectorAll(".theme-btn");
-
-function applyTheme(primary, secondary) {
-  document.documentElement.style.setProperty("--primary", primary);
-  document.documentElement.style.setProperty("--secondary", secondary);
-  document.documentElement.style.setProperty(
-    "--gradient",
-    `linear-gradient(135deg, ${primary}, ${secondary})`
-  );
-}
 
 if (themeButtons.length > 0) {
   themeButtons.forEach((button) => {
@@ -537,6 +518,107 @@ if (searchInput && boxes.length > 0) {
   });
 
 }
+
+
+/* =========================
+   EXTRA INTERACTIONS
+========================= */
+
+const toast = document.getElementById("toast");
+let toastTimeout = null;
+
+function showToast(message, duration = 2400) {
+  if (!toast) {
+    alert(message);
+    return;
+  }
+
+  toast.textContent = message;
+  toast.classList.add("toast-show");
+  window.clearTimeout(toastTimeout);
+
+  toastTimeout = window.setTimeout(() => {
+    toast.classList.remove("toast-show");
+  }, duration);
+}
+
+const authSection = document.querySelector(".auth-section");
+
+function updateAuthState() {
+  const storedUser = localStorage.getItem("dashboardUser");
+  const isLoggedIn = localStorage.getItem("dashboardLoggedIn") === "true";
+  const user = storedUser ? JSON.parse(storedUser) : null;
+
+  if (isLoggedIn && user) {
+    if (welcomeUser) welcomeUser.textContent = `Welcome, ${user.name}`;
+    if (logoutBtn) logoutBtn.style.display = "inline-flex";
+    if (authSection) authSection.classList.add("hidden");
+  } else {
+    if (welcomeUser) welcomeUser.textContent = "Welcome, Guest";
+    if (logoutBtn) logoutBtn.style.display = "none";
+    if (authSection) authSection.classList.remove("hidden");
+  }
+}
+
+function saveBackgroundColor(color) {
+  localStorage.setItem("dashboardBackground", color);
+}
+
+function loadBackgroundColor() {
+  const storedBackground = localStorage.getItem("dashboardBackground");
+  if (storedBackground) {
+    document.body.style.background = storedBackground;
+  }
+}
+
+function hydrateProgressBars() {
+  document.querySelectorAll(".progress").forEach((bar) => {
+    const value = bar.dataset.progress || "0";
+    bar.style.width = `${value}%`;
+  });
+}
+
+function updateAnalyticsCards() {
+  const analyticsCards = document.querySelectorAll(".analytics-card");
+  const analyticsData = [
+    { label: "Total Revenue", value: `$${Math.round(35 + Math.random() * 85)}k`, extra: `+${Math.round(5 + Math.random() * 16)}% this month` },
+    { label: "New Users", value: `${Math.round(900 + Math.random() * 450)}`, extra: `+${Math.round(4 + Math.random() * 12)}% this week` },
+    { label: "Orders", value: `${Math.round(210 + Math.random() * 190)}`, extra: `+${Math.round(8 + Math.random() * 18)}% today` },
+    { label: "Performance", value: `${Math.round(80 + Math.random() * 18)}%`, extra: "Strong momentum" }
+  ];
+
+  analyticsCards.forEach((card, index) => {
+    const data = analyticsData[index];
+    if (!data) return;
+    const title = card.querySelector("h3");
+    const value = card.querySelector("p");
+    const extra = card.querySelector("span");
+    if (title) title.textContent = data.label;
+    if (value) value.textContent = data.value;
+    if (extra) extra.textContent = data.extra;
+  });
+}
+
+const clearNoteBtn = document.getElementById("clear-note-btn");
+if (clearNoteBtn && notesArea) {
+  clearNoteBtn.addEventListener("click", () => {
+    notesArea.value = "";
+    localStorage.removeItem("dashboardNotes");
+    showToast("Notes cleared");
+  });
+}
+
+const actionButtons = document.querySelectorAll(".actions-container button");
+actionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    showToast(`${button.textContent.trim()} executed`);
+  });
+});
+
+loadBackgroundColor();
+hydrateProgressBars();
+updateAnalyticsCards();
+updateAuthState();
 
 
 /* =========================

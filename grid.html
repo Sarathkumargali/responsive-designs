@@ -242,7 +242,7 @@
             <p>HTML</p>
 
             <div class="progress-bar">
-              <div class="progress html-progress"></div>
+              <div class="progress html-progress" data-progress="85"></div>
             </div>
           </div>
 
@@ -250,7 +250,7 @@
             <p>CSS</p>
 
             <div class="progress-bar">
-              <div class="progress css-progress"></div>
+              <div class="progress css-progress" data-progress="90"></div>
             </div>
           </div>
 
@@ -259,7 +259,7 @@
             
 
             <div class="progress-bar">
-              <div class="progress js-progress"></div>
+              <div class="progress js-progress" data-progress="75"></div>
             </div>
           </div>
         </section>
@@ -482,6 +482,7 @@
           ></textarea>
 
           <button type="button" id="save-note-btn">Save Notes</button>
+          <button type="button" id="clear-note-btn" class="button secondary-btn">Clear Notes</button>
         </section>
       </div>
 
@@ -516,6 +517,7 @@
 
     <!-- ================= JAVASCRIPT ================= -->
 
+    <div id="toast" class="toast"></div>
     <script src="pro.js"></script>
   </body>
 </html>
