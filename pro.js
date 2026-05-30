@@ -23,6 +23,14 @@ function updateClock() {
 
 }
 
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidCalculatorExpression(expression) {
+  return /^[0-9+\-*/().\s]+$/.test(expression);
+}
+
 /* REMOVE BELOW LINE IF YOU DON'T WANT LIVE CLOCK */
 
 setInterval(updateClock, 1000);
@@ -169,18 +177,28 @@ if (registerBtn) {
 
   registerBtn.addEventListener("click", () => {
 
-    const name = document.getElementById("register-name").value;
+    const name = document.getElementById("register-name").value.trim();
 
-    const email = document.getElementById("register-email").value;
+    const email = document.getElementById("register-email").value.trim();
 
     const password = document.getElementById("register-password").value;
 
     if (name === "" || email === "" || password === "") {
 
-      alert("Please fill all fields");
+      showToast("Please fill all registration fields.");
 
       return;
 
+    }
+
+    if (!isValidEmail(email)) {
+      showToast("Please enter a valid email address.");
+      return;
+    }
+
+    if (password.length < 6) {
+      showToast("Password must be at least 6 characters.");
+      return;
     }
 
     const user = {
@@ -206,9 +224,19 @@ if (loginBtn) {
 
   loginBtn.addEventListener("click", () => {
 
-    const email = document.getElementById("login-email").value;
+    const email = document.getElementById("login-email").value.trim();
 
     const password = document.getElementById("login-password").value;
+
+    if (email === "" || password === "") {
+      showToast("Please enter both email and password.");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      showToast("Please enter a valid email address.");
+      return;
+    }
 
     const storedUser = JSON.parse(localStorage.getItem("dashboardUser"));
 
@@ -311,13 +339,18 @@ window.addEventListener("load", () => {
 if (saveNoteBtn && notesArea) {
 
   saveNoteBtn.addEventListener("click", () => {
+    const noteValue = notesArea.value.trim();
+    if (!noteValue) {
+      showToast("Please write a note before saving.");
+      return;
+    }
 
     localStorage.setItem(
       "dashboardNotes",
-      notesArea.value
+      noteValue
     );
 
-    alert("Notes Saved");
+    showToast("Notes saved successfully.");
 
   });
 
@@ -488,35 +521,46 @@ if (themeButtons.length > 0) {
 const searchInput =
   document.querySelector(".search-input");
 
+const searchButton =
+  document.querySelector(".search-btn");
+
 const boxes =
   document.querySelectorAll(".box");
+
+function filterBoxes(searchValue) {
+  boxes.forEach((box) => {
+    const text =
+      box.textContent.toLowerCase();
+
+    if (text.includes(searchValue)) {
+      box.style.display = "flex";
+    } else {
+      box.style.display = "none";
+    }
+  });
+}
 
 if (searchInput && boxes.length > 0) {
 
   searchInput.addEventListener("keyup", () => {
 
     const searchValue =
-      searchInput.value.toLowerCase();
+      searchInput.value.trim().toLowerCase();
 
-    boxes.forEach((box) => {
-
-      const text =
-        box.textContent.toLowerCase();
-
-      if (text.includes(searchValue)) {
-
-        box.style.display = "flex";
-
-      } else {
-
-        box.style.display = "none";
-
-      }
-
-    });
+    filterBoxes(searchValue);
 
   });
 
+  if (searchButton) {
+    searchButton.addEventListener("click", () => {
+      const searchValue = searchInput.value.trim().toLowerCase();
+      if (!searchValue) {
+        showToast("Please enter a search term before searching.");
+        return;
+      }
+      filterBoxes(searchValue);
+    });
+  }
 }
 
 
@@ -657,16 +701,23 @@ if (calcDisplay && calcButtons.length > 0) {
 if (calcEquals && calcDisplay) {
 
   calcEquals.addEventListener("click", () => {
+    const expression = calcDisplay.value.trim();
+    if (!expression) {
+      showToast("Enter a calculation first.");
+      return;
+    }
+
+    if (!isValidCalculatorExpression(expression)) {
+      calcDisplay.value = "Error";
+      showToast("Invalid calculator input.");
+      return;
+    }
 
     try {
-
-      calcDisplay.value =
-        eval(calcDisplay.value);
-
+      calcDisplay.value = String(eval(expression));
     } catch {
-
       calcDisplay.value = "Error";
-
+      showToast("Invalid calculation.");
     }
 
   });

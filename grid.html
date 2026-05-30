@@ -76,12 +76,15 @@
       <div class="auth-card" id="login-card">
         <h2>Team Login</h2>
 
-        <input type="email" id="login-email" placeholder="Enter corporate email" />
+        <input type="email" id="login-email" placeholder="Enter corporate email" required autocomplete="username" />
 
         <input
           type="password"
           id="login-password"
           placeholder="Enter Password"
+          minlength="6"
+          required
+          autocomplete="current-password"
         />
 
         <button type="button" id="toggle-password-btn">Show Password</button>
@@ -94,14 +97,17 @@
       <div class="auth-card" id="register-card">
         <h2>Account Setup</h2>
 
-        <input type="text" id="register-name" placeholder="Full Name" />
+        <input type="text" id="register-name" placeholder="Full Name" required autocomplete="name" />
 
-        <input type="email" id="register-email" placeholder="Enter Email" />
+        <input type="email" id="register-email" placeholder="Enter Email" required autocomplete="email" />
 
         <input
           type="password"
           id="register-password"
           placeholder="Enter Password"
+          minlength="6"
+          required
+          autocomplete="new-password"
         />
 
         <button type="button" id="register-btn">Register</button>
