@@ -736,3 +736,147 @@ if (calcClear && calcDisplay) {
   });
 
 }
+
+
+/* =========================
+   STRATEGIC INITIATIVES - PROJECT CARDS
+========================= */
+
+const projectCards = document.querySelectorAll(".project-card button");
+projectCards.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const projectName = button.closest(".project-card")?.querySelector("h3")?.textContent || "Project";
+    showToast(`Opening ${projectName} details...`);
+  });
+});
+
+
+/* =========================
+   QUICK ACTIONS ENHANCEMENT
+========================= */
+
+const quickActionButtons = document.querySelectorAll(".quick-actions button");
+quickActionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const actionText = button.textContent.trim();
+    const actionName = actionText.replace(/^[^\w]*/, "").trim();
+    showToast(`${actionName} action initiated`);
+  });
+});
+
+
+/* =========================
+   PROJECT CARD HOVER EFFECTS
+========================= */
+
+document.querySelectorAll(".project-card").forEach((card) => {
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-8px)";
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(0)";
+  });
+});
+
+
+/* =========================
+   SALES CARD INTERACTIONS
+========================= */
+
+const salesCards = document.querySelectorAll(".sales-card");
+salesCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const title = card.querySelector("h3")?.textContent || "Sales Data";
+    showToast(`Viewing ${title} details`);
+  });
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "scale(1.02)";
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "scale(1)";
+  });
+});
+
+
+/* =========================
+   TASK LIST INTERACTIONS
+========================= */
+
+const taskItems = document.querySelectorAll(".task-item");
+taskItems.forEach((item) => {
+  const checkbox = item.querySelector("input[type='checkbox']");
+  if (checkbox) {
+    checkbox.addEventListener("change", () => {
+      const taskText = item.querySelector("span")?.textContent || "Task";
+      if (checkbox.checked) {
+        item.style.opacity = "0.6";
+        showToast(`${taskText} completed`);
+      } else {
+        item.style.opacity = "1";
+        showToast(`${taskText} uncompleted`);
+      }
+    });
+  }
+});
+
+
+/* =========================
+   SUPPORT CARD INTERACTIONS
+========================= */
+
+const supportCards = document.querySelectorAll(".support-card");
+supportCards.forEach((card) => {
+  card.style.cursor = "pointer";
+  card.addEventListener("click", () => {
+    const title = card.querySelector("h3")?.textContent || "Support";
+    showToast(`${title} support request initiated`);
+  });
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-4px)";
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(0)";
+  });
+});
+
+
+/* =========================
+   TEAM CARD INTERACTIONS
+========================= */
+
+const teamCards = document.querySelectorAll(".team-card");
+teamCards.forEach((card) => {
+  card.style.cursor = "pointer";
+  card.addEventListener("click", () => {
+    const name = card.querySelector("h3")?.textContent || "Team Member";
+    showToast(`${name} profile opened`);
+  });
+});
+
+
+/* =========================
+   STAT BOX INTERACTIONS
+========================= */
+
+const statBoxes = document.querySelectorAll(".stat-box");
+statBoxes.forEach((box) => {
+  box.style.cursor = "pointer";
+  box.addEventListener("click", () => {
+    const title = box.querySelector("h3")?.textContent || "Stat";
+    showToast(`${title} details expanded`);
+  });
+});
+
+
+/* =========================
+   NOTIFICATION INTERACTIONS
+========================= */
+
+const notifications = document.querySelectorAll(".notification");
+notifications.forEach((notif) => {
+  notif.style.cursor = "pointer";
+  notif.addEventListener("click", () => {
+    notif.style.opacity = "0.5";
+    showToast("Notification marked as read");
+  });
+});
