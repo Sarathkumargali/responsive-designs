@@ -563,6 +563,63 @@ if (searchInput && boxes.length > 0) {
   }
 }
 
+/* =========================
+   CHAT SUPPORT
+========================= */
+
+const chatInput = document.querySelector(".chat-input-area input[type='text']");
+const chatSendButton = document.querySelector(".chat-input-area button");
+const chatBox = document.querySelector(".chat-box");
+
+function createTypingIndicator() {
+  const typingIndicator = document.createElement("div");
+  typingIndicator.className = "chat-message received typing-indicator";
+  typingIndicator.innerHTML = `<p><span></span><span></span><span></span></p>`;
+  return typingIndicator;
+}
+
+function sendChatMessage() {
+  if (!chatInput || !chatBox) return;
+
+  const message = chatInput.value.trim();
+
+  if (!message) {
+    showToast("Type a message before sending.");
+    return;
+  }
+
+  const messageElement = document.createElement("div");
+  messageElement.className = "chat-message sent";
+  messageElement.innerHTML = `<p>${message}</p>`;
+
+  chatBox.appendChild(messageElement);
+  chatInput.value = "";
+  chatInput.focus();
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  const typingIndicator = createTypingIndicator();
+  chatBox.appendChild(typingIndicator);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  setTimeout(() => {
+    typingIndicator.remove();
+    const reply = document.createElement("div");
+    reply.className = "chat-message received";
+    reply.innerHTML = `<p>Thanks! We will review your request and respond shortly.</p>`;
+    chatBox.appendChild(reply);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 1000);
+}
+
+if (chatSendButton && chatInput) {
+  chatSendButton.addEventListener("click", sendChatMessage);
+  chatInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendChatMessage();
+    }
+  });
+}
 
 /* =========================
    EXTRA INTERACTIONS
