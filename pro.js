@@ -807,6 +807,114 @@ projectCards.forEach((button, index) => {
   });
 });
 
+const exportReportBtn = document.querySelector(".hero-cta .secondary-btn");
+const getStartedBtn = document.querySelector(".welcome-banner button");
+const viewSummaryBtn = document.querySelector(".profile-card .button");
+const timelineItems = document.querySelectorAll(".timeline-item");
+const messageCards = document.querySelectorAll(".message-card");
+const clientCards = document.querySelectorAll(".client-card");
+const faqCards = document.querySelectorAll(".faq-card");
+const newsCards = document.querySelectorAll(".news-card");
+const announcementCards = document.querySelectorAll(".announcement-card");
+const galleryImages = document.querySelectorAll(".gallery-grid img");
+const financeCards = document.querySelectorAll(".finance-card");
+
+if (exportReportBtn) {
+  exportReportBtn.addEventListener("click", () => {
+    showToast("Exporting dashboard report...");
+  });
+}
+
+if (getStartedBtn) {
+  getStartedBtn.addEventListener("click", () => {
+    showToast("Getting started with your dashboard...");
+    homePage?.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+if (viewSummaryBtn) {
+  viewSummaryBtn.addEventListener("click", () => {
+    showToast("Opening profile summary...");
+  });
+}
+
+if (timelineItems.length > 0) {
+  timelineItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const title = item.querySelector("h3")?.textContent || "Timeline event";
+      showToast(`Viewing ${title} details`);
+    });
+  });
+}
+
+if (messageCards.length > 0) {
+  messageCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const name = card.querySelector("h3")?.textContent || "Message";
+      showToast(`Opening chat with ${name}`);
+    });
+  });
+}
+
+if (clientCards.length > 0) {
+  clientCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const client = card.querySelector("h3")?.textContent || "Client";
+      showToast(`Viewing ${client} details`);
+    });
+  });
+}
+
+if (faqCards.length > 0) {
+  faqCards.forEach((faq) => {
+    const answer = faq.querySelector("p");
+    if (answer) {
+      answer.style.display = "none";
+    }
+    faq.addEventListener("click", () => {
+      faq.classList.toggle("faq-open");
+      const answerToggle = faq.querySelector("p");
+      if (answerToggle) {
+        answerToggle.style.display = faq.classList.contains("faq-open") ? "block" : "none";
+      }
+    });
+  });
+}
+
+if (newsCards.length > 0) {
+  newsCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const title = card.querySelector("h3")?.textContent || "News item";
+      showToast(`Opening news: ${title}`);
+    });
+  });
+}
+
+if (announcementCards.length > 0) {
+  announcementCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      showToast(card.textContent.trim().slice(0, 40));
+    });
+  });
+}
+
+if (galleryImages.length > 0) {
+  galleryImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      showToast("Opening gallery image...");
+    });
+  });
+}
+
+if (financeCards.length > 0) {
+  financeCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const title = card.querySelector("h3")?.textContent || "Finance card";
+      showToast(`Viewing ${title}`);
+    });
+  });
+}
+
 
 /* =========================
    QUICK ACTIONS ENHANCEMENT
