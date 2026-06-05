@@ -832,6 +832,11 @@ h2 {
   font-weight: 600;
 }
 
+.task-item.completed span {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
 .team-section {
   display: grid;
   gap: 18px;

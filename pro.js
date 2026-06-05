@@ -672,6 +672,43 @@ function loadBackgroundColor() {
   }
 }
 
+function saveTaskState() {
+  const taskData = {};
+  document.querySelectorAll(".task-item").forEach((item) => {
+    const checkbox = item.querySelector("input[type='checkbox']");
+    const label = item.querySelector("span")?.textContent?.trim();
+    if (label && checkbox) {
+      taskData[label] = checkbox.checked;
+    }
+  });
+  localStorage.setItem("dashboardTasks", JSON.stringify(taskData));
+}
+
+function loadTaskState() {
+  const storedTasks = JSON.parse(localStorage.getItem("dashboardTasks") || "{}");
+  document.querySelectorAll(".task-item").forEach((item) => {
+    const checkbox = item.querySelector("input[type='checkbox']");
+    const label = item.querySelector("span")?.textContent?.trim();
+    if (label && checkbox && storedTasks.hasOwnProperty(label)) {
+      checkbox.checked = storedTasks[label];
+      item.classList.toggle("completed", checkbox.checked);
+      item.style.opacity = checkbox.checked ? "0.6" : "1";
+    }
+  });
+}
+
+function downloadJSON(filename, data) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 function hydrateProgressBars() {
   document.querySelectorAll(".progress").forEach((bar) => {
     const value = bar.dataset.progress || "0";
@@ -717,6 +754,7 @@ actionButtons.forEach((button) => {
 });
 
 loadBackgroundColor();
+loadTaskState();
 hydrateProgressBars();
 updateAnalyticsCards();
 updateAuthState();
@@ -821,7 +859,24 @@ const financeCards = document.querySelectorAll(".finance-card");
 
 if (exportReportBtn) {
   exportReportBtn.addEventListener("click", () => {
-    showToast("Exporting dashboard report...");
+    const report = {
+      generatedAt: new Date().toISOString(),
+      summary: {
+        revenue: "$124,500",
+        customerGrowth: "+18%",
+        deliveryRate: "92%"
+      },
+      stats: Array.from(document.querySelectorAll(".stat-box")).map((box) => ({
+        title: box.querySelector("h3")?.textContent || "",
+        value: box.querySelector("p")?.textContent || ""
+      })),
+      tasks: Array.from(document.querySelectorAll(".task-item")).map((item) => ({
+        task: item.querySelector("span")?.textContent?.trim() || "",
+        completed: item.querySelector("input[type='checkbox']")?.checked || false
+      }))
+    };
+    downloadJSON("dashboard-report.json", report);
+    showToast("Dashboard report downloaded.");
   });
 }
 
@@ -975,11 +1030,14 @@ taskItems.forEach((item) => {
       const taskText = item.querySelector("span")?.textContent || "Task";
       if (checkbox.checked) {
         item.style.opacity = "0.6";
+        item.classList.add("completed");
         showToast(`${taskText} completed`);
       } else {
         item.style.opacity = "1";
+        item.classList.remove("completed");
         showToast(`${taskText} uncompleted`);
       }
+      saveTaskState();
     });
   }
 });
