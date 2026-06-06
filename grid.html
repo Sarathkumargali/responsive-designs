@@ -2,102 +2,225 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Dashboard Project</title>
-
     <link rel="stylesheet" href="grid.css" />
   </head>
 
   <body>
     <!-- ================= NAVBAR ================= -->
-
     <nav class="navbar">
       <div class="logo">sarathkumar Analytics</div>
-
-      <button type="button" id="menu-btn" class="button menu-btn">Menu</button>
-
+      <button type="button" id="menu-btn" class="button menu-btn">☰</button>
       <div class="nav-right">
         <div id="clock" class="clock">00:00:00</div>
-
-        <button type="button" id="dark-mode-btn" class="button">
-          Dark Mode
-        </button>
+        <button type="button" id="dark-mode-btn" class="button">Dark</button>
       </div>
     </nav>
 
     <!-- ================= HEADER ================= -->
-
     <header class="header-section">
-      <h1>Enterprise Operations Dashboard</h1>
-
-      <p>A polished analytics experience built for modern business teams.</p>
+      <h1>Dashboard</h1>
+      <p>Real-time analytics and insights</p>
     </header>
-    <section class="hero-section">
-      <div class="hero-left">
-        <span class="eyebrow">Operational Intelligence</span>
-        <h1>Real-Time Performance at a Glance</h1>
 
-        <p>
-          Monitor core metrics, team capacity, and customer activity across a
-          single responsive dashboard.
-        </p>
+    <!-- ================= MAIN GRID ================= -->
+    <main class="grid-container">
+      <!-- ================= SIDEBAR ================= -->
+      <aside class="sidebar-menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="#" class="nav-link active" data-page="home-page">📊 Home</a></li>
+          <li><a href="#" class="nav-link" data-page="analytics-page">📈 Analytics</a></li>
+          <li><a href="#" class="nav-link" data-page="tasks-page">✓ Tasks</a></li>
+          <li><a href="#" class="nav-link" data-page="settings-page">⚙ Settings</a></li>
+        </ul>
+      </aside>
 
-        <div class="hero-cta">
-          <button type="button" class="hero-btn">Review Today</button>
-          <button type="button" class="button secondary-btn">
-            Export Report
-          </button>
+      <!-- ================= HOME PAGE ================= -->
+      <div id="home-page" class="dashboard-page active-page">
+        <!-- STATS -->
+        <section class="stats-container">
+          <div class="stat-box">
+            <h3>Revenue</h3>
+            <p>$124.5k</p>
+          </div>
+          <div class="stat-box">
+            <h3>Growth</h3>
+            <p>+18%</p>
+          </div>
+          <div class="stat-box">
+            <h3>Rate</h3>
+            <p>92%</p>
+          </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section class="search-section">
+          <input type="text" placeholder="Search..." class="search-input" />
+          <button type="button" class="search-btn">Search</button>
+        </section>
+
+        <!-- DEPARTMENTS -->
+        <div class="boxes-container">
+          <div class="box box1">Operations</div>
+          <div class="box box2">Sales</div>
+          <div class="box box3">Support</div>
+          <div class="box box4">Engineering</div>
         </div>
 
-        <div class="hero-kpis">
-          <div class="kpi-card">
-            <span>Revenue</span>
-            <strong>$98.4k</strong>
+        <!-- PROJECTS -->
+        <section class="projects-section">
+          <h2>Strategic Projects</h2>
+          <div class="projects-container">
+            <div class="project-card">
+              <h3>Revenue Dashboard</h3>
+              <p>Analytics for customer metrics</p>
+              <button type="button">View</button>
+            </div>
+            <div class="project-card">
+              <h3>Campaign Tracking</h3>
+              <p>Real-time performance data</p>
+              <button type="button">View</button>
+            </div>
+            <div class="project-card">
+              <h3>Product Roadmap</h3>
+              <p>Delivery milestones</p>
+              <button type="button">View</button>
+            </div>
           </div>
-          <div class="kpi-card">
-            <span>Projects</span>
-            <strong>18 Active</strong>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="progress-section">
+          <h2>Progress</h2>
+          <div class="progress-card">
+            <p>HTML</p>
+            <div class="progress-bar">
+              <div class="progress html-progress" data-progress="85"></div>
+            </div>
           </div>
-          <div class="kpi-card">
-            <span>Team Utilization</span>
-            <strong>84%</strong>
+          <div class="progress-card">
+            <p>CSS</p>
+            <div class="progress-bar">
+              <div class="progress css-progress" data-progress="90"></div>
+            </div>
           </div>
-        </div>
+          <div class="progress-card">
+            <p>JavaScript</p>
+            <div class="progress-bar">
+              <div class="progress js-progress" data-progress="75"></div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <div class="hero-right">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
-          alt="Dashboard"
-        />
+      <!-- ================= ANALYTICS PAGE ================= -->
+      <div id="analytics-page" class="dashboard-page">
+        <section class="analytics-card">
+          <h2>Performance Metrics</h2>
+          <div class="analytics-section">
+            <div class="metric-card">
+              <span>Sessions</span>
+              <p>5,421</p>
+            </div>
+            <div class="metric-card">
+              <span>Users</span>
+              <p>2,890</p>
+            </div>
+            <div class="metric-card">
+              <span>Engagement</span>
+              <p>74%</p>
+            </div>
+            <div class="metric-card">
+              <span>Conversion</span>
+              <p>3.2%</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sales-grid-section">
+          <h2>Sales Overview</h2>
+          <div class="sales-grid">
+            <div class="sales-card">
+              <h3>Q1</h3>
+              <p>$45.2k</p>
+            </div>
+            <div class="sales-card">
+              <h3>Q2</h3>
+              <p>$52.8k</p>
+            </div>
+            <div class="sales-card">
+              <h3>Q3</h3>
+              <p>$48.9k</p>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
 
-    <!-- ================= AUTH SECTION ================= -->
+      <!-- ================= TASKS PAGE ================= -->
+      <div id="tasks-page" class="dashboard-page">
+        <section class="task-list-section">
+          <h2>Tasks</h2>
+          <div class="task-list">
+            <div class="task-item">
+              <input type="checkbox" />
+              <span>Complete project documentation</span>
+            </div>
+            <div class="task-item">
+              <input type="checkbox" />
+              <span>Review team performance</span>
+            </div>
+            <div class="task-item">
+              <input type="checkbox" />
+              <span>Update customer database</span>
+            </div>
+            <div class="task-item">
+              <input type="checkbox" />
+              <span>Schedule team meeting</span>
+            </div>
+          </div>
+        </section>
 
-    <section class="auth-section">
-      <!-- LOGIN -->
+        <section class="quick-actions">
+          <h2>Quick Actions</h2>
+          <div class="actions-container">
+            <button type="button">➕ Add Task</button>
+            <button type="button">📊 Report</button>
+            <button type="button">📁 Files</button>
+            <button type="button">👥 Team</button>
+          </div>
+        </section>
+      </div>
 
-      <div class="auth-card" id="login-card">
-        <h2>Team Login</h2>
+      <!-- ================= SETTINGS PAGE ================= -->
+      <div id="settings-page" class="dashboard-page">
+        <section class="profile-card">
+          <h2>Profile Settings</h2>
+          <p>User: Adharsh</p>
+          <p>Email: adharsh@example.com</p>
+          <button type="button" id="logout-btn">Logout</button>
+        </section>
 
-        <input
-          type="email"
-          id="login-email"
-          placeholder="Enter corporate email"
-          required
-          autocomplete="username"
-        />
+        <section class="theme-section">
+          <h2>Theme</h2>
+          <div class="theme-buttons">
+            <button type="button" class="blue-theme">Blue</button>
+            <button type="button" class="green-theme">Green</button>
+            <button type="button" class="purple-theme">Purple</button>
+          </div>
+        </section>
+      </div>
+    </main>
 
-        <input
-          type="password"
-          id="login-password"
-          placeholder="Enter Password"
-          minlength="6"
-          required
-          autocomplete="current-password"
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <p>&copy; 2026 Dashboard Analytics. All rights reserved.</p>
+    </footer>
+
+    <script src="pro.js"></script>
+  </body>
+</html>
         />
 
         <button type="button" id="toggle-password-btn">Show Password</button>
@@ -1058,6 +1181,7 @@
               <p>Diamond Member</p>
             </div>
           </div>
+          <h1>sararthkumar</h1>
         </section>
         <!-- ================= SALES CHART SECTION ================= -->
 
