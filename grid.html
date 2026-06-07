@@ -25,252 +25,6 @@
     </header>
 
     <!-- ================= MAIN GRID ================= -->
-    <main class="grid-container">
-      <!-- ================= SIDEBAR ================= -->
-      <aside class="sidebar-menu">
-        <h2>Menu</h2>
-        <ul>
-          <li><a href="#" class="nav-link active" data-page="home-page">📊 Home</a></li>
-          <li><a href="#" class="nav-link" data-page="analytics-page">📈 Analytics</a></li>
-          <li><a href="#" class="nav-link" data-page="tasks-page">✓ Tasks</a></li>
-          <li><a href="#" class="nav-link" data-page="settings-page">⚙ Settings</a></li>
-        </ul>
-      </aside>
-
-      <!-- ================= HOME PAGE ================= -->
-      <div id="home-page" class="dashboard-page active-page">
-        <!-- STATS -->
-        <section class="stats-container">
-          <div class="stat-box">
-            <h3>Revenue</h3>
-            <p>$124.5k</p>
-          </div>
-          <div class="stat-box">
-            <h3>Growth</h3>
-            <p>+18%</p>
-          </div>
-          <div class="stat-box">
-            <h3>Rate</h3>
-            <p>92%</p>
-          </div>
-        </section>
-
-        <!-- SEARCH -->
-        <section class="search-section">
-          <input type="text" placeholder="Search..." class="search-input" />
-          <button type="button" class="search-btn">Search</button>
-        </section>
-
-        <!-- DEPARTMENTS -->
-        <div class="boxes-container">
-          <div class="box box1">Operations</div>
-          <div class="box box2">Sales</div>
-          <div class="box box3">Support</div>
-          <div class="box box4">Engineering</div>
-        </div>
-
-        <!-- PROJECTS -->
-        <section class="projects-section">
-          <h2>Strategic Projects</h2>
-          <div class="projects-container">
-            <div class="project-card">
-              <h3>Revenue Dashboard</h3>
-              <p>Analytics for customer metrics</p>
-              <button type="button">View</button>
-            </div>
-            <div class="project-card">
-              <h3>Campaign Tracking</h3>
-              <p>Real-time performance data</p>
-              <button type="button">View</button>
-            </div>
-            <div class="project-card">
-              <h3>Product Roadmap</h3>
-              <p>Delivery milestones</p>
-              <button type="button">View</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- PROGRESS -->
-        <section class="progress-section">
-          <h2>Progress</h2>
-          <div class="progress-card">
-            <p>HTML</p>
-            <div class="progress-bar">
-              <div class="progress html-progress" data-progress="85"></div>
-            </div>
-          </div>
-          <div class="progress-card">
-            <p>CSS</p>
-            <div class="progress-bar">
-              <div class="progress css-progress" data-progress="90"></div>
-            </div>
-          </div>
-          <div class="progress-card">
-            <p>JavaScript</p>
-            <div class="progress-bar">
-              <div class="progress js-progress" data-progress="75"></div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================= ANALYTICS PAGE ================= -->
-      <div id="analytics-page" class="dashboard-page">
-        <section class="analytics-card">
-          <h2>Performance Metrics</h2>
-          <div class="analytics-section">
-            <div class="metric-card">
-              <span>Sessions</span>
-              <p>5,421</p>
-            </div>
-            <div class="metric-card">
-              <span>Users</span>
-              <p>2,890</p>
-            </div>
-            <div class="metric-card">
-              <span>Engagement</span>
-              <p>74%</p>
-            </div>
-            <div class="metric-card">
-              <span>Conversion</span>
-              <p>3.2%</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="sales-grid-section">
-          <h2>Sales Overview</h2>
-          <div class="sales-grid">
-            <div class="sales-card">
-              <h3>Q1</h3>
-              <p>$45.2k</p>
-            </div>
-            <div class="sales-card">
-              <h3>Q2</h3>
-              <p>$52.8k</p>
-            </div>
-            <div class="sales-card">
-              <h3>Q3</h3>
-              <p>$48.9k</p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================= TASKS PAGE ================= -->
-      <div id="tasks-page" class="dashboard-page">
-        <section class="task-list-section">
-          <h2>Tasks</h2>
-          <div class="task-list">
-            <div class="task-item">
-              <input type="checkbox" />
-              <span>Complete project documentation</span>
-            </div>
-            <div class="task-item">
-              <input type="checkbox" />
-              <span>Review team performance</span>
-            </div>
-            <div class="task-item">
-              <input type="checkbox" />
-              <span>Update customer database</span>
-            </div>
-            <div class="task-item">
-              <input type="checkbox" />
-              <span>Schedule team meeting</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="quick-actions">
-          <h2>Quick Actions</h2>
-          <div class="actions-container">
-            <button type="button">➕ Add Task</button>
-            <button type="button">📊 Report</button>
-            <button type="button">📁 Files</button>
-            <button type="button">👥 Team</button>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================= SETTINGS PAGE ================= -->
-      <div id="settings-page" class="dashboard-page">
-        <section class="profile-card">
-          <h2>Profile Settings</h2>
-          <p>User: Adharsh</p>
-          <p>Email: adharsh@example.com</p>
-          <button type="button" id="logout-btn">Logout</button>
-        </section>
-
-        <section class="theme-section">
-          <h2>Theme</h2>
-          <div class="theme-buttons">
-            <button type="button" class="blue-theme">Blue</button>
-            <button type="button" class="green-theme">Green</button>
-            <button type="button" class="purple-theme">Purple</button>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <p>&copy; 2026 Dashboard Analytics. All rights reserved.</p>
-    </footer>
-
-    <script src="pro.js"></script>
-  </body>
-</html>
-        />
-
-        <button type="button" id="toggle-password-btn">Show Password</button>
-
-        <button type="button" id="login-btn">Login</button>
-      </div>
-
-      <!-- REGISTER -->
-
-      <div class="auth-card" id="register-card">
-        <h2>Account Setup</h2>
-
-        <input
-          type="text"
-          id="register-name"
-          placeholder="Full Name"
-          required
-          autocomplete="name"
-        />
-
-        <input
-          type="email"
-          id="register-email"
-          placeholder="Enter Email"
-          required
-          autocomplete="email"
-        />
-
-        <input
-          type="password"
-          id="register-password"
-          placeholder="Enter Password"
-          minlength="6"
-          required
-          autocomplete="new-password"
-        />
-
-        <button type="button" id="register-btn">Register</button>
-      </div>
-    </section>
-
-    <!-- ================= USER INFO ================= -->
-
-    <section class="user-info">
-      <h3 id="welcome-user">Welcome, Adharsh</h3>
-
-      <button type="button" id="logout-btn">Logout</button>
-    </section>
-
-    <!-- ================= MAIN GRID ================= -->
 
     <main class="grid-container">
       <!-- ================= SIDEBAR ================= -->
@@ -295,6 +49,14 @@
 
           <li>
             <a href="#" class="nav-link" data-page="notes-page">Notes</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="reports-page">Reports</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link" data-page="calendar-page">Calendar</a>
           </li>
 
           <li>
@@ -1592,6 +1354,28 @@
           >
             Clear Notes
           </button>
+        </section>
+      </div>
+
+      <!-- ================= REPORTS PAGE ================= -->
+
+      <div id="reports-page" class="dashboard-page">
+        <section class="reports-section">
+          <h2>Reports</h2>
+          <p class="placeholder-text">
+            Access performance summaries, export insights, and review saved analytics.
+          </p>
+        </section>
+      </div>
+
+      <!-- ================= CALENDAR PAGE ================= -->
+
+      <div id="calendar-page" class="dashboard-page">
+        <section class="calendar-page-section">
+          <h2>Calendar</h2>
+          <p class="placeholder-text">
+            See upcoming events, meetings, and key milestones for the next 30 days.
+          </p>
         </section>
       </div>
 
