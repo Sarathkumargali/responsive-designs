@@ -72,7 +72,7 @@ body{
    PAGE / SECTIONS
 ========================= */
 
-.dashboard-page{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dashboard-page{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;grid-auto-rows:minmax(40px,auto)}
 .active-page{display:block}
 section{background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
 section h2{margin-bottom:12px;font-size:18px}
@@ -99,9 +99,72 @@ section h2{margin-bottom:12px;font-size:18px}
 ========================= */
 
 .boxes-container{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.box{padding:18px;border-radius:10px;color:#fff;font-weight:600}
+.box{padding:18px;border-radius:10px;color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;min-height:64px;text-align:center}
 .box1{background:#06b6d4}.box2{background:#ef4444}.box3{background:#f59e0b}
 .box4{background:#10b981}.box5{background:#6366f1}.box6{background:#ec4899}
+
+/* Make primary sections span full width for readability */
+.dashboard-page > .stats-container,
+.dashboard-page > .search-section,
+.dashboard-page > .boxes-container,
+.dashboard-page > .projects-section,
+.dashboard-page > .quick-actions,
+.dashboard-page > .progress-section,
+.dashboard-page > .welcome-banner,
+.dashboard-page > .profile-card,
+.dashboard-page > .notification-panel,
+.dashboard-page > .activity-section,
+.dashboard-page > .support-section,
+.dashboard-page > .team-section,
+.dashboard-page > .sales-overview,
+.dashboard-page > .transactions-section,
+.dashboard-page > .timeline-section,
+.dashboard-page > .weather-section,
+.dashboard-page > .productivity-section,
+.dashboard-page > .calendar-section,
+.dashboard-page > .messages-section,
+.dashboard-page > .storage-section,
+.dashboard-page > .goals-section,
+.dashboard-page > .faq-section,
+.dashboard-page > .chat-support-section,
+.dashboard-page > .achievement-section,
+.dashboard-page > .employee-performance,
+.dashboard-page > .announcement-section,
+.dashboard-page > .gallery-section,
+.dashboard-page > .finance-section,
+.dashboard-page > .client-section,
+.dashboard-page > .dark-stats-section,
+.dashboard-page > .todo-section,
+.dashboard-page > .news-section,
+.dashboard-page > .ai-section,
+.dashboard-page > .user-activity-section,
+.dashboard-page > .system-status-section,
+.dashboard-page > .leaderboard-section,
+.dashboard-page > .logs-section,
+.dashboard-page > .premium-section,
+.dashboard-page > .sales-chart-section,
+.dashboard-page > .review-section,
+.dashboard-page > .visitor-section,
+.dashboard-page > .feature-section,
+.dashboard-page > .download-section,
+.dashboard-page > .social-section,
+.dashboard-page > .kanban-section,
+.dashboard-page > .project-table-section,
+.dashboard-page > .attendance-section,
+.dashboard-page > .health-section,
+.dashboard-page > .extra-content{
+   grid-column:1 / -1;
+}
+
+/* Smaller cards that should share columns */
+.dashboard-page .support-card,
+.dashboard-page .team-card,
+.dashboard-page .sales-card,
+.dashboard-page .finance-card,
+.dashboard-page .client-card,
+.dashboard-page .achievement-card,
+.dashboard-page .status-card,
+.dashboard-page .visitor-card{min-height:90px}
 
 /* =========================
    PROJECTS / CARDS
