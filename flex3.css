@@ -1,8 +1,8 @@
-
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
 }
+
 .container {
   display: flex;
   flex-direction: row;
@@ -16,89 +16,48 @@ body {
 
 .box1 {
   background-color: aqua;
-  flex-grow: 1;
+  flex: 1 1 120px;
   order: 3;
   align-self: flex-start;
 }
 .box2 {
   background-color: rgb(228, 182, 88);
-  flex-grow: 2;
+  flex: 2 1 160px;
   order: 1;
   align-self: center;
 }
 .box3 {
   background-color: rgb(150, 172, 245);
-  flex-grow: 1;
+  flex: 1 1 120px;
   order: 2;
   align-self: flex-end;
 }
 .box4 {
   background-color: rgb(109, 210, 105);
-  flex-grow: 1;
+  flex: 1 1 120px;
   order: 4;
   align-self: stretch;
-}
-.box {
-  padding: 30px;
-  font-size: 20px;
-  border-radius: 10px;
-  min-width: 120px;
-  color: black;
-}
-.box:hover{
-    transform: scale(1.1);
-    transition: 0.3s;
-    cursor: pointer;
-=======
-body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-align: center;
-}
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 300px;
-  border: 2px solid black;
-  flex-wrap: wrap;
-  gap: 20px;
 }
 
-.box1 {
-  background-color: aqua;
-  flex-grow: 1;
-  order: 3;
-  align-self: flex-start;
-}
-.box2 {
-  background-color: rgb(228, 182, 88);
-  flex-grow: 2;
-  order: 1;
-  align-self: center;
-}
-.box3 {
-  background-color: rgb(150, 172, 245);
-  flex-grow: 1;
-  order: 2;
-  align-self: flex-end;
-}
-.box4 {
-  background-color: rgb(109, 210, 105);
-  flex-grow: 1;
-  order: 4;
-  align-self: stretch;
-}
 .box {
   padding: 30px;
   font-size: 20px;
   border-radius: 10px;
   min-width: 120px;
   color: black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
+
 .box:hover{
-    transform: scale(1.1);
-    transition: 0.3s;
-    cursor: pointer;
->>>>>>> c860afaad4484b0fed0b0fda140a668915578fe1
+  transform: scale(1.05);
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+@media (max-width:600px){
+  .container{flex-direction:column;height:auto;padding:12px}
+  .box{width:100%;min-width:0}
 }
