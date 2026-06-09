@@ -1,6 +1,22 @@
-/* =========================
-   RESET
+﻿/* =========================
+   GLOBAL
 ========================= */
+
+:root {
+    --bg: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 50%, #ede9fe 100%);
+    --surface: rgba(255, 255, 255, 0.92);
+    --surface-soft: #f8fbff;
+    --text: #1f2937;
+    --muted: #475569;
+    --border: #dbeafe;
+    --primary: #2563eb;
+    --accent: #7c3aed;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    --radius: 24px;
+}
 
 * {
     margin: 0;
@@ -8,23 +24,36 @@
     box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-========================= */
+html,
+body {
+    min-height: 100%;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+}
 
-    background: linear-gradient(
-        135deg,
-        #dbeafe,
-        #f0f9ff,
-        #ede9fe
-    );
+img {
+    max-width: 100%;
+    display: block;
+}
 
-    min-height: 100vh;
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    color: #222;
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 /* =========================
@@ -33,37 +62,42 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    padding: 15px 30px;
-
-    background: rgba(255,255,255,0.2);
-
-    backdrop-filter: blur(10px);
-
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
-
-    z-index: 1000;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-
-    color: #1e3a8a;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .clock {
-    font-size: 18px;
-    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+}
+
+.menu-btn {
+    display: none;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 14px;
 }
 
 /* =========================
@@ -82,24 +116,15 @@ body {
 .calc-btn,
 #calc-equals,
 #calc-clear,
-.stopwatch-buttons button {
-
-    padding: 10px 18px;
-
+.stopwatch-buttons button,
+.actions-container button,
+.download-container button {
     border: none;
-    border-radius: 10px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    border-radius: 16px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
-
-    cursor: pointer;
-
-    transition: 0.3s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .button:hover,
@@ -114,9 +139,17 @@ body {
 .calc-btn:hover,
 #calc-equals:hover,
 #calc-clear:hover,
-.stopwatch-buttons button:hover {
+.stopwatch-buttons button:hover,
+.actions-container button:hover,
+.download-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(15, 23, 42, 0.14);
+}
 
-    transform: translateY(-3px);
+.secondary-btn {
+    background: white;
+    color: var(--text);
+    border: 1px solid #d1d5db;
 }
 
 /* =========================
@@ -124,159 +157,163 @@ body {
 ========================= */
 
 .header-section {
-    text-align: center;
-
-    padding: 40px 20px;
+    padding: 28px 24px;
 }
 
 .header-section h1 {
-    font-size: 45px;
-
-    color: #1e3a8a;
-
+    font-size: clamp(2rem, 2.8vw, 3rem);
     margin-bottom: 10px;
 }
 
-/* =========================
-   AUTH
-========================= */
-
-.auth-section {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 30px;
-}
-
-.auth-card {
-    width: 320px;
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.4);
-
-    backdrop-filter: blur(12px);
-
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.auth-card h2 {
-    margin-bottom: 20px;
-}
-
-.auth-card input {
-    width: 100%;
-
-    padding: 12px;
-
-    margin-bottom: 15px;
-
-    border-radius: 10px;
-
-    border: none;
+.header-section p {
+    color: var(--muted);
+    max-width: 720px;
 }
 
 /* =========================
-   USER INFO
-========================= */
-
-.user-info {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 20px 40px;
-}
-
-/* =========================
-   GRID LAYOUT
+   LAYOUT
 ========================= */
 
 .grid-container {
     display: grid;
-
-    grid-template-columns: 250px 1fr;
-
+    grid-template-columns: 260px minmax(0, 1fr);
     gap: 20px;
-
     padding: 20px;
+    max-width: 1480px;
+    margin: 0 auto;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
-
 .sidebar-menu {
-    background: rgba(255,255,255,0.3);
-
+    position: sticky;
+    top: 90px;
+    background: rgba(255, 255, 255, 0.84);
     backdrop-filter: blur(12px);
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    height: fit-content;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 }
 
 .sidebar-menu h2 {
-    margin-bottom: 25px;
-
-    color: #1e3a8a;
+    margin-bottom: 20px;
+    color: var(--primary);
+    text-align: center;
 }
 
 .sidebar-menu ul {
     list-style: none;
 }
 
-.sidebar-menu li {
-    margin-bottom: 15px;
+.sidebar-menu li + li {
+    margin-top: 10px;
 }
 
 .sidebar-menu a {
-    text-decoration: none;
-
-    color: #222;
-
     display: block;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    transition: 0.3s;
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: var(--text);
+    transition: background 0.25s ease, color 0.25s ease;
 }
 
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
 }
 
-/* =========================
-   DASHBOARD PAGE
-========================= */
+.sidebar-menu.sidebar-open {
+    display: block;
+    position: absolute;
+    top: 72px;
+    left: 20px;
+    width: calc(100% - 40px);
+    max-width: 320px;
+    z-index: 50;
+}
 
 .dashboard-page {
     display: none;
 }
 
-.active-page {
-    display: block;
+.dashboard-page.active-page {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-page > section,
+.dashboard-page > .stats-container,
+.dashboard-page > .search-section,
+.dashboard-page > .boxes-container,
+.dashboard-page > .projects-section,
+.dashboard-page > .quick-actions,
+.dashboard-page > .progress-section,
+.dashboard-page > .welcome-banner,
+.dashboard-page > .profile-card,
+.dashboard-page > .notification-panel,
+.dashboard-page > .activity-section,
+.dashboard-page > .support-section,
+.dashboard-page > .team-section,
+.dashboard-page > .sales-overview,
+.dashboard-page > .transactions-section,
+.dashboard-page > .timeline-section,
+.dashboard-page > .weather-section,
+.dashboard-page > .productivity-section,
+.dashboard-page > .calendar-section,
+.dashboard-page > .messages-section,
+.dashboard-page > .storage-section,
+.dashboard-page > .goals-section,
+.dashboard-page > .faq-section,
+.dashboard-page > .chat-support-section,
+.dashboard-page > .achievement-section,
+.dashboard-page > .employee-performance,
+.dashboard-page > .announcement-section,
+.dashboard-page > .gallery-section,
+.dashboard-page > .finance-section,
+.dashboard-page > .client-section,
+.dashboard-page > .dark-stats-section,
+.dashboard-page > .todo-section,
+.dashboard-page > .news-section,
+.dashboard-page > .ai-section,
+.dashboard-page > .user-activity-section,
+.dashboard-page > .system-status-section,
+.dashboard-page > .leaderboard-section,
+.dashboard-page > .logs-section,
+.dashboard-page > .premium-section,
+.dashboard-page > .sales-chart-section,
+.dashboard-page > .review-section,
+.dashboard-page > .visitor-section,
+.dashboard-page > .feature-section,
+.dashboard-page > .download-section,
+.dashboard-page > .social-section,
+.dashboard-page > .kanban-section,
+.dashboard-page > .project-table-section,
+.dashboard-page > .attendance-section,
+.dashboard-page > .health-section,
+.dashboard-page > .extra-content {
+    grid-column: 1 / -1;
+}
+
+section {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+section h2,
+section h3,
+.project-card h3,
+.team-card h3,
+.support-card h3,
+.sales-card h3,
+.achievement-card h3,
+.client-card h3 {
+    margin-bottom: 14px;
+}
+
+section h2 {
+    font-size: 1.15rem;
 }
 
 /* =========================
@@ -285,33 +322,26 @@ body {
 
 .stats-container {
     display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 20px;
-
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    width: 100%;
 }
 
 .stat-box {
-    padding: 25px;
-
-    border-radius: 20px;
-
+    padding: 26px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
+}
 
-    text-align: center;
+.stat-box h3 {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
 
-    font-size: 20px;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.stat-box p {
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 /* =========================
@@ -320,238 +350,930 @@ body {
 
 .search-section {
     display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 20px;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
 }
 
 .search-input {
     flex: 1;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+}
 
-    padding: 12px;
-
-    border-radius: 10px;
-
-    border: none;
+.search-btn {
+    padding: 14px 22px;
 }
 
 /* =========================
    BOXES
 ========================= */
 
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
 .box {
-    padding: 40px;
-
-    border-radius: 20px;
-
-    color: white;
-
-    font-size: 24px;
-
-    font-weight: bold;
-
-    margin-bottom: 20px;
-
-    text-align: center;
-
-    transition: 0.3s;
-
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    min-height: 120px;
+    display: grid;
+    place-items: center;
 }
-
-.box:hover {
-    transform: scale(1.03);
-}
-
-/* COLORS */
 
 .box1 { background: #3b82f6; }
-
 .box2 { background: #ec4899; }
-
 .box3 { background: #10b981; }
-
 .box4 { background: #f59e0b; }
-
 .box5 { background: #8b5cf6; }
-
 .box6 { background: #ef4444; }
 
 /* =========================
-   CARDS
+   PROJECTS
 ========================= */
 
-.profile-card,
-.notification-panel,
-.extra-content,
-.notes-section,
-.theme-section,
-.calculator-section,
-.stopwatch-section,
-.analytics-section,
-.table-section,
-.project-progress-section,
-.progress-section {
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.4);
-
-    backdrop-filter: blur(12px);
-
-    margin-bottom: 20px;
-
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile-image {
-    width: 120px;
-    height: 120px;
-
-    border-radius: 50%;
-
-    margin-bottom: 15px;
-}
-
-/* =========================
-   NOTES
-========================= */
-
-#notes-area {
-    width: 100%;
-    height: 150px;
-
-    margin: 15px 0;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    border: none;
-}
-
-/* =========================
-   CALCULATOR
-========================= */
-
-#calc-display {
-    width: 100%;
-
-    padding: 15px;
-
-    margin-bottom: 15px;
-
-    border-radius: 12px;
-
-    border: none;
-
-    font-size: 22px;
-}
-
-.calc-buttons {
+.projects-container {
     display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
 }
 
-/* =========================
-   STOPWATCH
-========================= */
-
-#stopwatch-display {
-    font-size: 45px;
-
-    text-align: center;
-
-    margin: 20px 0;
-
-    color: #1e3a8a;
-}
-
-.stopwatch-buttons {
+.project-card {
+    padding: 24px;
+    border-radius: 24px;
+    background: #f8fbff;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
     display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
-    justify-content: center;
-
-    gap: 10px;
+.project-card button {
+    width: fit-content;
 }
 
 /* =========================
-   TABLE
+   QUICK ACTIONS
 ========================= */
 
-table {
-    width: 100%;
+.actions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
 
+.actions-container button {
+    width: 100%;
+    color: var(--text);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-section .progress-card {
+    display: grid;
+    gap: 10px;
+}
+
+.progress-bar {
+    background: #e9f2ff;
+    border-radius: 999px;
+    height: 14px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    width: 60%;
+}
+
+.html-progress { width: 85%; }
+.css-progress { width: 90%; }
+.js-progress { width: 75%; }
+
+/* =========================
+   WELCOME BANNER
+========================= */
+
+.welcome-banner {
+    display: grid;
+    grid-template-columns: 1.5fr minmax(160px, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.welcome-text p {
+    color: var(--muted);
+    max-width: 520px;
+}
+
+.welcome-image img {
+    border-radius: 24px;
+}
+
+/* =========================
+   PROFILE / NOTIFICATIONS
+========================= */
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.notification-panel .notification {
+    padding: 16px;
+    border-radius: 20px;
+    background: #f8fbff;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   ACTIVITY / SUPPORT / TEAM
+========================= */
+
+.activity-section .activity-card,
+.support-card,
+.team-card,
+.sales-card,
+.employee-card,
+.announcement-card,
+.status-card,
+.visitor-card,
+.premium-card,
+.health-card,
+.finance-card,
+.client-card,
+.feature-card,
+.achievement-card,
+.goal-card,
+.news-card,
+.ai-card {
+    padding: 20px;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.06);
+}
+
+.activity-section .activity-card {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.support-grid,
+.team-container,
+.sales-grid,
+.dark-stats-grid,
+.status-grid,
+.premium-grid,
+.feature-grid,
+.attendance-grid,
+.productivity-container,
+.calendar-container,
+.visitor-grid,
+.finance-grid,
+.client-container,
+.achievement-container {
+    display: grid;
+    gap: 16px;
+}
+
+.support-grid,
+.sales-grid,
+.dark-stats-grid,
+.status-grid,
+.attendance-grid,
+.productivity-container,
+.calendar-container,
+.visitor-grid,
+.finance-grid,
+.client-container,
+.achievement-container,
+.feature-grid,
+.premium-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.team-container,
+.gallery-grid,
+.ai-grid,
+.review-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.team-card img,
+.client-card img,
+.premium-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 14px;
+}
+
+.team-card h3,
+.client-card h3,
+.premium-card h3 {
+    margin-bottom: 8px;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.transaction-table,
+.project-table {
+    width: 100%;
     border-collapse: collapse;
 }
 
-table th,
-table td {
+.transaction-table th,
+.transaction-table td,
+.project-table th,
+.project-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2f7;
+    text-align: left;
+}
 
-    padding: 12px;
+.transaction-table th,
+.project-table th {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+}
 
-    border-bottom: 1px solid #ccc;
-
-    text-align: center;
+.transaction-table tr:hover {
+    background: rgba(37, 99, 235, 0.06);
 }
 
 /* =========================
-   DARK MODE
+   TIMELINE
 ========================= */
 
-.dark-mode {
-    background: linear-gradient(
-        135deg,
-        #0f172a,
-        #1e1b4b
-    );
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
+.timeline-item {
+    display: flex;
+    gap: 16px;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin-top: 8px;
+}
+
+.timeline-content h3 {
+    margin-bottom: 4px;
+}
+
+/* =========================
+   WEATHER
+========================= */
+
+.weather-card {
+    text-align: center;
+    background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+}
+
+.weather-card p {
+    font-size: 2rem;
+    margin: 12px 0;
+}
+
+.weather-card span {
+    color: var(--muted);
+}
+
+/* =========================
+   PRODUCTIVITY
+========================= */
+
+.productivity-card {
+    display: grid;
+    gap: 12px;
+}
+
+.productivity-card span,
+.goal-card span {
+    color: var(--muted);
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: #f8fbff;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 18px;
+    border-radius: 24px;
+    background: #ffffff;
+}
+
+.message-card img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-card div {
+    flex: 1;
+}
+
+/* =========================
+   STORAGE / GOALS / FAQ
+========================= */
+
+.storage-card,
+.goal-card,
+.faq-card {
+    background: #f8fbff;
+}
+
+.storage-card p,
+.goal-card p,
+.faq-card p,
+.sales-card span,
+.status-card p,
+.log-box p,
+.client-card p,
+.feature-card p {
+    color: var(--muted);
+}
+
+.faq-card {
+    padding: 22px;
+}
+
+/* =========================
+   CHAT SUPPORT
+========================= */
+
+.chat-box {
+    display: grid;
+    gap: 16px;
+}
+
+.chat-message {
+    padding: 16px 18px;
+    border-radius: 20px;
+    max-width: 85%;
+}
+
+.chat-message.received {
+    background: #eef2ff;
+    justify-self: start;
+}
+
+.chat-message.sent {
+    background: #e0f2fe;
+    justify-self: end;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 12px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 14px 16px;
+    border-radius: 999px;
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+}
+
+.chat-input-area button {
+    min-width: 110px;
+}
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+.achievement-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* =========================
+   EMPLOYEE PERFORMANCE
+========================= */
+
+.employee-performance {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.employee-card span {
+    color: var(--muted);
+}
+
+/* =========================
+   ANNOUNCEMENTS
+========================= */
+
+.announcement-card {
+    background: #e5f3ff;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+}
+
+.gallery-grid img {
+    height: 160px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* =========================
+   FINANCE / CLIENT / DARK STATS
+========================= */
+
+.finance-grid,
+.dark-stats-grid,
+.client-container {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.dark-stat-card {
+    background: #f8fbff;
+}
+
+/* =========================
+   TODO / NEWS / AI / VISITORS
+========================= */
+
+.todo-container,
+.activity-table,
+.news-section,
+.ai-grid,
+.visitor-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: #f8fbff;
+}
+
+.news-card,
+.ai-card,
+.visitor-card,
+.feature-card,
+.premium-card {
+    min-height: 140px;
+}
+
+.news-card p,
+.ai-card p {
+    color: var(--muted);
+}
+
+/* =========================
+   USER ACTIVITY
+========================= */
+
+.activity-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f8fbff;
+    border-radius: 18px;
+}
+
+.activity-row small {
+    color: var(--muted);
+}
+
+/* =========================
+   SYSTEM STATUS
+========================= */
+
+.system-status-section .status-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.status-card.online {
+    background: #dcfce7;
+}
+
+.status-card.warning {
+    background: #fef3c7;
+}
+
+.status-card.offline {
+    background: #fee2e2;
+}
+
+.status-card p {
+    color: var(--muted);
+}
+
+/* =========================
+   LEADERBOARD / LOGS
+========================= */
+
+.leaderboard-card,
+.log-box {
+    padding: 22px;
+    border-radius: 24px;
+    background: #f8fbff;
+}
+
+.leaderboard-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.log-box p {
+    margin-bottom: 10px;
+    color: var(--muted);
+}
+
+/* =========================
+   PREMIUM / SALES CHART
+========================= */
+
+.premium-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    justify-content: space-between;
+    min-height: 220px;
+}
+
+.bar-item {
+    display: grid;
+    gap: 12px;
+    align-items: end;
+    text-align: center;
+}
+
+.bar {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(180deg, var(--accent), var(--primary));
+}
+
+.bar.jan { height: 70%; }
+.bar.feb { height: 54%; }
+.bar.mar { height: 62%; }
+.bar.apr { height: 78%; }
+.bar.may { height: 88%; }
+
+/* =========================
+   REVIEWS / VISITORS
+========================= */
+
+.review-container,
+.visitor-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.review-card,
+.visitor-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 24px;
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
+}
+
+.review-card span {
+    display: block;
+    margin-top: 12px;
+}
+
+/* =========================
+   FEATURE / DOWNLOAD / SOCIAL
+========================= */
+
+.download-container,
+.feature-grid,
+.social-section {
+    display: grid;
+    gap: 16px;
+}
+
+.download-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.feature-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.social-card {
+    padding: 22px;
+    border-radius: 24px;
+    background: #ffffff;
+}
+
+.social-card.facebook { background: #eff6ff; }
+.social-card.instagram { background: #fdf2f8; }
+.social-card.twitter { background: #eff6ff; }
+
+/* =========================
+   KANBAN
+========================= */
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.kanban-column {
+    background: #f8fbff;
+    padding: 18px;
+    border-radius: 22px;
+}
+
+.kanban-task {
+    background: #ffffff;
+    padding: 12px 14px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+}
+
+/* =========================
+   PROJECT TABLE
+========================= */
+
+.project-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.project-table th,
+.project-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2f7;
+    text-align: left;
+}
+
+.project-table th {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
 }
 
 /* =========================
-   FOOTER
+   ATTENDANCE / HEALTH
 ========================= */
 
-.footer {
-    text-align: center;
+.attendance-grid,
+.health-section {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
 
-    padding: 20px;
+.attendance-card,
+.health-card {
+    padding: 22px;
+    border-radius: 24px;
+    background: #ffffff;
+}
 
-    margin-top: 20px;
+.health-bar {
+    background: #e5f3ff;
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+}
 
-    background: rgba(255,255,255,0.2);
+.health-fill {
+    height: 100%;
+    background: var(--success);
+}
 
-    backdrop-filter: blur(10px);
+.health-fill.cpu { width: 78%; }
+.health-fill.memory { width: 64%; }
+.health-fill.network { width: 55%; }
+
+/* =========================
+   EXTRA CONTENT
+========================= */
+
+.extra-content {
+    background: #ffffff;
+}
+
+/* =========================
+   ANALYTICS PAGE
+========================= */
+
+.analytics-section,
+.chart-section {
+    grid-column: 1 / -1;
+}
+
+.analytics-section {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.chart-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.chart-card {
+    padding: 22px;
+    border-radius: 24px;
+    background: #ffffff;
+}
+
+/* =========================
+   TASKS PAGE
+========================= */
+
+.task-list-section,
+.calculator-section,
+.stopwatch-section {
+    grid-column: 1 / -1;
+}
+
+.task-list {
+    display: grid;
+    gap: 12px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: #f8fbff;
+}
+
+#calc-display {
+    background: #f8fbff;
+}
+
+/* =========================
+   NOTES PAGE
+========================= */
+
+.notes-section {
+    display: grid;
+    gap: 16px;
+}
+
+#notes-area {
+    background: #f8fbff;
+}
+
+/* =========================
+   REPORTS / CALENDAR / SETTINGS
+========================= */
+
+.reports-section,
+.calendar-page-section,
+.theme-section,
+.background-section {
+    grid-column: 1 / -1;
+}
+
+.theme-buttons,
+.download-container {
+    display: grid;
+    gap: 14px;
+}
+
+.theme-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.theme-btn {
+    width: 100%;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1050px) {
+    .dashboard-page.active-page {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
 
+@media (max-width: 900px) {
     .grid-container {
         grid-template-columns: 1fr;
     }
 
-    .search-section {
-        flex-direction: column;
+    .sidebar-menu {
+        display: none;
     }
 
-    .auth-section {
-        flex-direction: column;
-        align-items: center;
+    .navbar .menu-btn {
+        display: inline-flex;
     }
 
+    .dashboard-page.active-page,
+    .analytics-section,
+    .chart-section,
+    .task-list-section,
+    .calculator-section,
+    .stopwatch-section,
+    .notes-section,
+    .reports-section,
+    .calendar-page-section,
+    .theme-section,
+    .background-section {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 620px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-section,
+    .actions-container,
+    .theme-buttons,
+    .download-container,
+    .productivity-container,
+    .calendar-container,
+    .team-container,
+    .support-grid,
+    .sales-grid,
+    .gallery-grid,
+    .dark-stats-grid,
+    .status-grid,
+    .attendance-grid,
+    .visitor-grid,
+    .premium-grid,
+    .feature-grid,
+    .ai-grid,
+    .review-container,
+    .activity-table {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-banner {
+        grid-template-columns: 1fr;
+    }
 }
