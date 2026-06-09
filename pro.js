@@ -81,1025 +81,185 @@ if (darkModeBtn) {
 
 const menuBtn = document.getElementById("menu-btn");
 const sidebarMenu = document.querySelector(".sidebar-menu");
+/* Lightweight dashboard script tailored for grid.html
+   - initializes interactive widgets only when their elements exist
+   - removes authentication code not present in grid.html
+*/
 
-if (menuBtn && sidebarMenu) {
-  menuBtn.addEventListener("click", () => {
-    sidebarMenu.classList.toggle("sidebar-open");
-  });
+function isValidCalculatorExpression(expression) {
+  return /^[0-9+\-*/().\s]+$/.test(expression);
 }
-
-const heroButton = document.querySelector(".hero-btn");
-const homePage = document.getElementById("home-page");
-
-if (heroButton && homePage) {
-  heroButton.addEventListener("click", () => {
-    homePage.scrollIntoView({ behavior: "smooth" });
-  });
-}
-
-/* =========================
-   PAGE NAVIGATION
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  const pages = document.querySelectorAll(".dashboard-page");
-
-  navLinks.forEach((link) => {
-
-    link.addEventListener("click", (e) => {
-
-      e.preventDefault();
-
-      /* REMOVE ACTIVE CLASS */
-
-      navLinks.forEach((nav) => {
-
-        nav.classList.remove("active");
-
-      });
-
-      /* ADD ACTIVE CLASS */
-
-      link.classList.add("active");
-
-      /* HIDE ALL PAGES */
-
-      pages.forEach((page) => {
-
-        page.classList.remove("active-page");
-
-      });
-
-      /* SHOW SELECTED PAGE */
-
-      const pageId = link.getAttribute("data-page");
-
-      const selectedPage = document.getElementById(pageId);
-
-      if (selectedPage) {
-
-        selectedPage.classList.add("active-page");
-
-      }
-
-      if (sidebarMenu && sidebarMenu.classList.contains("sidebar-open")) {
-
-        sidebarMenu.classList.remove("sidebar-open");
-
-      }
-
-    });
-
-  });
-
-});
-
-
-/* =========================
-   LOGIN SYSTEM
-========================= */
-
-const loginBtn = document.getElementById("login-btn");
-
-const registerBtn = document.getElementById("register-btn");
-
-const logoutBtn = document.getElementById("logout-btn");
-
-const welcomeUser = document.getElementById("welcome-user");
-
-
-/* REGISTER */
-
-if (registerBtn) {
-
-  registerBtn.addEventListener("click", () => {
-
-    const name = document.getElementById("register-name").value.trim();
-
-    const email = document.getElementById("register-email").value.trim();
-
-    const password = document.getElementById("register-password").value;
-
-    if (name === "" || email === "" || password === "") {
-
-      showToast("Please fill all registration fields.");
-
-      return;
-
-    }
-
-    if (!isValidEmail(email)) {
-      showToast("Please enter a valid email address.");
-      return;
-    }
-
-    if (password.length < 6) {
-      showToast("Password must be at least 6 characters.");
-      return;
-    }
-
-    const user = {
-
-      name,
-      email,
-      password
-
-    };
-
-    localStorage.setItem("dashboardUser", JSON.stringify(user));
-
-    showToast("Registration successful. You can now log in.");
-
-  });
-
-}
-
-
-/* LOGIN */
-
-if (loginBtn) {
-
-  loginBtn.addEventListener("click", () => {
-
-    const email = document.getElementById("login-email").value.trim();
-
-    const password = document.getElementById("login-password").value;
-
-    if (email === "" || password === "") {
-      showToast("Please enter both email and password.");
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showToast("Please enter a valid email address.");
-      return;
-    }
-
-    const storedUser = JSON.parse(localStorage.getItem("dashboardUser"));
-
-    if (
-      storedUser &&
-      email === storedUser.email &&
-      password === storedUser.password
-    ) {
-
-      localStorage.setItem("dashboardLoggedIn", "true");
-      updateAuthState();
-      showToast("Login successful. Welcome back!");
-
-    } else {
-
-      showToast("Invalid email or password.");
-
-    }
-
-  });
-
-}
-
-
-/* LOGOUT */
-
-if (logoutBtn) {
-
-  logoutBtn.addEventListener("click", () => {
-
-    localStorage.removeItem("dashboardLoggedIn");
-    updateAuthState();
-    showToast("Logged out successfully.");
-
-  });
-
-}
-
-
-/* =========================
-   SHOW PASSWORD
-========================= */
-
-const togglePasswordBtn =
-  document.getElementById("toggle-password-btn");
-
-if (togglePasswordBtn) {
-
-  togglePasswordBtn.addEventListener("click", () => {
-
-    const passwordInput =
-      document.getElementById("login-password");
-
-    if (passwordInput.type === "password") {
-
-      passwordInput.type = "text";
-
-      togglePasswordBtn.textContent = "Hide Password";
-
-    } else {
-
-      passwordInput.type = "password";
-
-      togglePasswordBtn.textContent = "Show Password";
-
-    }
-
-  });
-
-}
-
-
-/* =========================
-   NOTES APP
-========================= */
-
-const notesArea = document.getElementById("notes-area");
-
-const saveNoteBtn = document.getElementById("save-note-btn");
-
-
-/* LOAD NOTES */
-
-window.addEventListener("load", () => {
-
-  const savedNotes =
-    localStorage.getItem("dashboardNotes");
-
-  if (savedNotes && notesArea) {
-
-    notesArea.value = savedNotes;
-
-  }
-
-});
-
-
-/* SAVE NOTES */
-
-if (saveNoteBtn && notesArea) {
-
-  saveNoteBtn.addEventListener("click", () => {
-    const noteValue = notesArea.value.trim();
-    if (!noteValue) {
-      showToast("Please write a note before saving.");
-      return;
-    }
-
-    localStorage.setItem(
-      "dashboardNotes",
-      noteValue
-    );
-
-    showToast("Notes saved successfully.");
-
-  });
-
-}
-
-
-/* =========================
-   STOPWATCH
-========================= */
-
-let stopwatchInterval = null;
-
-let seconds = 0;
-
-let minutes = 0;
-
-let hours = 0;
-
-const stopwatchDisplay =
-  document.getElementById("stopwatch-display");
-
-
-function updateStopwatch() {
-
-  seconds++;
-
-  if (seconds >= 60) {
-
-    seconds = 0;
-
-    minutes++;
-
-  }
-
-  if (minutes >= 60) {
-
-    minutes = 0;
-
-    hours++;
-
-  }
-
-  stopwatchDisplay.textContent =
-    `${String(hours).padStart(2, "0")}:` +
-    `${String(minutes).padStart(2, "0")}:` +
-    `${String(seconds).padStart(2, "0")}`;
-
-}
-
-
-/* START */
-
-const startStopwatch =
-  document.getElementById("start-stopwatch");
-
-if (startStopwatch) {
-
-  startStopwatch.addEventListener("click", () => {
-
-    if (stopwatchInterval !== null) return;
-
-    stopwatchInterval =
-      setInterval(updateStopwatch, 1000);
-
-  });
-
-}
-
-
-/* STOP */
-
-const stopStopwatch =
-  document.getElementById("stop-stopwatch");
-
-if (stopStopwatch) {
-
-  stopStopwatch.addEventListener("click", () => {
-
-    clearInterval(stopwatchInterval);
-
-    stopwatchInterval = null;
-
-  });
-
-}
-
-
-/* RESET */
-
-const resetStopwatch =
-  document.getElementById("reset-stopwatch");
-
-if (resetStopwatch) {
-
-  resetStopwatch.addEventListener("click", () => {
-
-    clearInterval(stopwatchInterval);
-
-    stopwatchInterval = null;
-
-    seconds = 0;
-
-    minutes = 0;
-
-    hours = 0;
-
-    stopwatchDisplay.textContent = "00:00:00";
-
-  });
-
-}
-
-
-/* =========================
-   BACKGROUND CHANGER
-========================= */
-
-const bgButton =
-  document.getElementById("change-bg-btn");
-
-const backgrounds = [
-  "#f4f4f4",
-  "#dbeafe",
-  "#dcfce7",
-  "#fae8ff",
-  "#ffe4e6"
-];
-
-if (bgButton) {
-
-  bgButton.addEventListener("click", () => {
-
-    const randomColor =
-      backgrounds[
-        Math.floor(Math.random() * backgrounds.length)
-      ];
-
-    document.body.style.background = randomColor;
-    saveBackgroundColor(randomColor);
-  });
-
-}
-
-const themeButtons = document.querySelectorAll(".theme-btn");
-
-if (themeButtons.length > 0) {
-  themeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.classList.contains("blue-theme")) {
-        applyTheme("#2563eb", "#7c3aed");
-        saveTheme("#2563eb", "#7c3aed");
-      } else if (button.classList.contains("green-theme")) {
-        applyTheme("#10b981", "#14b8a6");
-        saveTheme("#10b981", "#14b8a6");
-      } else if (button.classList.contains("purple-theme")) {
-        applyTheme("#8b5cf6", "#c084fc");
-        saveTheme("#8b5cf6", "#c084fc");
-      }
-    });
-  });
-}
-
-
-/* =========================
-   SEARCH FUNCTION
-========================= */
-
-const searchInput =
-  document.querySelector(".search-input");
-
-const searchButton =
-  document.querySelector(".search-btn");
-
-const boxes =
-  document.querySelectorAll(".box");
-
-function filterBoxes(searchValue) {
-  boxes.forEach((box) => {
-    const text =
-      box.textContent.toLowerCase();
-
-    if (text.includes(searchValue)) {
-      box.style.display = "flex";
-    } else {
-      box.style.display = "none";
-    }
-  });
-}
-
-if (searchInput && boxes.length > 0) {
-
-  searchInput.addEventListener("keyup", () => {
-
-    const searchValue =
-      searchInput.value.trim().toLowerCase();
-
-    filterBoxes(searchValue);
-
-  });
-
-  if (searchButton) {
-    searchButton.addEventListener("click", () => {
-      const searchValue = searchInput.value.trim().toLowerCase();
-      if (!searchValue) {
-        showToast("Please enter a search term before searching.");
-        return;
-      }
-      filterBoxes(searchValue);
-    });
-  }
-}
-
-/* =========================
-   CHAT SUPPORT
-========================= */
-
-const chatInput = document.querySelector(".chat-input-area input[type='text']");
-const chatSendButton = document.querySelector(".chat-input-area button");
-const chatBox = document.querySelector(".chat-box");
-
-function createTypingIndicator() {
-  const typingIndicator = document.createElement("div");
-  typingIndicator.className = "chat-message received typing-indicator";
-  typingIndicator.innerHTML = `<p><span></span><span></span><span></span></p>`;
-  return typingIndicator;
-}
-
-function sendChatMessage() {
-  if (!chatInput || !chatBox) return;
-
-  const message = chatInput.value.trim();
-
-  if (!message) {
-    showToast("Type a message before sending.");
-    return;
-  }
-
-  const messageElement = document.createElement("div");
-  messageElement.className = "chat-message sent";
-  messageElement.innerHTML = `<p>${message}</p>`;
-
-  chatBox.appendChild(messageElement);
-  chatInput.value = "";
-  chatInput.focus();
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  const typingIndicator = createTypingIndicator();
-  chatBox.appendChild(typingIndicator);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  setTimeout(() => {
-    typingIndicator.remove();
-    const reply = document.createElement("div");
-    reply.className = "chat-message received";
-    reply.innerHTML = `<p>Thanks! We will review your request and respond shortly.</p>`;
-    chatBox.appendChild(reply);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }, 1000);
-}
-
-if (chatSendButton && chatInput) {
-  chatSendButton.addEventListener("click", sendChatMessage);
-  chatInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      sendChatMessage();
-    }
-  });
-}
-
-/* =========================
-   EXTRA INTERACTIONS
-========================= */
-
-const toast = document.getElementById("toast");
-let toastTimeout = null;
 
 function showToast(message, duration = 2400) {
-  if (!toast) {
-    alert(message);
-    return;
-  }
-
+  const toast = document.getElementById("toast");
+  if (!toast) return alert(message);
   toast.textContent = message;
   toast.classList.add("toast-show");
-  window.clearTimeout(toastTimeout);
-
-  toastTimeout = window.setTimeout(() => {
-    toast.classList.remove("toast-show");
-  }, duration);
-}
-
-const authSection = document.querySelector(".auth-section");
-
-function updateAuthState() {
-  const storedUser = localStorage.getItem("dashboardUser");
-  const isLoggedIn = localStorage.getItem("dashboardLoggedIn") === "true";
-  const user = storedUser ? JSON.parse(storedUser) : null;
-
-  if (isLoggedIn && user) {
-    if (welcomeUser) welcomeUser.textContent = `Welcome, ${user.name}`;
-    if (logoutBtn) logoutBtn.style.display = "inline-flex";
-    if (authSection) authSection.classList.add("hidden");
-  } else {
-    if (welcomeUser) welcomeUser.textContent = "Welcome, Guest";
-    if (logoutBtn) logoutBtn.style.display = "none";
-    if (authSection) authSection.classList.remove("hidden");
-  }
-}
-
-function saveBackgroundColor(color) {
-  localStorage.setItem("dashboardBackground", color);
-}
-
-function loadBackgroundColor() {
-  const storedBackground = localStorage.getItem("dashboardBackground");
-  if (storedBackground) {
-    document.body.style.background = storedBackground;
-  }
-}
-
-function saveTaskState() {
-  const taskData = {};
-  document.querySelectorAll(".task-item").forEach((item) => {
-    const checkbox = item.querySelector("input[type='checkbox']");
-    const label = item.querySelector("span")?.textContent?.trim();
-    if (label && checkbox) {
-      taskData[label] = checkbox.checked;
-    }
-  });
-  localStorage.setItem("dashboardTasks", JSON.stringify(taskData));
-}
-
-function loadTaskState() {
-  const storedTasks = JSON.parse(localStorage.getItem("dashboardTasks") || "{}");
-  document.querySelectorAll(".task-item").forEach((item) => {
-    const checkbox = item.querySelector("input[type='checkbox']");
-    const label = item.querySelector("span")?.textContent?.trim();
-    if (label && checkbox && storedTasks.hasOwnProperty(label)) {
-      checkbox.checked = storedTasks[label];
-      item.classList.toggle("completed", checkbox.checked);
-      item.style.opacity = checkbox.checked ? "0.6" : "1";
-    }
-  });
-}
-
-function downloadJSON(filename, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove("toast-show"), duration);
 }
 
 function hydrateProgressBars() {
   document.querySelectorAll(".progress").forEach((bar) => {
-    const value = bar.dataset.progress || "0";
-    bar.style.width = `${value}%`;
+    const value = bar.dataset.progress || bar.style.width || "0";
+    if (String(value).includes("%")) bar.style.width = value;
+    else bar.style.width = `${value}%`;
   });
 }
 
 function updateAnalyticsCards() {
-  const analyticsCards = document.querySelectorAll(".analytics-card");
-  const analyticsData = [
-    { label: "Total Revenue", value: `$${Math.round(35 + Math.random() * 85)}k`, extra: `+${Math.round(5 + Math.random() * 16)}% this month` },
-    { label: "New Users", value: `${Math.round(900 + Math.random() * 450)}`, extra: `+${Math.round(4 + Math.random() * 12)}% this week` },
-    { label: "Orders", value: `${Math.round(210 + Math.random() * 190)}`, extra: `+${Math.round(8 + Math.random() * 18)}% today` },
-    { label: "Performance", value: `${Math.round(80 + Math.random() * 18)}%`, extra: "Strong momentum" }
+  const cards = document.querySelectorAll(".analytics-card");
+  if (!cards.length) return;
+  const data = [
+    { v: `$${Math.round(35 + Math.random() * 85)}k`, e: `+${Math.round(5 + Math.random() * 16)}% this month` },
+    { v: `${Math.round(900 + Math.random() * 450)}`, e: `+${Math.round(4 + Math.random() * 12)}% this week` },
+    { v: `${Math.round(210 + Math.random() * 190)}`, e: `+${Math.round(8 + Math.random() * 18)}% today` },
+    { v: `${Math.round(80 + Math.random() * 18)}%`, e: `Strong` }
   ];
-
-  analyticsCards.forEach((card, index) => {
-    const data = analyticsData[index];
-    if (!data) return;
-    const title = card.querySelector("h3");
-    const value = card.querySelector("p");
-    const extra = card.querySelector("span");
-    if (title) title.textContent = data.label;
-    if (value) value.textContent = data.value;
-    if (extra) extra.textContent = data.extra;
+  cards.forEach((c, i) => {
+    const p = c.querySelector("p");
+    const s = c.querySelector("span");
+    if (p) p.textContent = data[i]?.v || p.textContent;
+    if (s) s.textContent = data[i]?.e || s.textContent;
   });
 }
 
-const clearNoteBtn = document.getElementById("clear-note-btn");
-if (clearNoteBtn && notesArea) {
-  clearNoteBtn.addEventListener("click", () => {
-    notesArea.value = "";
-    localStorage.removeItem("dashboardNotes");
-    showToast("Notes cleared");
-  });
-}
-
-const actionButtons = document.querySelectorAll(".actions-container button");
-actionButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    showToast(`${button.textContent.trim()} executed`);
-  });
-});
-
-loadBackgroundColor();
-loadTaskState();
-hydrateProgressBars();
-updateAnalyticsCards();
-updateAuthState();
-
-
-/* =========================
-   CALCULATOR
-========================= */
-
-const calcDisplay =
-  document.getElementById("calc-display");
-
-const calcButtons =
-  document.querySelectorAll(".calc-btn");
-
-const calcEquals =
-  document.getElementById("calc-equals");
-
-const calcClear =
-  document.getElementById("calc-clear");
-
-
-/* BUTTON CLICK */
-
-if (calcDisplay && calcButtons.length > 0) {
-  calcButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (calcDisplay.value === "Error") {
-        calcDisplay.value = "";
-      }
-      calcDisplay.value += button.textContent;
-    });
-  });
-}
-
-
-/* EQUAL */
-
-if (calcEquals && calcDisplay) {
-
-  calcEquals.addEventListener("click", () => {
-    const expression = calcDisplay.value.trim();
-    if (!expression) {
-      showToast("Enter a calculation first.");
-      return;
-    }
-
-    if (!isValidCalculatorExpression(expression)) {
-      calcDisplay.value = "Error";
-      showToast("Invalid calculator input.");
-      return;
-    }
-
-    try {
-      calcDisplay.value = String(eval(expression));
-    } catch {
-      calcDisplay.value = "Error";
-      showToast("Invalid calculation.");
-    }
-
-  });
-
-}
-
-
-/* CLEAR */
-
-if (calcClear && calcDisplay) {
-
-  calcClear.addEventListener("click", () => {
-
-    calcDisplay.value = "";
-
-  });
-
-}
-
-
-/* =========================
-   STRATEGIC INITIATIVES - PROJECT CARDS
-========================= */
-
-const projectCards = document.querySelectorAll(".project-card button");
-projectCards.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    const projectName = button.closest(".project-card")?.querySelector("h3")?.textContent || "Project";
-    showToast(`Opening ${projectName} details...`);
-  });
-});
-
-const exportReportBtn = document.querySelector(".hero-cta .secondary-btn");
-const getStartedBtn = document.querySelector(".welcome-banner button");
-const viewSummaryBtn = document.querySelector(".profile-card .button");
-const timelineItems = document.querySelectorAll(".timeline-item");
-const messageCards = document.querySelectorAll(".message-card");
-const clientCards = document.querySelectorAll(".client-card");
-const faqCards = document.querySelectorAll(".faq-card");
-const newsCards = document.querySelectorAll(".news-card");
-const announcementCards = document.querySelectorAll(".announcement-card");
-const galleryImages = document.querySelectorAll(".gallery-grid img");
-const financeCards = document.querySelectorAll(".finance-card");
-
-if (exportReportBtn) {
-  exportReportBtn.addEventListener("click", () => {
-    const report = {
-      generatedAt: new Date().toISOString(),
-      summary: {
-        revenue: "$124,500",
-        customerGrowth: "+18%",
-        deliveryRate: "92%"
-      },
-      stats: Array.from(document.querySelectorAll(".stat-box")).map((box) => ({
-        title: box.querySelector("h3")?.textContent || "",
-        value: box.querySelector("p")?.textContent || ""
-      })),
-      tasks: Array.from(document.querySelectorAll(".task-item")).map((item) => ({
-        task: item.querySelector("span")?.textContent?.trim() || "",
-        completed: item.querySelector("input[type='checkbox']")?.checked || false
-      }))
+document.addEventListener("DOMContentLoaded", () => {
+  // CLOCK
+  const clockEl = document.getElementById("clock");
+  if (clockEl) {
+    const updateClock = () => {
+      const now = new Date();
+      clockEl.textContent = [now.getHours(), now.getMinutes(), now.getSeconds()].map(n => String(n).padStart(2, '0')).join(':');
     };
-    downloadJSON("dashboard-report.json", report);
-    showToast("Dashboard report downloaded.");
-  });
-}
+    updateClock();
+    setInterval(updateClock, 1000);
+  }
 
-if (getStartedBtn) {
-  getStartedBtn.addEventListener("click", () => {
-    showToast("Getting started with your dashboard...");
-    homePage?.scrollIntoView({ behavior: "smooth" });
-  });
-}
-
-if (viewSummaryBtn) {
-  viewSummaryBtn.addEventListener("click", () => {
-    showToast("Opening profile summary...");
-  });
-}
-
-if (timelineItems.length > 0) {
-  timelineItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const title = item.querySelector("h3")?.textContent || "Timeline event";
-      showToast(`Viewing ${title} details`);
-    });
-  });
-}
-
-if (messageCards.length > 0) {
-  messageCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const name = card.querySelector("h3")?.textContent || "Message";
-      showToast(`Opening chat with ${name}`);
-    });
-  });
-}
-
-if (clientCards.length > 0) {
-  clientCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const client = card.querySelector("h3")?.textContent || "Client";
-      showToast(`Viewing ${client} details`);
-    });
-  });
-}
-
-if (faqCards.length > 0) {
-  faqCards.forEach((faq) => {
-    const answer = faq.querySelector("p");
-    if (answer) {
-      answer.style.display = "none";
-    }
-    faq.addEventListener("click", () => {
-      faq.classList.toggle("faq-open");
-      const answerToggle = faq.querySelector("p");
-      if (answerToggle) {
-        answerToggle.style.display = faq.classList.contains("faq-open") ? "block" : "none";
-      }
-    });
-  });
-}
-
-if (newsCards.length > 0) {
-  newsCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const title = card.querySelector("h3")?.textContent || "News item";
-      showToast(`Opening news: ${title}`);
-    });
-  });
-}
-
-if (announcementCards.length > 0) {
-  announcementCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      showToast(card.textContent.trim().slice(0, 40));
-    });
-  });
-}
-
-if (galleryImages.length > 0) {
-  galleryImages.forEach((img) => {
-    img.addEventListener("click", () => {
-      showToast("Opening gallery image...");
-    });
-  });
-}
-
-if (financeCards.length > 0) {
-  financeCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const title = card.querySelector("h3")?.textContent || "Finance card";
-      showToast(`Viewing ${title}`);
-    });
-  });
-}
-
-
-/* =========================
-   QUICK ACTIONS ENHANCEMENT
-========================= */
-
-const quickActionButtons = document.querySelectorAll(".quick-actions button");
-quickActionButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const actionText = button.textContent.trim();
-    const actionName = actionText.replace(/^[^\w]*/, "").trim();
-    showToast(`${actionName} action initiated`);
-  });
-});
-
-
-/* =========================
-   PROJECT CARD HOVER EFFECTS
-========================= */
-
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-8px)";
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "translateY(0)";
-  });
-});
-
-
-/* =========================
-   SALES CARD INTERACTIONS
-========================= */
-
-const salesCards = document.querySelectorAll(".sales-card");
-salesCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const title = card.querySelector("h3")?.textContent || "Sales Data";
-    showToast(`Viewing ${title} details`);
-  });
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "scale(1.02)";
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "scale(1)";
-  });
-});
-
-
-/* =========================
-   TASK LIST INTERACTIONS
-========================= */
-
-const taskItems = document.querySelectorAll(".task-item");
-taskItems.forEach((item) => {
-  const checkbox = item.querySelector("input[type='checkbox']");
-  if (checkbox) {
-    checkbox.addEventListener("change", () => {
-      const taskText = item.querySelector("span")?.textContent || "Task";
-      if (checkbox.checked) {
-        item.style.opacity = "0.6";
-        item.classList.add("completed");
-        showToast(`${taskText} completed`);
-      } else {
-        item.style.opacity = "1";
-        item.classList.remove("completed");
-        showToast(`${taskText} uncompleted`);
-      }
-      saveTaskState();
+  // Dark mode toggle
+  const darkModeBtn = document.getElementById("dark-mode-btn");
+  if (darkModeBtn) {
+    const stored = localStorage.getItem('dashboardDarkMode') === 'true';
+    if (stored) document.body.classList.add('dark-mode');
+    darkModeBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dashboardDarkMode', isDark);
+      darkModeBtn.textContent = isDark ? 'Light' : 'Dark';
     });
   }
+
+  // Sidebar menu
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebarMenu = document.querySelector('.sidebar-menu');
+  if (menuBtn && sidebarMenu) menuBtn.addEventListener('click', () => sidebarMenu.classList.toggle('sidebar-open'));
+
+  // Page navigation links
+  const navLinks = document.querySelectorAll('.nav-link');
+  const pages = document.querySelectorAll('.dashboard-page');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      navLinks.forEach(n => n.classList.remove('active'));
+      link.classList.add('active');
+      pages.forEach(p => p.classList.remove('active-page'));
+      const id = link.dataset.page;
+      const sel = document.getElementById(id);
+      if (sel) sel.classList.add('active-page');
+      if (sidebarMenu && sidebarMenu.classList.contains('sidebar-open')) sidebarMenu.classList.remove('sidebar-open');
+    });
+  });
+
+  // Notes
+  const notesArea = document.getElementById('notes-area');
+  const saveNoteBtn = document.getElementById('save-note-btn');
+  const clearNoteBtn = document.getElementById('clear-note-btn');
+  if (notesArea) {
+    const saved = localStorage.getItem('dashboardNotes');
+    if (saved) notesArea.value = saved;
+  }
+  if (saveNoteBtn && notesArea) saveNoteBtn.addEventListener('click', () => {
+    const v = notesArea.value.trim();
+    if (!v) return showToast('Please write a note before saving.');
+    localStorage.setItem('dashboardNotes', v);
+    showToast('Notes saved');
+  });
+  if (clearNoteBtn && notesArea) clearNoteBtn.addEventListener('click', () => { notesArea.value = ''; localStorage.removeItem('dashboardNotes'); showToast('Notes cleared'); });
+
+  // Stopwatch
+  const stopwatchDisplay = document.getElementById('stopwatch-display');
+  let swInterval = null, swSec = 0, swMin = 0, swHour = 0;
+  function renderStopwatch() { if (stopwatchDisplay) stopwatchDisplay.textContent = `${String(swHour).padStart(2,'0')}:${String(swMin).padStart(2,'0')}:${String(swSec).padStart(2,'0')}`; }
+  const startBtn = document.getElementById('start-stopwatch');
+  const stopBtn = document.getElementById('stop-stopwatch');
+  const resetBtn = document.getElementById('reset-stopwatch');
+  if (startBtn) startBtn.addEventListener('click', () => { if (swInterval) return; swInterval = setInterval(() => { swSec++; if (swSec>=60){swSec=0; swMin++;} if (swMin>=60){swMin=0; swHour++;} renderStopwatch(); }, 1000); });
+  if (stopBtn) stopBtn.addEventListener('click', () => { clearInterval(swInterval); swInterval = null; });
+  if (resetBtn) resetBtn.addEventListener('click', () => { clearInterval(swInterval); swInterval=null; swSec=swMin=swHour=0; renderStopwatch(); });
+
+  // Background changer
+  const bgButton = document.getElementById('change-bg-btn');
+  if (bgButton) {
+    const backgrounds = ['#f4f4f4','#dbeafe','#dcfce7','#fae8ff','#ffe4e6'];
+    bgButton.addEventListener('click', () => {
+      const color = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+      document.body.style.background = color;
+      localStorage.setItem('dashboardBackground', color);
+    });
+    const storedBg = localStorage.getItem('dashboardBackground'); if (storedBg) document.body.style.background = storedBg;
+  }
+
+  // Theme buttons
+  document.querySelectorAll('.theme-btn').forEach(btn => btn.addEventListener('click', () => {
+    if (btn.classList.contains('blue-theme')) document.documentElement.style.setProperty('--primary', '#2563eb');
+    if (btn.classList.contains('green-theme')) document.documentElement.style.setProperty('--primary', '#10b981');
+    if (btn.classList.contains('purple-theme')) document.documentElement.style.setProperty('--primary', '#8b5cf6');
+  }));
+
+  // Search boxes
+  const searchInput = document.querySelector('.search-input');
+  const searchBtn = document.querySelector('.search-btn');
+  const boxes = document.querySelectorAll('.box');
+  function filterBoxes(q){ boxes.forEach(b => { const t = b.textContent.toLowerCase(); b.style.display = t.includes(q) ? 'flex' : 'none'; }); }
+  if (searchInput) searchInput.addEventListener('input', () => filterBoxes(searchInput.value.trim().toLowerCase()));
+  if (searchBtn && searchInput) searchBtn.addEventListener('click', () => { const v = searchInput.value.trim().toLowerCase(); if (!v) return showToast('Please enter a search term'); filterBoxes(v); });
+
+  // Chat support
+  const chatInput = document.querySelector('.chat-input-area input[type="text"]');
+  const chatSendButton = document.querySelector('.chat-input-area button');
+  const chatBox = document.querySelector('.chat-box');
+  if (chatSendButton && chatInput && chatBox) {
+    const send = () => {
+      const msg = chatInput.value.trim(); if (!msg) return showToast('Type a message before sending.');
+      const el = document.createElement('div'); el.className='chat-message sent'; el.innerHTML = `<p>${msg}</p>`; chatBox.appendChild(el); chatInput.value=''; chatBox.scrollTop = chatBox.scrollHeight;
+      setTimeout(()=>{ const r = document.createElement('div'); r.className='chat-message received'; r.innerHTML='<p>Thanks! We will review your request and respond shortly.</p>'; chatBox.appendChild(r); chatBox.scrollTop = chatBox.scrollHeight; }, 800);
+    };
+    chatSendButton.addEventListener('click', send);
+    chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); send(); } });
+  }
+
+  // Hydrate UI pieces
+  hydrateProgressBars();
+  updateAnalyticsCards();
+
+  // Calculator
+  const calcDisplay = document.getElementById('calc-display');
+  const calcButtons = document.querySelectorAll('.calc-btn');
+  const calcEquals = document.getElementById('calc-equals');
+  const calcClear = document.getElementById('calc-clear');
+  if (calcDisplay && calcButtons.length){ calcButtons.forEach(b => b.addEventListener('click', ()=>{ if (calcDisplay.value === 'Error') calcDisplay.value=''; calcDisplay.value += b.textContent; })); }
+  if (calcEquals && calcDisplay) calcEquals.addEventListener('click', ()=>{ const expr = calcDisplay.value.trim(); if (!expr) return showToast('Enter a calculation first.'); if (!isValidCalculatorExpression(expr)) { calcDisplay.value='Error'; return showToast('Invalid calculator input.'); } try{ calcDisplay.value = String(eval(expr)); } catch { calcDisplay.value='Error'; showToast('Invalid calculation.'); } });
+  if (calcClear && calcDisplay) calcClear.addEventListener('click', ()=> calcDisplay.value='');
+
+  // Task list persistence
+  function saveTaskState(){ const data = {}; document.querySelectorAll('.task-item').forEach(item=>{ const cb = item.querySelector("input[type='checkbox']"); const label = item.querySelector('span')?.textContent?.trim(); if (label && cb) data[label]=cb.checked; }); localStorage.setItem('dashboardTasks', JSON.stringify(data)); }
+  function loadTaskState(){ const stored = JSON.parse(localStorage.getItem('dashboardTasks')||'{}'); document.querySelectorAll('.task-item').forEach(item=>{ const cb = item.querySelector("input[type='checkbox']"); const label = item.querySelector('span')?.textContent?.trim(); if (label && cb && stored.hasOwnProperty(label)){ cb.checked = stored[label]; item.classList.toggle('completed', cb.checked); item.style.opacity = cb.checked ? '0.6' : '1'; } if (cb){ cb.addEventListener('change', ()=>{ item.classList.toggle('completed', cb.checked); item.style.opacity = cb.checked ? '0.6' : '1'; saveTaskState(); showToast((cb.checked? 'Completed: ':'Uncompleted: ')+ (label||'Task')); }); } }); }
+  loadTaskState();
+
+  // Quick action buttons
+  document.querySelectorAll('.quick-actions button').forEach(btn => btn.addEventListener('click', ()=> showToast(btn.textContent.trim() + ' executed')));
+
+  // Small hover interactions
+  document.querySelectorAll('.project-card').forEach(card => { card.addEventListener('mouseenter', ()=> card.style.transform='translateY(-6px)'); card.addEventListener('mouseleave', ()=> card.style.transform=''); });
+
 });
 
-
-/* =========================
-   SUPPORT CARD INTERACTIONS
-========================= */
-
-const supportCards = document.querySelectorAll(".support-card");
-supportCards.forEach((card) => {
-  card.style.cursor = "pointer";
-  card.addEventListener("click", () => {
-    const title = card.querySelector("h3")?.textContent || "Support";
-    showToast(`${title} support request initiated`);
-  });
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-4px)";
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "translateY(0)";
-  });
-});
-
-
-/* =========================
-   TEAM CARD INTERACTIONS
-========================= */
-
-const teamCards = document.querySelectorAll(".team-card");
-teamCards.forEach((card) => {
-  card.style.cursor = "pointer";
-  card.addEventListener("click", () => {
-    const name = card.querySelector("h3")?.textContent || "Team Member";
-    showToast(`${name} profile opened`);
-  });
-});
-
-
-/* =========================
-   STAT BOX INTERACTIONS
-========================= */
-
-const statBoxes = document.querySelectorAll(".stat-box");
-statBoxes.forEach((box) => {
-  box.style.cursor = "pointer";
-  box.addEventListener("click", () => {
-    const title = box.querySelector("h3")?.textContent || "Stat";
-    showToast(`${title} details expanded`);
-  });
-});
-
-
-/* =========================
-   NOTIFICATION INTERACTIONS
-========================= */
-
-const notifications = document.querySelectorAll(".notification");
-notifications.forEach((notif) => {
-  notif.style.cursor = "pointer";
-  notif.addEventListener("click", () => {
-    notif.style.opacity = "0.5";
-    showToast("Notification marked as read");
-  });
-});
