@@ -1,1416 +1,545 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Project</title>
-    <link rel="stylesheet" href="grid.css" />
-  </head>
 
-  <body>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Project</title>
+
+    <link rel="stylesheet"
+          href="grid.css">
+
+</head>
+
+<body>
+
     <!-- ================= NAVBAR ================= -->
+
     <nav class="navbar">
-      <div class="logo">sarathkumar Analytics</div>
-      <button type="button" id="menu-btn" class="button menu-btn">☰</button>
-      <div class="nav-right">
-        <div id="clock" class="clock">00:00:00</div>
-        <button type="button" id="dark-mode-btn" class="button">Dark</button>
-      </div>
+
+        <div class="logo">
+            My Dashboard
+        </div>
+
+        <button id="menu-btn"
+                class="button">
+
+            Menu
+
+        </button>
+
+        <div class="nav-right">
+
+            <div id="clock"
+                 class="clock">
+
+                00:00:00
+
+            </div>
+
+            <button id="dark-mode-btn"
+                    class="button">
+
+                Dark Mode
+
+            </button>
+
+        </div>
+
     </nav>
 
     <!-- ================= HEADER ================= -->
+
     <header class="header-section">
-      <h1>Dashboard</h1>
-      <p>Real-time analytics and insights</p>
+
+        <h1>Dashboard Project</h1>
+
+        <p>
+            Responsive Dashboard using
+            HTML, CSS and JavaScript
+        </p>
+
     </header>
+
+    <!-- ================= AUTH SECTION ================= -->
+
+    <section class="auth-section">
+
+        <!-- LOGIN -->
+
+        <div class="auth-card"
+             id="login-card">
+
+            <h2>Login</h2>
+
+            <input type="email"
+                   id="login-email"
+                   placeholder="Enter Email">
+
+            <input type="password"
+                   id="login-password"
+                   placeholder="Enter Password">
+
+            <button id="toggle-password-btn">
+
+                Show Password
+
+            </button>
+
+            <button id="login-btn">
+
+                Login
+
+            </button>
+
+        </div>
+
+        <!-- REGISTER -->
+
+        <div class="auth-card"
+             id="register-card">
+
+            <h2>Register</h2>
+
+            <input type="text"
+                   id="register-name"
+                   placeholder="Enter Name">
+
+            <input type="email"
+                   id="register-email"
+                   placeholder="Enter Email">
+
+            <input type="password"
+                   id="register-password"
+                   placeholder="Enter Password">
+
+            <button id="register-btn">
+
+                Register
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= USER INFO ================= -->
+
+    <section class="user-info">
+
+        <h3 id="welcome-user">
+
+            Welcome Guest
+
+        </h3>
+
+        <button id="logout-btn">
+
+            Logout
+
+        </button>
+
+    </section>
 
     <!-- ================= MAIN GRID ================= -->
 
     <main class="grid-container">
-      <!-- ================= SIDEBAR ================= -->
 
-      <aside class="sidebar-menu">
-        <h2>Control Panel</h2>
+        <!-- ================= SIDEBAR ================= -->
 
-        <ul>
-          <li>
-            <a href="#" class="nav-link active" data-page="home-page">Home</a>
-          </li>
+        <aside class="sidebar-menu">
 
-          <li>
-            <a href="#" class="nav-link" data-page="analytics-page"
-              >Analytics</a
-            >
-          </li>
+            <h2>Dashboard</h2>
 
-          <li>
-            <a href="#" class="nav-link" data-page="tasks-page">Tasks</a>
-          </li>
+            <ul>
 
-          <li>
-            <a href="#" class="nav-link" data-page="notes-page">Notes</a>
-          </li>
+                <li>
+                    <a href="#"
+                       class="nav-link active"
+                       data-page="home-page">
 
-          <li>
-            <a href="#" class="nav-link" data-page="reports-page">Reports</a>
-          </li>
+                        🏠 Home
 
-          <li>
-            <a href="#" class="nav-link" data-page="calendar-page">Calendar</a>
-          </li>
+                    </a>
+                </li>
 
-          <li>
-            <a href="#" class="nav-link" data-page="settings-page">Settings</a>
-          </li>
-        </ul>
-      </aside>
+                <li>
+                    <a href="#"
+                       class="nav-link"
+                       data-page="analytics-page">
 
-      <!-- ================= HOME PAGE ================= -->
+                        📊 Analytics
 
-      <div id="home-page" class="dashboard-page active-page">
-        <!-- STATS -->
+                    </a>
+                </li>
 
-        <section class="stats-container">
-          <div class="stat-box">
-            <h3>Monthly Revenue</h3>
+                <li>
+                    <a href="#"
+                       class="nav-link"
+                       data-page="tasks-page">
 
-            <p>$124,500</p>
-          </div>
+                        ✅ Tasks
 
-          <div class="stat-box">
-            <h3>Customer Growth</h3>
+                    </a>
+                </li>
 
-            <p>+18%</p>
-          </div>
+                <li>
+                    <a href="#"
+                       class="nav-link"
+                       data-page="notes-page">
 
-          <div class="stat-box">
-            <h3>Delivery Rate</h3>
+                        📝 Notes
 
-            <p>92%</p>
-          </div>
-        </section>
+                    </a>
+                </li>
 
-        <!-- SEARCH -->
+                <li>
+                    <a href="#"
+                       class="nav-link"
+                       data-page="settings-page">
 
-        <section class="search-section">
-          <input
-            type="text"
-            placeholder="Search here..."
-            class="search-input"
-          />
+                        ⚙ Settings
 
-          <button type="button" class="search-btn">Search</button>
-        </section>
+                    </a>
+                </li>
 
-        <!-- TECHNOLOGY BOXES -->
+            </ul>
 
-        <div class="boxes-container">
-          <div class="box box1">Operations</div>
+        </aside>
 
-          <div class="box box2">Sales</div>
+        <!-- ================= HOME PAGE ================= -->
 
-          <div class="box box3">Support</div>
+        <div id="home-page"
+             class="dashboard-page active-page">
 
-          <div class="box box4">Engineering</div>
+            <!-- STATS -->
 
-          <div class="box box5">Growth</div>
+            <section class="stats-container">
 
-          <div class="box box6">Strategy</div>
+                <div class="stat-box">
+
+                    <h3>Total Users</h3>
+
+                    <p>12,450</p>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <h3>Total Sales</h3>
+
+                    <p>$24,000</p>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <h3>Projects</h3>
+
+                    <p>32 Active</p>
+
+                </div>
+
+            </section>
+
+            <!-- SEARCH -->
+
+            <section class="search-section">
+
+                <input type="text"
+                       placeholder="Search here..."
+                       class="search-input">
+
+                <button class="search-btn">
+
+                    Search
+
+                </button>
+
+            </section>
+
+            <!-- TECHNOLOGY BOXES -->
+
+            <div class="box box1">HTML</div>
+
+            <div class="box box2">CSS</div>
+
+            <div class="box box3">JavaScript</div>
+
+            <div class="box box4">React</div>
+
+            <div class="box box5">Node.js</div>
+
+            <div class="box box6">MongoDB</div>
+
+            <!-- PROGRESS -->
+
+            <section class="progress-section">
+
+                <h2>Project Progress</h2>
+
+                <div class="progress-card">
+
+                    <p>HTML</p>
+
+                    <div class="progress-bar">
+
+                        <div class="progress html-progress"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="progress-card">
+
+                    <p>CSS</p>
+
+                    <div class="progress-bar">
+
+                        <div class="progress css-progress"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="progress-card">
+
+                    <p>JavaScript</p>
+
+                    <div class="progress-bar">
+
+                        <div class="progress js-progress"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- PROFILE -->
+
+            <section class="profile-card">
+
+                <img src="https://via.placeholder.com/120"
+                     alt="Profile Image"
+                     class="profile-image">
+
+                <h3>Adharsh</h3>
+
+                <p>Frontend Developer</p>
+
+                <button class="button">
+
+                    View Profile
+
+                </button>
+
+            </section>
+
+            <!-- NOTIFICATIONS -->
+
+            <section class="notification-panel">
+
+                <h2>Notifications</h2>
+
+                <div class="notification">
+                    ✅ New user registered
+                </div>
+
+                <div class="notification">
+                    🚀 Project deployed successfully
+                </div>
+
+                <div class="notification">
+                    🔔 New message received
+                </div>
+
+            </section>
+
+            <!-- EXTRA CONTENT -->
+
+            <section class="extra-content">
+
+                <h2>Latest Updates</h2>
+
+                <p>
+                    This dashboard is fully responsive
+                    and ready for future JavaScript integration.
+                </p>
+
+            </section>
+
         </div>
-        <section class="projects-section">
-          <h2>Strategic Initiatives</h2>
-
-          <div class="projects-container">
-            <div class="project-card">
-              <h3>Revenue Dashboard</h3>
-              <p>
-                End-to-end analytics for customer acquisition and retention.
-              </p>
-              <button type="button">View Details</button>
-            </div>
-
-            <div class="project-card">
-              <h3>Launch Campaign</h3>
-              <p>
-                Cross-functional campaign tracking with real-time performance
-                data.
-              </p>
-              <button type="button">View Details</button>
-            </div>
-
-            <div class="project-card">
-              <h3>Product Roadmap</h3>
-              <p>
-                Delivery milestones and team velocity for upcoming releases.
-              </p>
-              <button type="button">View Details</button>
-            </div>
-          </div>
-        </section>
-        <section class="quick-actions">
-          <h2>Quick Actions</h2>
-
-          <div class="actions-container">
-            <button type="button">➕ Add User</button>
-            <button type="button">📊 Generate Report</button>
-            <button type="button">📁 Upload File</button>
-            <button type="button">⚙ Settings</button>
-          </div>
-        </section>
-
-        <!-- PROGRESS -->
-
-        <section class="progress-section">
-          <h2>Project Progress</h2>
-
-          <div class="progress-card">
-            <p>HTML</p>
-
-            <div class="progress-bar">
-              <div class="progress html-progress" data-progress="85"></div>
-            </div>
-          </div>
-
-          <div class="progress-card">
-            <p>CSS</p>
-
-            <div class="progress-bar">
-              <div class="progress css-progress" data-progress="90"></div>
-            </div>
-          </div>
-
-          <div class="progress-card">
-            <p>JavaScript</p>
-
-            <div class="progress-bar">
-              <div class="progress js-progress" data-progress="75"></div>
-            </div>
-          </div>
-        </section>
-        <section class="welcome-banner">
-          <div class="welcome-text">
-            <h2>Welcome Back, sarathkumar 👋</h2>
-
-            <p>
-              Track your projects, analytics and activities in one modern
-              dashboard.
-            </p>
-
-            <button type="button">Get Started</button>
-          </div>
-
-          <div class="welcome-image">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
-              alt="Dashboard welcome illustration"
-            />
-          </div>
-        </section>
-
-        <!-- PROFILE -->
-
-        <section class="profile-card">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            alt="Profile Image"
-            class="profile-image"
-          />
-          <h3>sarathkumar</h3>
-
-          <p>Product Operations Lead</p>
-
-          <button type="button" class="button">View Summary</button>
-        </section>
-
-        <!-- NOTIFICATIONS -->
-
-        <section class="notification-panel">
-          <h2>Notifications</h2>
-
-          <div class="notification">✅ New user registered</div>
-
-          <div class="notification">🚀 Project deployed successfully</div>
-
-          <div class="notification">🔔 New message received</div>
-        </section>
-        <section class="activity-section">
-          <h2>Operational Activity</h2>
-
-          <div class="activity-card">
-            <span>🟢</span>
-            <p>Sales pipeline review completed</p>
-          </div>
-
-          <div class="activity-card">
-            <span>📁</span>
-            <p>Q3 roadmap milestone achieved</p>
-          </div>
-
-          <div class="activity-card">
-            <span>🚀</span>
-            <p>New campaign launched successfully</p>
-          </div>
-
-          <div class="activity-card">
-            <span>📊</span>
-            <p>Weekly performance report generated</p>
-          </div>
-        </section>
-
-        <section class="support-section">
-          <h2>Support Summary</h2>
-
-          <div class="support-grid">
-            <div class="support-card">
-              <h3>Open Tickets</h3>
-              <p>14 pending requests</p>
-            </div>
-            <div class="support-card">
-              <h3>Average SLA</h3>
-              <p>2h 18m response time</p>
-            </div>
-            <div class="support-card">
-              <h3>Resolved Today</h3>
-              <p>22 tickets closed</p>
-            </div>
-            <div class="support-card">
-              <h3>Customer Rating</h3>
-              <p>4.9 / 5.0</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="team-section">
-          <h2>Team Members</h2>
-
-          <div class="team-container">
-            <div class="team-card">
-              <img src="https://i.pravatar.cc/150?img=1" alt="Team Member" />
-
-              <h3>Rahul</h3>
-
-              <p>UI Designer</p>
-            </div>
-
-            <div class="team-card">
-              <img src="https://i.pravatar.cc/150?img=2" alt="Team Member" />
-
-              <h3>sarathkumar</h3>
-
-              <p>Frontend Developer</p>
-            </div>
-
-            <div class="team-card">
-              <img src="https://i.pravatar.cc/150?img=3" alt="Team Member" />
-
-              <h3>Krishna</h3>
-
-              <p>Backend Developer</p>
-            </div>
-          </div>
-        </section>
-        <!-- ================= SALES OVERVIEW ================= -->
-
-        <section class="sales-overview">
-          <h2>Sales Overview</h2>
-
-          <div class="sales-grid">
-            <div class="sales-card">
-              <h3>Total Sales</h3>
-              <p>$250,000</p>
-              <span>+24% this month</span>
-            </div>
-
-            <div class="sales-card">
-              <h3>Pending Orders</h3>
-              <p>142</p>
-              <span>12 need approval</span>
-            </div>
-
-            <div class="sales-card">
-              <h3>Active Clients</h3>
-              <p>1,248</p>
-              <span>+76 new clients</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= RECENT TRANSACTIONS ================= -->
-
-        <section class="transactions-section">
-          <h2>Recent Transactions</h2>
-
-          <table class="transaction-table">
-            <thead>
-              <tr>
-                <th>Client</th>
-                <th>Project</th>
-                <th>Status</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Microsoft</td>
-                <td>Cloud Analytics</td>
-                <td>Completed</td>
-                <td>$12,500</td>
-              </tr>
-
-              <tr>
-                <td>Google</td>
-                <td>Marketing AI</td>
-                <td>Pending</td>
-                <td>$8,200</td>
-              </tr>
-
-              <tr>
-                <td>Amazon</td>
-                <td>Operations System</td>
-                <td>In Progress</td>
-                <td>$15,900</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <!-- ================= EVENT TIMELINE ================= -->
-
-        <section class="timeline-section">
-          <h2>Activity Timeline</h2>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <span class="timeline-dot"></span>
-              <div class="timeline-content">
-                <h3>Project Started</h3>
-                <p>Dashboard redesign initiated.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-dot"></span>
-              <div class="timeline-content">
-                <h3>Team Meeting</h3>
-                <p>Weekly sprint review completed.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-dot"></span>
-              <div class="timeline-content">
-                <h3>Deployment</h3>
-                <p>New analytics module deployed successfully.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= WEATHER CARD ================= -->
-
-        <section class="weather-section">
-          <h2>Weather Widget</h2>
-
-          <div class="weather-card">
-            <h3>Hyderabad</h3>
-            <p>🌤 32°C</p>
-            <span>Partly Cloudy</span>
-          </div>
-        </section>
-
-        <!-- ================= PRODUCTIVITY SECTION ================= -->
-
-        <section class="productivity-section">
-          <h2>Team Productivity</h2>
-
-          <div class="productivity-container">
-            <div class="productivity-card">
-              <h3>Design Team</h3>
-
-              <div class="progress-bar">
-                <div class="progress" style="width: 82%"></div>
-              </div>
-
-              <span>82%</span>
-            </div>
-
-            <div class="productivity-card">
-              <h3>Development Team</h3>
-
-              <div class="progress-bar">
-                <div class="progress" style="width: 91%"></div>
-              </div>
-
-              <span>91%</span>
-            </div>
-
-            <div class="productivity-card">
-              <h3>Marketing Team</h3>
-
-              <div class="progress-bar">
-                <div class="progress" style="width: 74%"></div>
-              </div>
-
-              <span>74%</span>
-            </div>
-          </div>
-        </section>
-        <!-- ================= CALENDAR SECTION ================= -->
-
-        <section class="calendar-section">
-          <h2>Upcoming Meetings</h2>
-
-          <div class="calendar-container">
-            <div class="calendar-card">
-              <h3>Team Sync</h3>
-              <p>Monday - 10:00 AM</p>
-            </div>
-
-            <div class="calendar-card">
-              <h3>Client Review</h3>
-              <p>Tuesday - 2:30 PM</p>
-            </div>
-
-            <div class="calendar-card">
-              <h3>Project Demo</h3>
-              <p>Friday - 4:00 PM</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= MESSAGE SECTION ================= -->
-
-        <section class="messages-section">
-          <h2>Recent Messages</h2>
-
-          <div class="message-card">
-            <img src="https://i.pravatar.cc/100?img=11" alt="User" />
-
-            <div>
-              <h3>Rahul</h3>
-              <p>Can you review the dashboard updates?</p>
-            </div>
-          </div>
-
-          <div class="message-card">
-            <img src="https://i.pravatar.cc/100?img=12" alt="User" />
-
-            <div>
-              <h3>Krishna</h3>
-              <p>The backend API deployment is completed.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= STORAGE SECTION ================= -->
-
-        <section class="storage-section">
-          <h2>Cloud Storage</h2>
-
-          <div class="storage-card">
-            <h3>Used Storage</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 68%"></div>
-            </div>
-
-            <p>68GB / 100GB Used</p>
-          </div>
-        </section>
-
-        <!-- ================= GOALS SECTION ================= -->
-
-        <section class="goals-section">
-          <h2>Quarterly Goals</h2>
-
-          <div class="goal-card">
-            <h3>Increase Revenue</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 75%"></div>
-            </div>
-
-            <span>75% Completed</span>
-          </div>
-
-          <div class="goal-card">
-            <h3>Improve Customer Satisfaction</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 88%"></div>
-            </div>
-
-            <span>88% Completed</span>
-          </div>
-        </section>
-
-        <!-- ================= FAQ SECTION ================= -->
-
-        <section class="faq-section">
-          <h2>Frequently Asked Questions</h2>
-
-          <div class="faq-card">
-            <h3>How to generate reports?</h3>
-            <p>Go to analytics page and click Generate Report.</p>
-          </div>
-
-          <div class="faq-card">
-            <h3>How to add new users?</h3>
-            <p>Use the Add User button in Quick Actions.</p>
-          </div>
-        </section>
-        <!-- ================= LIVE CHAT SUPPORT ================= -->
-
-        <section class="chat-support-section">
-          <h2>Live Support</h2>
-
-          <div class="chat-box">
-            <div class="chat-message received">
-              <p>Hello! How can we help you today?</p>
-            </div>
-
-            <div class="chat-message sent">
-              <p>I need the latest analytics report.</p>
-            </div>
-
-            <div class="chat-input-area">
-              <input type="text" placeholder="Type your message..." />
-
-              <button type="button">Send</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= ACHIEVEMENTS SECTION ================= -->
-
-        <section class="achievement-section">
-          <h2>Achievements</h2>
-
-          <div class="achievement-container">
-            <div class="achievement-card">
-              <h3>🏆 Best Team</h3>
-              <p>Awarded for excellent performance.</p>
-            </div>
-
-            <div class="achievement-card">
-              <h3>🚀 Fast Deployment</h3>
-              <p>Deployment completed in record time.</p>
-            </div>
-
-            <div class="achievement-card">
-              <h3>⭐ Top Rated</h3>
-              <p>Customer satisfaction reached 4.9/5.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= EMPLOYEE PERFORMANCE ================= -->
-
-        <section class="employee-performance">
-          <h2>Employee Performance</h2>
-
-          <div class="employee-card">
-            <h3>Rahul</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 90%"></div>
-            </div>
-
-            <span>90% Performance</span>
-          </div>
-
-          <div class="employee-card">
-            <h3>Krishna</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 82%"></div>
-            </div>
-
-            <span>82% Performance</span>
-          </div>
-
-          <div class="employee-card">
-            <h3>Sarathkumar</h3>
-
-            <div class="progress-bar">
-              <div class="progress" style="width: 95%"></div>
-            </div>
-
-            <span>95% Performance</span>
-          </div>
-        </section>
-
-        <!-- ================= ANNOUNCEMENTS ================= -->
-
-        <section class="announcement-section">
-          <h2>Company Announcements</h2>
-
-          <div class="announcement-card">
-            📢 Annual company meetup scheduled for July 15.
-          </div>
-
-          <div class="announcement-card">
-            🎉 New analytics feature released successfully.
-          </div>
-
-          <div class="announcement-card">
-            🔔 Security updates completed on all systems.
-          </div>
-        </section>
-
-        <!-- ================= MINI GALLERY ================= -->
-
-        <section class="gallery-section">
-          <h2>Project Gallery</h2>
-
-          <div class="gallery-grid">
-            <img src="https://picsum.photos/300/200?1" alt="Gallery Image" />
-
-            <img src="https://picsum.photos/300/200?2" alt="Gallery Image" />
-
-            <img src="https://picsum.photos/300/200?3" alt="Gallery Image" />
-          </div>
-        </section>
-        <!-- ================= FINANCE SECTION ================= -->
-
-        <section class="finance-section">
-          <h2>Finance Overview</h2>
-
-          <div class="finance-grid">
-            <div class="finance-card">
-              <h3>Total Income</h3>
-              <p>$420,000</p>
-              <span>+18% increase</span>
-            </div>
-
-            <div class="finance-card">
-              <h3>Total Expenses</h3>
-              <p>$210,000</p>
-              <span>Stable this month</span>
-            </div>
-
-            <div class="finance-card">
-              <h3>Net Profit</h3>
-              <p>$210,000</p>
-              <span>Excellent growth</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= CLIENT SECTION ================= -->
-
-        <section class="client-section">
-          <h2>Top Clients</h2>
-
-          <div class="client-container">
-            <div class="client-card">
-              <img src="https://i.pravatar.cc/120?img=20" alt="Client" />
-
-              <h3>Microsoft</h3>
-              <p>Cloud Services</p>
-            </div>
-
-            <div class="client-card">
-              <img src="https://i.pravatar.cc/120?img=21" alt="Client" />
-
-              <h3>Google</h3>
-              <p>Marketing Analytics</p>
-            </div>
-
-            <div class="client-card">
-              <img src="https://i.pravatar.cc/120?img=22" alt="Client" />
-
-              <h3>Amazon</h3>
-              <p>Operations Platform</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= DARK STATS ================= -->
-
-        <section class="dark-stats-section">
-          <h2>Server Statistics</h2>
-
-          <div class="dark-stats-grid">
-            <div class="dark-stat-card">
-              <h3>CPU Usage</h3>
-              <p>68%</p>
-            </div>
-
-            <div class="dark-stat-card">
-              <h3>RAM Usage</h3>
-              <p>74%</p>
-            </div>
-
-            <div class="dark-stat-card">
-              <h3>Storage</h3>
-              <p>82%</p>
-            </div>
-
-            <div class="dark-stat-card">
-              <h3>Network</h3>
-              <p>59%</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= TODO SECTION ================= -->
-
-        <section class="todo-section">
-          <h2>Daily Tasks</h2>
-
-          <div class="todo-container">
-            <label class="todo-item">
-              <input type="checkbox" />
-              Complete analytics report
-            </label>
-
-            <label class="todo-item">
-              <input type="checkbox" />
-              Attend client meeting
-            </label>
-
-            <label class="todo-item">
-              <input type="checkbox" />
-              Deploy new update
-            </label>
-
-            <label class="todo-item">
-              <input type="checkbox" />
-              Backup database
-            </label>
-          </div>
-        </section>
-
-        <!-- ================= NEWS SECTION ================= -->
-
-        <section class="news-section">
-          <h2>Latest Tech News</h2>
-
-          <div class="news-card">
-            <h3>AI Technology Growing Rapidly</h3>
-            <p>New AI systems are transforming enterprise software.</p>
-          </div>
-
-          <div class="news-card">
-            <h3>Cloud Computing Expansion</h3>
-            <p>Companies continue shifting services to cloud platforms.</p>
-          </div>
-
-          <div class="news-card">
-            <h3>Cybersecurity Updates</h3>
-            <p>Modern dashboards now include advanced protection systems.</p>
-          </div>
-        </section>
-        <!-- ================= AI ANALYTICS SECTION ================= -->
-
-        <section class="ai-section">
-          <h2>AI Analytics</h2>
-
-          <div class="ai-grid">
-            <div class="ai-card">
-              <h3>Prediction Accuracy</h3>
-              <p>96%</p>
-            </div>
-
-            <div class="ai-card">
-              <h3>AI Requests</h3>
-              <p>12,450</p>
-            </div>
-
-            <div class="ai-card">
-              <h3>Automation Tasks</h3>
-              <p>328 Active</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= USER ACTIVITY ================= -->
-
-        <section class="user-activity-section">
-          <h2>User Activity</h2>
-
-          <div class="activity-table">
-            <div class="activity-row">
-              <span>Rahul logged in</span>
-              <small>2 mins ago</small>
-            </div>
-
-            <div class="activity-row">
-              <span>Krishna uploaded report</span>
-              <small>10 mins ago</small>
-            </div>
-
-            <div class="activity-row">
-              <span>New client registered</span>
-              <small>25 mins ago</small>
-            </div>
-
-            <div class="activity-row">
-              <span>Server backup completed</span>
-              <small>1 hour ago</small>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= SYSTEM STATUS ================= -->
-
-        <section class="system-status-section">
-          <h2>System Status</h2>
-
-          <div class="status-grid">
-            <div class="status-card online">
-              <h3>Database</h3>
-              <p>Online</p>
-            </div>
-
-            <div class="status-card online">
-              <h3>API Server</h3>
-              <p>Running</p>
-            </div>
-
-            <div class="status-card warning">
-              <h3>Storage</h3>
-              <p>75% Used</p>
-            </div>
-
-            <div class="status-card offline">
-              <h3>Mail Service</h3>
-              <p>Maintenance</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= TEAM LEADERBOARD ================= -->
-
-        <section class="leaderboard-section">
-          <h2>Team Leaderboard</h2>
-
-          <div class="leaderboard-card">
-            <span>#1 Sarathkumar</span>
-            <strong>980 Points</strong>
-          </div>
-
-          <div class="leaderboard-card">
-            <span>#2 Rahul</span>
-            <strong>870 Points</strong>
-          </div>
-
-          <div class="leaderboard-card">
-            <span>#3 Krishna</span>
-            <strong>790 Points</strong>
-          </div>
-        </section>
-
-        <!-- ================= SERVER LOGS ================= -->
-
-        <section class="logs-section">
-          <h2>Server Logs</h2>
-
-          <div class="log-box">
-            <p>[INFO] Server started successfully.</p>
-            <p>[WARNING] Storage reaching limit.</p>
-            <p>[SUCCESS] Database backup completed.</p>
-            <p>[INFO] New deployment released.</p>
-          </div>
-        </section>
-
-        <!-- ================= PREMIUM MEMBERS ================= -->
-
-        <section class="premium-section">
-          <h2>Premium Members</h2>
-
-          <div class="premium-grid">
-            <div class="premium-card">
-              <img src="https://i.pravatar.cc/150?img=31" alt="Premium User" />
-
-              <h3>Rohit</h3>
-              <p>Gold Member</p>
-            </div>
-
-            <div class="premium-card">
-              <img src="https://i.pravatar.cc/150?img=32" alt="Premium User" />
-
-              <h3>Anjali</h3>
-              <p>Platinum Member</p>
-            </div>
-
-            <div class="premium-card">
-              <img src="https://i.pravatar.cc/150?img=33" alt="Premium User" />
-
-              <h3>Vikram</h3>
-              <p>Diamond Member</p>
-            </div>
-          </div>
-          
-        </section>
-        <!-- ================= SALES CHART SECTION ================= -->
-
-        <section class="sales-chart-section">
-          <h2>Monthly Sales</h2>
-
-          <div class="chart-bars">
-            <div class="bar-item">
-              <div class="bar jan"></div>
-              <span>Jan</span>
-            </div>
-
-            <div class="bar-item">
-              <div class="bar feb"></div>
-              <span>Feb</span>
-            </div>
-
-            <div class="bar-item">
-              <div class="bar mar"></div>
-              <span>Mar</span>
-            </div>
-
-            <div class="bar-item">
-              <div class="bar apr"></div>
-              <span>Apr</span>
-            </div>
-
-            <div class="bar-item">
-              <div class="bar may"></div>
-              <span>May</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= USER REVIEW SECTION ================= -->
-
-        <section class="review-section">
-          <h2>User Reviews</h2>
-
-          <div class="review-container">
-            <div class="review-card">
-              <h3>Rahul</h3>
-              <p>
-                Amazing dashboard UI with excellent performance and
-                responsiveness.
-              </p>
-              <span>⭐⭐⭐⭐⭐</span>
-            </div>
-
-            <div class="review-card">
-              <h3>Anjali</h3>
-              <p>Very professional admin panel design and smooth experience.</p>
-              <span>⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= LIVE VISITORS ================= -->
-
-        <section class="visitor-section">
-          <h2>Live Visitors</h2>
-
-          <div class="visitor-grid">
-            <div class="visitor-card">
-              <h3>India</h3>
-              <p>2,430 Users</p>
-            </div>
-
-            <div class="visitor-card">
-              <h3>USA</h3>
-              <p>1,120 Users</p>
-            </div>
-
-            <div class="visitor-card">
-              <h3>Germany</h3>
-              <p>670 Users</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= FEATURE CARDS ================= -->
-
-        <section class="feature-section">
-          <h2>Dashboard Features</h2>
-
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h3>⚡ Fast Performance</h3>
-              <p>Optimized and responsive dashboard layout.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>🔒 Secure Access</h3>
-              <p>Protected authentication and user management.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>📊 Advanced Analytics</h3>
-              <p>Real-time insights and operational reports.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= DOWNLOAD REPORTS ================= -->
-
-        <section class="download-section">
-          <h2>Reports Center</h2>
-
-          <div class="download-container">
-            <button type="button">📄 Download PDF Report</button>
-
-            <button type="button">📊 Export Analytics</button>
-
-            <button type="button">📁 Download Backup</button>
-          </div>
-        </section>
-
-        <!-- ================= SOCIAL MEDIA SECTION ================= -->
-
-        <section class="social-section">
-          <h2>Social Media Traffic</h2>
-
-          <div class="social-card facebook">
-            <h3>Facebook</h3>
-            <p>14K Visitors</p>
-          </div>
-
-          <div class="social-card instagram">
-            <h3>Instagram</h3>
-            <p>9K Visitors</p>
-          </div>
-
-          <div class="social-card twitter">
-            <h3>Twitter</h3>
-            <p>6K Visitors</p>
-          </div>
-        </section>
-        <!-- ================= KANBAN BOARD ================= -->
-
-<section class="kanban-section">
-  <h2>Project Board</h2>
-
-  <div class="kanban-board">
-
-    <div class="kanban-column">
-      <h3>To Do</h3>
-
-      <div class="kanban-task">Design Login Page</div>
-      <div class="kanban-task">Create API Docs</div>
-    </div>
-
-    <div class="kanban-column">
-      <h3>In Progress</h3>
-
-      <div class="kanban-task">Dashboard Development</div>
-      <div class="kanban-task">Testing Modules</div>
-    </div>
-
-    <div class="kanban-column">
-      <h3>Completed</h3>
-
-      <div class="kanban-task">UI Design</div>
-      <div class="kanban-task">Database Setup</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= PROJECT TABLE ================= -->
-
-<section class="project-table-section">
-  <h2>Recent Projects</h2>
-
-  <table class="project-table">
-
-    <tr>
-      <th>Project</th>
-      <th>Status</th>
-      <th>Progress</th>
-    </tr>
-
-    <tr>
-      <td>Admin Dashboard</td>
-      <td>Active</td>
-      <td>85%</td>
-    </tr>
-
-    <tr>
-      <td>E-Commerce Site</td>
-      <td>Testing</td>
-      <td>70%</td>
-    </tr>
-
-    <tr>
-      <td>Portfolio Website</td>
-      <td>Completed</td>
-      <td>100%</td>
-    </tr>
-
-  </table>
-</section>
-
-<!-- ================= ATTENDANCE ================= -->
-
-<section class="attendance-section">
-  <h2>Team Attendance</h2>
-
-  <div class="attendance-grid">
-
-    <div class="attendance-card">
-      <h3>Present</h3>
-      <p>24</p>
-    </div>
-
-    <div class="attendance-card">
-      <h3>Absent</h3>
-      <p>3</p>
-    </div>
-
-    <div class="attendance-card">
-      <h3>On Leave</h3>
-      <p>2</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= SYSTEM HEALTH ================= -->
-
-<section class="health-section">
-  <h2>System Health</h2>
-
-  <div class="health-card">
-    <span>CPU</span>
-    <div class="health-bar">
-      <div class="health-fill cpu"></div>
-    </div>
-  </div>
-
-  <div class="health-card">
-    <span>Memory</span>
-    <div class="health-bar">
-      <div class="health-fill memory"></div>
-    </div>
-  </div>
-
-  <div class="health-card">
-    <span>Network</span>
-    <div class="health-bar">
-      <div class="health-fill network"></div>
-    </div>
-  </div>
-</section>
-
-        <!-- EXTRA CONTENT -->
-
-        <section class="extra-content">
-          <h2>Latest Updates</h2>
-
-          <p>
-            This dashboard is fully responsive and ready for future JavaScript
-            integration.
-          </p>
-        </section>
-      </div>
-
-      <!-- ================= ANALYTICS PAGE ================= -->
-
-      <div id="analytics-page" class="dashboard-page">
-        <section class="analytics-section">
-          <div class="analytics-card">
-            <h3>Total Revenue</h3>
-
-            <p>$45,000</p>
-
-            <span>+12% this month</span>
-          </div>
-
-          <div class="analytics-card">
-            <h3>New Users</h3>
-
-            <p>1,245</p>
-
-            <span>+8% this week</span>
-          </div>
-
-          <div class="analytics-card">
-            <h3>Orders</h3>
-
-            <p>320</p>
-
-            <span>+15% today</span>
-          </div>
-
-          <div class="analytics-card">
-            <h3>Performance</h3>
-
-            <p>89%</p>
-
-            <span>Excellent</span>
-          </div>
-        </section>
-
-        <section class="chart-section">
-          <h2>Performance Overview</h2>
-          <div class="chart-grid">
-            <div class="chart-card">
-              <span>Productivity</span>
-              <strong>78%</strong>
-            </div>
-            <div class="chart-card">
-              <span>Engagement</span>
-              <strong>92%</strong>
-            </div>
-            <div class="chart-card">
-              <span>Conversion</span>
-              <strong>6.8%</strong>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================= TASKS PAGE ================= -->
-
-      <div id="tasks-page" class="dashboard-page">
-        <section class="task-list-section">
-          <h2>Task Management</h2>
-
-          <div class="task-list">
-            <label class="task-item">
-              <input type="checkbox" checked />
-              <span>Finalize quarterly budget</span>
-            </label>
-            <label class="task-item">
-              <input type="checkbox" />
-              <span>Review customer feedback survey</span>
-            </label>
-            <label class="task-item">
-              <input type="checkbox" />
-              <span>Prep metrics for stakeholder meeting</span>
-            </label>
-            <label class="task-item">
-              <input type="checkbox" />
-              <span>Update project roadmap</span>
-            </label>
-          </div>
-        </section>
-
-        <section class="calculator-section">
-          <h2>Calculator</h2>
-
-          <input type="text" id="calc-display" readonly />
-
-          <div class="calc-buttons">
-            <button type="button" class="calc-btn">7</button>
-            <button type="button" class="calc-btn">8</button>
-            <button type="button" class="calc-btn">9</button>
-            <button type="button" class="calc-btn">/</button>
-
-            <button type="button" class="calc-btn">4</button>
-            <button type="button" class="calc-btn">5</button>
-            <button type="button" class="calc-btn">6</button>
-            <button type="button" class="calc-btn">*</button>
-
-            <button type="button" class="calc-btn">1</button>
-            <button type="button" class="calc-btn">2</button>
-            <button type="button" class="calc-btn">3</button>
-            <button type="button" class="calc-btn">-</button>
-
-            <button type="button" class="calc-btn">0</button>
-            <button type="button" class="calc-btn">.</button>
-            <button type="button" id="calc-equals">=</button>
-            <button type="button" class="calc-btn">+</button>
-          </div>
-
-          <button type="button" id="calc-clear">Clear</button>
-        </section>
-
-        <section class="stopwatch-section">
-          <h2>Stopwatch</h2>
-
-          <div id="stopwatch-display">00:00:00</div>
-
-          <div class="stopwatch-buttons">
-            <button type="button" id="start-stopwatch">Start</button>
-            <button type="button" id="stop-stopwatch">Stop</button>
-            <button type="button" id="reset-stopwatch">Reset</button>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================= NOTES PAGE ================= -->
-
-      <div id="notes-page" class="dashboard-page">
-        <section class="notes-section">
-          <h2>Quick Notes</h2>
-
-          <textarea
-            id="notes-area"
-            placeholder="Write notes here..."
-          ></textarea>
-
-          <button type="button" id="save-note-btn">Save Notes</button>
-          <button
-            type="button"
-            id="clear-note-btn"
-            class="button secondary-btn"
-          >
-            Clear Notes
-          </button>
-        </section>
-      </div>
-
-      <!-- ================= REPORTS PAGE ================= -->
-
-      <div id="reports-page" class="dashboard-page">
-        <section class="reports-section">
-          <h2>Reports</h2>
-          <p class="placeholder-text">
-            Access performance summaries, export insights, and review saved analytics.
-          </p>
-        </section>
-      </div>
-
-      <!-- ================= CALENDAR PAGE ================= -->
-
-      <div id="calendar-page" class="dashboard-page">
-        <section class="calendar-page-section">
-          <h2>Calendar</h2>
-          <p class="placeholder-text">
-            See upcoming events, meetings, and key milestones for the next 30 days.
-          </p>
-        </section>
-      </div>
-
-      <!-- ================= SETTINGS PAGE ================= -->
-
-      <div id="settings-page" class="dashboard-page">
-        <section class="theme-section">
-          <h2>Theme Colors</h2>
-
-          <div class="theme-buttons">
-            <button type="button" class="theme-btn blue-theme">Blue</button>
-
-            <button type="button" class="theme-btn green-theme">Green</button>
-
-            <button type="button" class="theme-btn purple-theme">Purple</button>
-          </div>
-        </section>
-
-        <section class="background-section">
-          <h2>Background Generator</h2>
-
-          <button type="button" id="change-bg-btn">Change Background</button>
-        </section>
-      </div>
+
+        <!-- ================= ANALYTICS PAGE ================= -->
+
+        <div id="analytics-page"
+             class="dashboard-page">
+
+            <section class="analytics-section">
+
+                <div class="analytics-card">
+
+                    <h3>Total Revenue</h3>
+
+                    <p>$45,000</p>
+
+                    <span>+12% this month</span>
+
+                </div>
+
+                <div class="analytics-card">
+
+                    <h3>New Users</h3>
+
+                    <p>1,245</p>
+
+                    <span>+8% this week</span>
+
+                </div>
+
+                <div class="analytics-card">
+
+                    <h3>Orders</h3>
+
+                    <p>320</p>
+
+                    <span>+15% today</span>
+
+                </div>
+
+                <div class="analytics-card">
+
+                    <h3>Performance</h3>
+
+                    <p>89%</p>
+
+                    <span>Excellent</span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ================= TASKS PAGE ================= -->
+
+        <div id="tasks-page"
+             class="dashboard-page">
+
+            <section class="calculator-section">
+
+                <h2>Calculator</h2>
+
+                <input type="text"
+                       id="calc-display"
+                       readonly>
+
+            </section>
+
+            <section class="stopwatch-section">
+
+                <h2>Stopwatch</h2>
+
+                <div id="stopwatch-display">
+
+                    00:00:00
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ================= NOTES PAGE ================= -->
+
+        <div id="notes-page"
+             class="dashboard-page">
+
+            <section class="notes-section">
+
+                <h2>Quick Notes</h2>
+
+                <textarea id="notes-area"
+                          placeholder="Write notes here..."></textarea>
+
+                <button id="save-note-btn">
+
+                    Save Notes
+
+                </button>
+
+            </section>
+
+        </div>
+
+        <!-- ================= SETTINGS PAGE ================= -->
+
+        <div id="settings-page"
+             class="dashboard-page">
+
+            <section class="theme-section">
+
+                <h2>Theme Colors</h2>
+
+                <div class="theme-buttons">
+
+                    <button class="theme-btn blue-theme">
+
+                        Blue
+
+                    </button>
+
+                    <button class="theme-btn green-theme">
+
+                        Green
+
+                    </button>
+
+                    <button class="theme-btn purple-theme">
+
+                        Purple
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section class="background-section">
+
+                <h2>Background Generator</h2>
+
+                <button id="change-bg-btn">
+
+                    Change Background
+
+                </button>
+
+            </section>
+
+        </div>
+
     </main>
 
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
-      <p>© 2026 sarathkumar Analytics</p>
+
+        <p>
+            © 2026 My Dashboard Project
+        </p>
+
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
 
-    <div id="toast" class="toast"></div>
     <script src="pro.js"></script>
-  </body>
+
+</body>
+
 </html>
