@@ -1,13 +1,9 @@
-
 .content{
     gap: 20px;
-   justify-content: center;
+    justify-content: center;
     display: flex;
     align-items: center;
     height: 100vh;
-
-
-
 }
 .box{
     flex: 1;
@@ -19,26 +15,3 @@
     display: flex;
     justify-content: center;
 }
-=======
-.content{
-    gap: 20px;
-   justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-
-
-
-}
-.box{
-    flex: 1;
-    background-color: skyblue;
-    padding: 30px;
-    text-align: center;
-    height: 100px;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
->>>>>>> c860afaad4484b0fed0b0fda140a668915578fe1
-    
