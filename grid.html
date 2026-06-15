@@ -1,544 +1,386 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Dashboard Project</title>
 
-    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="grid.css" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar">
+      <div class="logo">Dashboard</div>
 
-        <div class="logo">
-             Dashboard
-        </div>
+      <button id="menu-btn" class="button">Menu</button>
 
-        <button id="menu-btn" class="button">
+      <div class="nav-right">
+        <div id="clock" class="clock">00:00:00</div>
 
-            Menu
-
-        </button>
-
-        <div class="nav-right">
-
-            <div id="clock" class="clock">
-
-                00:00:00
-
-            </div>
-
-            <button id="dark-mode-btn" class="button">
-
-                Dark Mode
-
-            </button>
-
-        </div>
-
+        <button id="dark-mode-btn" class="button">Dark Mode</button>
+      </div>
     </nav>
 
     <!-- ================= HEADER ================= -->
 
     <header class="header-section">
+      <h1>Dashboard Project</h1>
 
-        <h1>Dashboard Project</h1>
-
-        <p>
-            Responsive Dashboard using
-            HTML, CSS and JavaScript
-        </p>
-
+      <p>Responsive Dashboard using HTML, CSS and JavaScript</p>
     </header>
 
     <!-- ================= AUTH SECTION ================= -->
 
     <section class="auth-section">
+      <!-- LOGIN -->
 
-        <!-- LOGIN -->
+      <div class="auth-card" id="login-card">
+        <h2>Login</h2>
 
-        <div class="auth-card" id="login-card">
+        <input type="email" id="login-email" placeholder="Enter Email" />
 
-            <h2>Login</h2>
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Enter Password"
+        />
 
-            <input type="email" id="login-email" placeholder="Enter Email">
+        <button id="toggle-password-btn">Show Password</button>
 
-            <input type="password" id="login-password" placeholder="Enter Password">
+        <button id="login-btn">Login</button>
+      </div>
 
-            <button id="toggle-password-btn">
+      <!-- REGISTER -->
 
-                Show Password
+      <div class="auth-card" id="register-card">
+        <h2>Register</h2>
 
-            </button>
+        <input type="text" id="register-name" placeholder="Enter Name" />
 
-            <button id="login-btn">
+        <input type="email" id="register-email" placeholder="Enter Email" />
 
-                Login
+        <input
+          type="password"
+          id="register-password"
+          placeholder="Enter Password"
+        />
 
-            </button>
-
-        </div>
-
-        <!-- REGISTER -->
-
-        <div class="auth-card" id="register-card">
-
-            <h2>Register</h2>
-
-            <input type="text" id="register-name" placeholder="Enter Name">
-
-            <input type="email" id="register-email" placeholder="Enter Email">
-
-            <input type="password" id="register-password" placeholder="Enter Password">
-
-            <button id="register-btn">
-
-                Register
-
-            </button>
-
-        </div>
-
+        <button id="register-btn">Register</button>
+      </div>
     </section>
 
     <!-- ================= USER INFO ================= -->
 
     <section class="user-info">
+      <h3 id="welcome-user">Welcome Guest</h3>
 
-        <h3 id="welcome-user">
-
-            Welcome Guest
-
-        </h3>
-
-        <button id="logout-btn">
-
-            Logout
-
-        </button>
-
+      <button id="logout-btn">Logout</button>
     </section>
 
     <!-- ================= MAIN GRID ================= -->
 
     <main class="grid-container">
+      <!-- ================= SIDEBAR ================= -->
 
-        <!-- ================= SIDEBAR ================= -->
+      <aside class="sidebar-menu">
+        <h2>Dashboard</h2>
 
-        <aside class="sidebar-menu">
+        <ul>
+          <li>
+            <a href="#" class="nav-link active" data-page="home-page">
+              🏠 Home
+            </a>
+          </li>
 
-            <h2>Dashboard</h2>
+          <li>
+            <a href="#" class="nav-link" data-page="analytics-page">
+              📊 Analytics
+            </a>
+          </li>
 
-            <ul>
+          <li>
+            <a href="#" class="nav-link" data-page="tasks-page"> ✅ Tasks </a>
+          </li>
 
-                <li>
-                    <a href="#" class="nav-link active" data-page="home-page">
+          <li>
+            <a href="#" class="nav-link" data-page="notes-page"> 📝 Notes </a>
+          </li>
 
-                        🏠 Home
+          <li>
+            <a href="#" class="nav-link" data-page="settings-page">
+              ⚙ Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
 
-                    </a>
-                </li>
+      <!-- ================= HOME PAGE ================= -->
 
-                <li>
-                    <a href="#" class="nav-link" data-page="analytics-page">
+      <div id="home-page" class="dashboard-page active-page">
+        <!-- STATS -->
 
-                        📊 Analytics
+        <section class="stats-container">
+          <div class="stat-box">
+            <h3>Total Users</h3>
 
-                    </a>
-                </li>
+            <p>15,450</p>
+          </div>
 
-                <li>
-                    <a href="#" class="nav-link" data-page="tasks-page">
+          <div class="stat-box">
+            <h3>Total Sales</h3>
 
-                        ✅ Tasks
+            <p>$25,000</p>
+          </div>
 
-                    </a>
-                </li>
+          <div class="stat-box">
+            <h3>Projects</h3>
 
-                <li>
-                    <a href="#" class="nav-link" data-page="notes-page">
+            <p>35 Active</p>
+          </div>
+        </section>
 
-                        📝 Notes
+        <!-- SEARCH -->
 
-                    </a>
-                </li>
+        <section class="search-section">
+          <input
+            type="text"
+            placeholder="Search here..."
+            class="search-input"
+          />
 
-                <li>
-                    <a href="#" class="nav-link" data-page="settings-page">
+          <button class="search-btn">Search</button>
+        </section>
 
-                        ⚙ Settings
+        <!-- TECHNOLOGY BOXES -->
 
-                    </a>
-                </li>
+        <div class="box box1">HTML</div>
 
-            </ul>
+        <div class="box box2">CSS</div>
 
-        </aside>
+        <div class="box box3">JavaScript</div>
 
-        <!-- ================= HOME PAGE ================= -->
+        <div class="box box4">React</div>
 
-        <div id="home-page" class="dashboard-page active-page">
+        <div class="box box5">Node.js</div>
 
-            <!-- STATS -->
+        <div class="box box6">MongoDB</div>
 
-            <section class="stats-container">
+        <!-- PROGRESS -->
 
-                <div class="stat-box">
+        <section class="progress-section">
+          <h2>Project Progress</h2>
 
-                    <h3>Total Users</h3>
+          <div class="progress-card">
+            <p>HTML</p>
 
-                    <p>15,450</p>
+            <div class="progress-bar">
+              <div class="progress html-progress"></div>
+            </div>
+          </div>
 
-                </div>
+          <div class="progress-card">
+            <p>CSS</p>
 
-                <div class="stat-box">
+            <div class="progress-bar">
+              <div class="progress css-progress"></div>
+            </div>
+          </div>
 
-                    <h3>Total Sales</h3>
+          <div class="progress-card">
+            <p>JavaScript</p>
 
-                    <p>$25,000</p>
+            <div class="progress-bar">
+              <div class="progress js-progress"></div>
+            </div>
+          </div>
+        </section>
 
-                </div>
+        <!-- PROFILE -->
 
-                <div class="stat-box">
+        <section class="profile-card">
+          <img
+            src="https://via.placeholder.com/120"
+            alt="Profile Image"
+            class="profile-image"
+          />
 
-                    <h3>Projects</h3>
+          <h3>sarathkumar</h3>
 
-                    <p>35 Active</p>
+          <p>Frontend Developer</p>
 
-                </div>
+          <button class="button">View Profile</button>
+        </section>
 
-            </section>
+        <!-- NOTIFICATIONS -->
 
-            <!-- SEARCH -->
+        <section class="notification-panel">
+          <h2>Notifications</h2>
 
-            <section class="search-section">
+          <div class="notification">✅ New user registered</div>
 
-                <input type="text" placeholder="Search here..." class="search-input">
+          <div class="notification">🚀 Project deployed successfully</div>
 
-                <button class="search-btn">
+          <div class="notification">🔔 New message received</div>
+        </section>
 
-                    Search
+        <!-- EXTRA CONTENT -->
 
-                </button>
+        <section class="extra-content">
+          <h2>Latest Updates</h2>
 
-            </section>
+          <p>
+            This dashboard is fully responsive and ready for future JavaScript
+            integration.
+          </p>
+        </section>
 
-            <!-- TECHNOLOGY BOXES -->
+        <!-- RESOURCES GRID (added extra content) -->
+        <section class="resources-section">
+          <h2>Resources</h2>
 
-            <div class="box box1">HTML</div>
+          <div class="resources-grid">
+            <article class="resource-card">
+              <img src="https://via.placeholder.com/300x150" alt="Tutorials" />
+              <h4>Tutorials</h4>
+              <p>Curated tutorials to improve your frontend skills.</p>
+              <a href="#" class="button">Explore</a>
+            </article>
 
-            <div class="box box2">CSS</div>
+            <article class="resource-card">
+              <img src="https://via.placeholder.com/300x150" alt="Components" />
+              <h4>UI Components</h4>
+              <p>Reusable components and patterns for dashboards.</p>
+              <a href="#" class="button">Browse</a>
+            </article>
 
-            <div class="box box3">JavaScript</div>
+            <article class="resource-card">
+              <img src="https://via.placeholder.com/300x150" alt="Templates" />
+              <h4>Templates</h4>
+              <p>Starter templates to kick off new projects quickly.</p>
+              <a href="#" class="button">Get Started</a>
+            </article>
 
-            <div class="box box4">React</div>
+            <article class="resource-card">
+              <img src="https://via.placeholder.com/300x150" alt="Docs" />
+              <h4>Documentation</h4>
+              <p>Reference guides and API docs for integrations.</p>
+              <a href="#" class="button">Read</a>
+            </article>
+          </div>
+        </section>
+      </div>
 
-            <div class="box box5">Node.js</div>
+      <!-- ================= ANALYTICS PAGE ================= -->
 
-            <div class="box box6">MongoDB</div>
+      <div id="analytics-page" class="dashboard-page">
+        <section class="analytics-section">
+          <div class="analytics-card">
+            <h3>Total Revenue</h3>
 
-            <!-- PROGRESS -->
+            <p>$45,000</p>
 
-            <section class="progress-section">
+            <span>+12% this month</span>
+          </div>
 
-                <h2>Project Progress</h2>
+          <div class="analytics-card">
+            <h3>New Users</h3>
 
-                <div class="progress-card">
+            <p>1,245</p>
 
-                    <p>HTML</p>
+            <span>+8% this week</span>
+          </div>
 
-                    <div class="progress-bar">
+          <div class="analytics-card">
+            <h3>Orders</h3>
 
-                        <div class="progress html-progress"></div>
+            <p>320</p>
 
-                    </div>
+            <span>+15% today</span>
+          </div>
 
-                </div>
+          <div class="analytics-card">
+            <h3>Performance</h3>
 
-                <div class="progress-card">
+            <p>89%</p>
 
-                    <p>CSS</p>
+            <span>Excellent</span>
+          </div>
+        </section>
+      </div>
 
-                    <div class="progress-bar">
+      <!-- ================= TASKS PAGE ================= -->
 
-                        <div class="progress css-progress"></div>
+      <div id="tasks-page" class="dashboard-page">
+        <section class="calculator-section">
+          <h2>Calculator</h2>
 
-                    </div>
+          <input type="text" id="calc-display" readonly />
+        </section>
 
-                </div>
+        <section class="stopwatch-section">
+          <h2>Stopwatch</h2>
 
-                <div class="progress-card">
+          <div id="stopwatch-display">00:00:00</div>
+          <div class="stopwatch-buttons">
+            <button id="start-stopwatch">Start</button>
 
-                    <p>JavaScript</p>
+            <button id="stop-stopwatch">Stop</button>
 
-                    <div class="progress-bar">
+            <button id="reset-stopwatch">Reset</button>
+          </div>
+        </section>
+      </div>
 
-                        <div class="progress js-progress"></div>
+      <!-- ================= NOTES PAGE ================= -->
 
-                    </div>
+      <div id="notes-page" class="dashboard-page">
+        <section class="notes-section">
+          <h2>Quick Notes</h2>
 
-                </div>
+          <textarea
+            id="notes-area"
+            placeholder="Write notes here..."
+          ></textarea>
 
-            </section>
+          <button id="save-note-btn">Save Notes</button>
+        </section>
+      </div>
 
-            <!-- PROFILE -->
+      <!-- ================= SETTINGS PAGE ================= -->
 
-            <section class="profile-card">
+      <div id="settings-page" class="dashboard-page">
+        <section class="theme-section">
+          <h2>Theme Colors</h2>
 
-                <img src="https://via.placeholder.com/120" alt="Profile Image" class="profile-image">
+          <div class="theme-buttons">
+            <button class="theme-btn blue-theme">Blue</button>
 
-                <h3>sarathkumar</h3>
+            <button class="theme-btn green-theme">Green</button>
 
-                <p>Frontend Developer</p>
+            <button class="theme-btn purple-theme">Purple</button>
+          </div>
+        </section>
 
-                <button class="button">
+        <section class="background-section">
+          <h2>Background Generator</h2>
 
-                    View Profile
-
-                </button>
-
-            </section>
-
-            <!-- NOTIFICATIONS -->
-
-            <section class="notification-panel">
-
-                <h2>Notifications</h2>
-
-                <div class="notification">
-                    ✅ New user registered
-                </div>
-
-                <div class="notification">
-                    🚀 Project deployed successfully
-                </div>
-
-                <div class="notification">
-                    🔔 New message received
-                </div>
-
-            </section>
-
-            <!-- EXTRA CONTENT -->
-
-            <section class="extra-content">
-
-                <h2>Latest Updates</h2>
-
-                <p>
-                    This dashboard is fully responsive
-                    and ready for future JavaScript integration.
-                </p>
-
-            </section>
-
-            <!-- RESOURCES GRID (added extra content) -->
-            <section class="resources-section">
-                <h2>Resources</h2>
-
-                <div class="resources-grid">
-
-                    <article class="resource-card">
-                        <img src="https://via.placeholder.com/300x150" alt="Tutorials">
-                        <h4>Tutorials</h4>
-                        <p>Curated tutorials to improve your frontend skills.</p>
-                        <a href="#" class="button">Explore</a>
-                    </article>
-
-                    <article class="resource-card">
-                        <img src="https://via.placeholder.com/300x150" alt="Components">
-                        <h4>UI Components</h4>
-                        <p>Reusable components and patterns for dashboards.</p>
-                        <a href="#" class="button">Browse</a>
-                    </article>
-
-                    <article class="resource-card">
-                        <img src="https://via.placeholder.com/300x150" alt="Templates">
-                        <h4>Templates</h4>
-                        <p>Starter templates to kick off new projects quickly.</p>
-                        <a href="#" class="button">Get Started</a>
-                    </article>
-
-                    <article class="resource-card">
-                        <img src="https://via.placeholder.com/300x150" alt="Docs">
-                        <h4>Documentation</h4>
-                        <p>Reference guides and API docs for integrations.</p>
-                        <a href="#" class="button">Read</a>
-                    </article>
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <!-- ================= ANALYTICS PAGE ================= -->
-
-        <div id="analytics-page" class="dashboard-page">
-
-            <section class="analytics-section">
-
-                <div class="analytics-card">
-
-                    <h3>Total Revenue</h3>
-
-                    <p>$45,000</p>
-
-                    <span>+12% this month</span>
-
-                </div>
-
-                <div class="analytics-card">
-
-                    <h3>New Users</h3>
-
-                    <p>1,245</p>
-
-                    <span>+8% this week</span>
-
-                </div>
-
-                <div class="analytics-card">
-
-                    <h3>Orders</h3>
-
-                    <p>320</p>
-
-                    <span>+15% today</span>
-
-                </div>
-
-                <div class="analytics-card">
-
-                    <h3>Performance</h3>
-
-                    <p>89%</p>
-
-                    <span>Excellent</span>
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <!-- ================= TASKS PAGE ================= -->
-
-        <div id="tasks-page" class="dashboard-page">
-
-            <section class="calculator-section">
-
-                <h2>Calculator</h2>
-
-                <input type="text" id="calc-display" readonly>
-
-            </section>
-
-            <section class="stopwatch-section">
-
-                <h2>Stopwatch</h2>
-
-                <div id="stopwatch-display">
-
-                    00:00:00
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <!-- ================= NOTES PAGE ================= -->
-
-        <div id="notes-page" class="dashboard-page">
-
-            <section class="notes-section">
-
-                <h2>Quick Notes</h2>
-
-                <textarea id="notes-area" placeholder="Write notes here..."></textarea>
-
-                <button id="save-note-btn">
-
-                    Save Notes
-
-                </button>
-
-            </section>
-
-        </div>
-
-        <!-- ================= SETTINGS PAGE ================= -->
-
-        <div id="settings-page" class="dashboard-page">
-
-            <section class="theme-section">
-
-                <h2>Theme Colors</h2>
-
-                <div class="theme-buttons">
-
-                    <button class="theme-btn blue-theme">
-
-                        Blue
-
-                    </button>
-
-                    <button class="theme-btn green-theme">
-
-                        Green
-
-                    </button>
-
-                    <button class="theme-btn purple-theme">
-
-                        Purple
-
-                    </button>
-
-                </div>
-
-            </section>
-
-            <section class="background-section">
-
-                <h2>Background Generator</h2>
-
-                <button id="change-bg-btn">
-
-                    Change Background
-
-                </button>
-
-            </section>
-
-        </div>
-
+          <button id="change-bg-btn">Change Background</button>
+        </section>
+      </div>
     </main>
 
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
-
-        <p>
-            © 2026 My Dashboard Project
-        </p>
-
+      <p>© 2026 My Dashboard Project</p>
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
 
     <script src="pro.js"></script>
-
-</body>
-
+  </body>
 </html>
