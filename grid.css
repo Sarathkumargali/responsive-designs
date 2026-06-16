@@ -105,6 +105,42 @@ button {
   padding: 10px 14px;
 }
 
+.navbar .button {
+  background: white;
+  color: var(--text);
+  border: 1px solid #e2e8f0;
+}
+
+.navbar .button:hover {
+  background: #f8fbff;
+}
+
+/* =========================
+   INPUT FIELDS
+========================= */
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  transition: all 0.25s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
 /* =========================
    BUTTONS
 ========================= */
@@ -299,8 +335,16 @@ button {
 .dashboard-page > .project-table-section,
 .dashboard-page > .attendance-section,
 .dashboard-page > .health-section,
-.dashboard-page > .extra-content {
+.dashboard-page > .extra-content,
+.dashboard-page > .resources-section {
   grid-column: 1 / -1;
+}
+
+.dashboard-page > .box {
+  border-radius: 20px;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
 }
 
 section {
@@ -380,16 +424,14 @@ section h2 {
    BOXES
 ========================= */
 
-.boxes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-}
-
-.box {
+.dashboard-page > .box {
   min-height: 120px;
   display: grid;
   place-items: center;
+  border-radius: 20px;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
 }
 
 .box1 {
@@ -1327,8 +1369,22 @@ section h2 {
 }
 
 /* =========================
-   RESPONSIVE
+   FOOTER
 ========================= */
+
+.footer {
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  color: var(--muted);
+  margin-top: 40px;
+  border-top: 1px solid #dbeafe;
+}
+
+.footer p {
+  margin: 0;
+}
 
 @media (max-width: 1050px) {
   .dashboard-page.active-page {
@@ -1361,6 +1417,10 @@ section h2 {
   .theme-section,
   .background-section {
     grid-column: 1 / -1;
+  }
+
+  .auth-section {
+    grid-template-columns: 1fr;
   }
 }
 
