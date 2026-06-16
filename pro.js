@@ -31,65 +31,6 @@ function isValidCalculatorExpression(expression) {
   return /^[0-9+\-*/().\s]+$/.test(expression);
 }
 
-/* REMOVE BELOW LINE IF YOU DON'T WANT LIVE CLOCK */
-
-setInterval(updateClock, 1000);
-
-updateClock();
-
-
-/* =========================
-   DARK MODE
-========================= */
-
-const darkModeBtn = document.getElementById("dark-mode-btn");
-
-function applyTheme(primary, secondary) {
-  document.documentElement.style.setProperty("--primary", primary);
-  document.documentElement.style.setProperty("--secondary", secondary);
-  document.documentElement.style.setProperty(
-    "--gradient",
-    `linear-gradient(135deg, ${primary}, ${secondary})`
-  );
-}
-
-function saveTheme(primary, secondary) {
-  localStorage.setItem(
-    "dashboardTheme",
-    JSON.stringify({ primary, secondary })
-  );
-}
-
-const storedTheme = JSON.parse(localStorage.getItem("dashboardTheme"));
-if (storedTheme) {
-  applyTheme(storedTheme.primary, storedTheme.secondary);
-}
-
-if (darkModeBtn) {
-  const storedDark = localStorage.getItem("dashboardDarkMode") === "true";
-  if (storedDark) {
-    document.body.classList.add("dark-mode");
-    darkModeBtn.textContent = "Light Mode";
-  }
-
-  darkModeBtn.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark-mode");
-    localStorage.setItem("dashboardDarkMode", isDark);
-    darkModeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
-  });
-}
-
-const menuBtn = document.getElementById("menu-btn");
-const sidebarMenu = document.querySelector(".sidebar-menu");
-/* Lightweight dashboard script tailored for grid.html
-   - initializes interactive widgets only when their elements exist
-   - removes authentication code not present in grid.html
-*/
-
-function isValidCalculatorExpression(expression) {
-  return /^[0-9+\-*/().\s]+$/.test(expression);
-}
-
 function showToast(message, duration = 2400) {
   const toast = document.getElementById("toast");
   if (!toast) return alert(message);
