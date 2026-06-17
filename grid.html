@@ -233,7 +233,7 @@
             <p>JavaScript</p>
 
             <div class="progress-bar">
-              <div class="progress js-progress"></div>
+              <div class="progress js-progress" data-progress="75"></div>
             </div>
           </div>
         </section>
@@ -362,6 +362,27 @@
             </article>
           </div>
         </section>
+
+        <section class="quick-actions">
+          <h2>Quick Actions</h2>
+
+          <div class="actions-container">
+            <button class="button">Add Task</button>
+            <button class="button">Export Report</button>
+            <button class="button">View Timeline</button>
+          </div>
+        </section>
+
+        <section class="chat-support-section">
+          <h2>Support Chat</h2>
+
+          <div class="chat-box"></div>
+
+          <div class="chat-input-area">
+            <input type="text" placeholder="Type a message..." />
+            <button class="button">Send</button>
+          </div>
+        </section>
       </div>
 
       <!-- ================= ANALYTICS PAGE ================= -->
@@ -409,6 +430,25 @@
           <h2>Calculator</h2>
 
           <input type="text" id="calc-display" readonly />
+
+          <div class="calculator-buttons">
+            <button class="calc-btn">7</button>
+            <button class="calc-btn">8</button>
+            <button class="calc-btn">9</button>
+            <button class="calc-btn">/</button>
+            <button class="calc-btn">4</button>
+            <button class="calc-btn">5</button>
+            <button class="calc-btn">6</button>
+            <button class="calc-btn">*</button>
+            <button class="calc-btn">1</button>
+            <button class="calc-btn">2</button>
+            <button class="calc-btn">3</button>
+            <button class="calc-btn">-</button>
+            <button class="calc-btn">0</button>
+            <button class="calc-btn">.</button>
+            <button id="calc-clear">C</button>
+            <button id="calc-equals">=</button>
+          </div>
         </section>
 
         <section class="stopwatch-section">
@@ -421,6 +461,25 @@
             <button id="stop-stopwatch">Stop</button>
 
             <button id="reset-stopwatch">Reset</button>
+          </div>
+        </section>
+
+        <section class="task-list-section">
+          <h2>Task List</h2>
+
+          <div class="task-list">
+            <div class="task-item">
+              <input type="checkbox" id="task-1" />
+              <label for="task-1">Review design mockups</label>
+            </div>
+            <div class="task-item">
+              <input type="checkbox" id="task-2" />
+              <label for="task-2">Update dashboard layout</label>
+            </div>
+            <div class="task-item">
+              <input type="checkbox" id="task-3" />
+              <label for="task-3">Write project summary</label>
+            </div>
           </div>
         </section>
       </div>
@@ -436,7 +495,10 @@
             placeholder="Write notes here..."
           ></textarea>
 
-          <button id="save-note-btn">Save Notes</button>
+          <div class="notes-actions">
+            <button id="save-note-btn">Save Notes</button>
+            <button id="clear-note-btn" class="secondary-btn">Clear Notes</button>
+          </div>
         </section>
       </div>
 
@@ -465,6 +527,7 @@
 
     <!-- ================= FOOTER ================= -->
 
+    <div id="toast" class="toast"></div>
     <footer class="footer">
       <p>© 2026 My Dashboard Project</p>
     </footer>
