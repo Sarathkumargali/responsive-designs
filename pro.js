@@ -221,19 +221,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // Page navigation links
   const navLinks = document.querySelectorAll(".nav-link");
   const pages = document.querySelectorAll(".dashboard-page");
+  function activatePage(pageId) {
+    navLinks.forEach((n) =>
+      n.classList.toggle("active", n.dataset.page === pageId),
+    );
+    pages.forEach((p) => p.classList.toggle("active-page", p.id === pageId));
+  }
+  function loadSavedPage() {
+    const savedPage = localStorage.getItem("dashboardPage");
+    if (savedPage && document.getElementById(savedPage)) {
+      activatePage(savedPage);
+      return;
+    }
+    activatePage("home-page");
+  }
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      navLinks.forEach((n) => n.classList.remove("active"));
-      link.classList.add("active");
-      pages.forEach((p) => p.classList.remove("active-page"));
       const id = link.dataset.page;
-      const sel = document.getElementById(id);
-      if (sel) sel.classList.add("active-page");
+      if (!id) return;
+      activatePage(id);
+      localStorage.setItem("dashboardPage", id);
       if (sidebarMenu && sidebarMenu.classList.contains("sidebar-open"))
         sidebarMenu.classList.remove("sidebar-open");
     });
   });
+  loadSavedPage();
 
   // Notes
   const notesArea = document.getElementById("notes-area");
@@ -286,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderStopwatch();
       }, 1000);
     });
+  renderStopwatch();
   if (stopBtn)
     stopBtn.addEventListener("click", () => {
       clearInterval(swInterval);
@@ -313,14 +327,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Theme buttons
-  document.querySelectorAll(".theme-btn").forEach((btn) =>
+  const themeButtons = document.querySelectorAll(".theme-btn");
+  const themeMap = {
+    "blue-theme": "#2563eb",
+    "green-theme": "#10b981",
+    "purple-theme": "#8b5cf6",
+  };
+  function setActiveThemeButton(color) {
+    themeButtons.forEach((btn) => {
+      const themeClass = Array.from(btn.classList).find((name) =>
+        Object.prototype.hasOwnProperty.call(themeMap, name),
+      );
+      btn.classList.toggle("active-theme", themeMap[themeClass] === color);
+    });
+  }
+  function applyThemeColor(color) {
+    document.documentElement.style.setProperty("--primary", color);
+    localStorage.setItem("dashboardTheme", color);
+    setActiveThemeButton(color);
+  }
+  const savedTheme = localStorage.getItem("dashboardTheme");
+  if (savedTheme) applyThemeColor(savedTheme);
+  themeButtons.forEach((btn) =>
     btn.addEventListener("click", () => {
-      if (btn.classList.contains("blue-theme"))
-        document.documentElement.style.setProperty("--primary", "#2563eb");
-      if (btn.classList.contains("green-theme"))
-        document.documentElement.style.setProperty("--primary", "#10b981");
-      if (btn.classList.contains("purple-theme"))
-        document.documentElement.style.setProperty("--primary", "#8b5cf6");
+      const themeClass = Array.from(btn.classList).find((name) =>
+        Object.prototype.hasOwnProperty.call(themeMap, name),
+      );
+      if (!themeClass) return;
+      applyThemeColor(themeMap[themeClass]);
     }),
   );
 
