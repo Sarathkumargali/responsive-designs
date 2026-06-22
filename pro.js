@@ -501,4 +501,41 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     card.addEventListener("mouseleave", () => (card.style.transform = ""));
   });
+  /* =========================
+   SALES OVERVIEW
+========================= */
+
+  function updateSalesData() {
+    const today = document.getElementById("today-sales");
+    const week = document.getElementById("week-sales");
+    const month = document.getElementById("month-sales");
+    const year = document.getElementById("year-sales");
+
+    if (!today || !week || !month || !year) return;
+
+    today.textContent = "$" + (1000 + Math.floor(Math.random() * 1000));
+
+    week.textContent = "$" + (7000 + Math.floor(Math.random() * 5000));
+
+    month.textContent = "$" + (25000 + Math.floor(Math.random() * 10000));
+
+    year.textContent = "$" + (100000 + Math.floor(Math.random() * 50000));
+  }
+
+  updateSalesData();
+
+  setInterval(updateSalesData, 5000);
+  /* =========================
+   TIMELINE FUNCTIONALITY
+========================= */
+
+  const timelineItems = document.querySelectorAll(".timeline-item");
+
+  timelineItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const title = item.querySelector("h3").textContent;
+
+      alert("Selected Stage: " + title);
+    });
+  });
 });
